@@ -128,5 +128,102 @@ The HapMap CEU trio were NA12878 (daughter), NA12891 (father), and NA12892 (moth
 \section{Acknowledgements}
 Y.E is an Andria and Paul Heafy Family Fellow. This publication was supported by the National Defense Science and Engineering Graduate Fellowship (M.G.) and by a fellowship from the Edmond J. Safra Bioinformatics program at Tel-Aviv University (D.G.). D.G. and S.R. acknowledge support from Israeli Science Foundation grant ISF 1227/09 and an IBM Open Collaborative Research grant. We thank Mona Sheikh, Dina Esposito, and Alon Goren for useful comments on the manuscript, Assaf Gordon for his assistance with multithreading programming, Cole Trapnell for his assistance with preparing lobSTR executables, Mona Sheikh and Sam Sinai for testing lobSTR code, and Dina Esposito for preparing samples for genotyping. 
 
+\section{Supplemental Text}
+\subsection{lobSTR algorithm}
 
+\subsubsection{Sensing}
+The aim of the sensing step is to find informative reads and characterize their STR sequence. The first task of the algorithm is to detect whether a read contains a repetitive sequence. The algorithm breaks the sequence read into overlapping windows with length of $w$ nucleotides and $r$ nucleotide overlap between consecutive windows. In practice, we use $w=24$ and $r=12$. Then, it measures the sequence entropy of each window, according to:
+
+\begin{equation}
+E(S_j) = -\sum_{i \in \Sigma}f_i \log_2 f_i
+\end{equation}
+
+where $E$ is the entropy, $S_j$ is the sequence of the $j$-th window, $\Sigma$ is the alphabet set, $i$ is a symbol in the alphabet, and $f_i$ is the frequency of symbol $i$. A fully random sequence results in the maximal entropy score that equals to $\log_2(|\Sigma|)$, whereas a repetitive sequence overuses a few symbols and results in a low entropy score, ideally zero in the case of a perfect homopolymer run.
+
+The entropy score proved extremely powerful in discriminating STR sequences from other genomic sequences (Supplemental Figure 2A). We calculated the entropy score of sliding windows of 24bp from all documented human STR sequences of repeat unit length of 2-6bp that span up to 100bp. In parallel we scored one million randomly sampled human genomic sequences of 24bp. Then, we classified the input sequences according to their entropy score. The area under the receiver-operating curve (ROC) was 98.3\% when the entropy measurement used the four nucleotides as the input alphabet. We further boosted the classification performance by calculating the entropy using dinucleotide symbols, meaning that “AA” maps to one symbol, “AC” maps to a different symbol, and so forth. In this case, the area under the ROC climbed to 99.4\%, which renders it a nearly perfect classifier. Accordingly, lobSTR uses the dinucleotide symbols for the entropy measure, and we empirically found that an entropy threshold of 2.2 bits provides the optimal performance in terms of speed and number of aligned STR reads.
+
+lobSTR uses the pattern of entropy scores to identify informative reads that fully encompass STR regions. These reads display a series of windows with entropy score below-threshold (the STR region) that are flanked by one or more windows with entropy score above-threshold (the non-repetitive regions) (Supplemental Figure 2B). The algorithm only retains reads that follow this pattern. Approximately 97\% of whole genome sequence reads are excluded by this rapid procedure. This significantly contributes to the algorithm's speed, since only a few simple entropy calculations are required to identify the informative STR reads in massive sequencing datasets.
+
+The next task of the sensing step is to determine the length of the repeat unit. Most STR loci do not contain a perfect series of the same repeat unit \cite{Benson1999}. We took a spectral analysis approach that quickly integrates information over the entire STR region to reliably identify the repeat consensus even in imperfect repeats \cite{SharmaIssacRaghavaEtAl2004}. Starting from the window with the lowest entropy score, consecutive windows scoring below the threshold are merged. The sequence of the merged repetitive region is represented as $M$, an $n \times 4$ binary matrix, where $n$ is the number of nucleotides in the repetitive region, the $i$-th row of the matrix corresponds to the $i$-th position of the sequence, and each column corresponds to a different nucleotide type (A,C,G,T). For instance, the DNA sequence ACCGT is represented as:
+
+\begin{equation}
+\left[
+\begin{array}{c c c c}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{array}
+\right]
+\end{equation}
+
+The power spectrum of the STR matrix is calculated by performing a Fast Fourier Transform along the columns of the matrix:
+
+\begin{equation}
+S(f) = \sum_{y=1}^4 \left( \sum_{x=1}^n M_{x,y} \cdot e^{-\frac{2\pi ixf}{n}} \right) ^2
+\end{equation}
+
+Where $M_{x,y}$ is the element in the $x$-th row and $y$-th column of $M$.
+
+STRs have a unique fingerprint in the frequency domain \cite{SharmaIssacRaghavaEtAl2004,ZhouDuYan2009}. Similar to repetitive signals in the time domain, the spectral response of STR elements is characterized by harmonics - a strong signal in recurrent frequency bins and a weak signal in other bins (Supplemental Figure 2C). The peaks of the harmonics for a repeat unit of length $k$ dwell in the $\frac{ni}{k} \text{ mod } n$ bins, $i = \{ 0, \pm 1, \pm 2, \hdots \}$. For instance, in a case of n=24, a dinucleotide STR generates a strong signal in bins 0 and $\pm$12. A trinucleotide STR generates a strong signal in bins 0, $\pm$8, and $\pm$16. The algorithm integrates over the normalized energy of the first harmony (i.e. $i$=1) of each possible repeat unit between 2 to 6bp. The consensus repeat unit length is selected according to the highest energy of the corresponding frequency bin (Supplemental Figure 2D). Some STR regions may show strong signals in more than one energy bin (i.e., repeats of period 4 show strong energy in both the second and fourth harmonics, and repeats with several insertions or deletions may have more than one strong harmonic). If the second highest harmonic has energy within 30\% of the highest, lobSTR will attempt alignment using the second best period choice if alignment using the first choice fails.
+
+Finally, the algorithm determines the actual STR sequence. It uses a rolling hash function to record all possible $k$-mers in the STR region, where $k$ is the reported repeat unit length described above. The most frequently occurring $k$-mer is set to be the repeat unit of the STR. The output of the sensing step is (a) the consensus sequence of the STR’s repeat unit in the canonical form (see Supplemental Methods for the canonical form definition) (b) the sequence read divided into three regions: the STR region, and upstream and downstream flanking regions that correspond to the location of the above threshold windows. 
+
+\subsubsection{Alignment}
+The aim of the alignment step is to reveal the identity and the repeat length of an STR-containing read. We do not attempt to align the entire sequence read to the genome to avoid time-prohibitive gapped alignment. Instead, lobSTR employs a divide-and-conquer approach. It separately anchors the upstream and downstream flanking regions of STR-containing sequence reads, without mapping the STR region itself. This procedure identifies the genomic location of the STR and reveals the repeat length by measuring the distance between the flanking regions.
+
+A major challenge of the divide-and-conquer approach is to specifically map the short flanking regions to the genome. To circumvent this problem, we restrict the alignment to STR loci with the same repeat sequence that was reported by the sensing step. We built a reference that holds the flanking regions of all the 240,351 STR loci with repeat unit 2-6bp in the human genome according to the Tandem Repeat Finder table \cite{Benson1999}. The flanking strings are compressed using a Burrows Wheeler Transform \cite{BurrowsWheeler1994} (BWT) to allow efficient searching. All flanking strings of STRs with the same repeat structure are organized under the same BWT structure (Supplemental Methods). Thus, lobSTR only searches a single BWT data structure that corresponds to the repeat sequence, which typically holds up to a few thousand loci. Then, lobSTR intersects the potential mapping positions of the upstream and downstream regions to identify a single compatible location and excludes multiple mappers. This procedure not only speeds up the alignment, but enables higher rates of unique mapping even when the flanking regions are only a few nucleotides long. 
+
+To determine the length of the STR in the read, the algorithm uses the following equation: 
+
+\begin{equation} \label{eq:alnstep}
+L = s - (d –u ) + L{ref}                                                                  
+\end{equation}
+
+Where $L$ is the observed STR length, $s$ is the length of the sequence read, $d$ is the genomic coordinate of the last nucleotide in the downstream region, $u$ is the genomic coordinate of the first nucleotide of the upstream region, and $L_{ref}$ is the length of the STR region in the reference genome. 
+
+One important aspect of Eq. 4 is that inaccuracies in the sensing step regarding the exact boundaries of the STR do not affect the reported length of the STR. However, insertions or deletions in the flanking regions might be reported as STR differences, although they are not actual differences in the STR region itself. To mitigate this issue, lobSTR performs local realignment of the entire read once a match is found using the \cite{NeedlemanWunsch1970}. Indels that are detected in the flanking regions are not taken into account and removed from Eq. \ref{eq:alnstep}, providing accurate length calling of the STR region. In addition, the local realignment is used to produce a CIGAR string with the locations of the indels in the read. Downstream genotype callers can use the output of lobSTR to call SNPs and indels in the STR region and its flanking regions. 
+
+The output of the alignment step is the genomic coordinates of the aligned read, the strand, the STR region extracted from the read, the STR motif, the nucleotide length difference compared to the reference genome as described above, the CIGAR string, and the realignment score. We report the alignments in a custom tab-delimited format, as well as in the BAM format \cite{LiZhaoLinEtAl2009} to ensure compatibility with other downstream bioinformatics tools.
+
+\subsubsection{Allelotyping}
+The aim of the allelotyping step is to determine the most likely alleles of each STR locus by integrating information from all aligned reads and the expected stutter noise, which is created due to in vitro slippage events during sample preparation. This part of the program uses a BAM file as input and reports the allelotype calls.
+
+By analyzing real sequencing data, we found that the length of the repeat unit is a major determinant of the stutter noise distribution (Supplemental Methods). In accordance with the mutation dynamics of STRs previously reported \cite{Ellegren2004}, short repeat units are associated with higher stutter noise and long repeat units are more immune to noise (Supplemental Figure 3A). We did not find a significant association between stutter noise and the length of the STR (Supplemental Figure 3B) as was observed in past studies \cite{HaugeLitt1993}.
+
+We developed a generative model for stutter noise that consists of two steps: (a) with probability $\pi(k)$, the read is a product of stutter noise, where $k$ denotes the repeat unit length (b) if the read is a product of stutter noise, then with probability $\mu(s; \lambda_k)$, the noisy read deviates by $s$ base pairs from the original allele, where $\mu(s; \lambda_k)$ is a Poisson distribution with parameter $\lambda_k$. The probabilities that the deviation is positive (repeat expansion) or negative (repeat contraction) are equal. 
+
+The user has two options to estimate the model parameters $\pi(k)$ and $\lambda_k$. In the case of a male genome, the user can instruct lobSTR to scan the hemizygous sex chromosomes to accumulate unambiguous data about stutter noise distribution. The algorithm observes the stutter probability for each repeat unit length and uses a logistic regression to infer $\pi(k)$ (Supplemental Figure 3A) and a Poission regression to learn $\lambda_k$. In the case of a female genome, users can use pre-computed values either from our observations or analyze male data in their collection. 
+
+Overall, the probability of generating a read with $L$ bp in the STR region from a hemizygous locus with an STR with A bp in the STR region is:
+
+\begin{equation}
+P(L|A, k) = 
+\begin{array}{c c}
+1-\pi(k) & \text{if } L=A \\
+\frac{\pi{k}}{2} \mu(|A-L|-1, \lambda_k) & \text{otherwise} \\
+\end{array}
+\end{equation}
+
+In a diploid STR locus with $A$ and $B$ repeat lengths, we use the following heuristic to approximate the likelihood of observing a read with length $L$:
+
+\begin{equation}
+P(L|A,B,k) = max(P(L|A,k),P(L|B,k))
+\end{equation}
+
+This heuristic was found to be more robust when the two STR alleles have large length differences.
+
+Let $\vec{R}$ be a vector that describes the STR lengths of sequence reads from the same locus after removing PCR duplicates (Supplemental Methods). Since each remaining sequence read is a product of an independent series of PCR rounds, we assume that the stutter noise of different entries in $\vec{R}$ is independent. Accordingly: 
+
+\begin{equation} \label{eq:lobloglik}
+\log[P(\vec{R}|A,B,k) = \sum_{L\in \vec{R}}\log[P(L|A,B,k)]]
+\end{equation}
+
+Thus, the most likely allelotype call is when Eq. (7) is maximized with respect to $A$ and $B$. To find the best bi-allelic combination, we simply iterate over all possible pairs of STR lengths observed at the interrogated locus and compute the likelihood of generating the observed data given the noise model. For example, if $\vec{R}=(13,13,12,12,12)$, we calculate the log likelihood in Eq. \ref{eq:lobloglik} for the combinations: ($A$=12,$B$=12), ($A$=12,$B$=13), and ($A$=13,$B$=13). In addition to the log likelihood score, we require a minimum threshold of the variant allele in order to call a locus as heterozygous, with a default threshold of 20\% and a minimum percentage of reads supporting the resulting allelotype, which defaults to 50\%. In the case of sex chromosome loci for a male sample, only homozygous allelotypes are considered. The most likely $(A,B)$ combination is reported.
+
+For each STR locus, the allelotyping step returns the chromosome, start, and end of the locus, the STR motif and period, the reference repeat number from TRF, the allelotype call given as the number of base pairs difference from reference for each allele, coverage, number of reads agreeing with the allelotype call, the number of reads disagreeing with the allelotype call, and the number of reads supporting each observed allele.
+
+\subsection{Technical Evaluation of lobSTR}
+\subsubsection{Comparison between lobSTR sensing step and the TRF tool}
 %% TODO figures/tables and legends
