@@ -31,7 +31,7 @@ STR variations have been instrumental in wide-ranging areas of human genetics. S
 
 Despite the plurality of applications, STR variations are not routinely analyzed in whole genome sequencing studies, mainly due to a lack of adequate tools \cite{TreangenSalzberg2012}. STRs pose a remarkable challenge to mainstream HTS analysis pipelines. First, not all reads that align to an STR locus are informative (\textbf{Supplemental Figure~\ref{fig:lobsup1}A}). If a single or paired-end read partially encompasses an STR locus, it provides only a lower bound on the number of repeats. Only reads that fully encompass an STR can be used for exact STR allelotyping. Second, mainstream aligners, such as BWA, generally exhibit a trade-off between run time and tolerance to insertions/deletions (indels) \cite{LiHomer2010}. Thus, profiling STR variations -- even for an expansion of three repeats in a trinucleotide STR -- would require a cumbersome gapped alignment step and lengthy processing times (\textbf{Supplemental Figure~\ref{fig:lobsup1}B}). Third, PCR amplification of an STR locus can create stutter noise, in which the DNA amplicons show false repeat lengths due to successive slippage events of DNA polymerase during amplification \cite{HaugeLitt1993,Ellegren2004} (\textbf{Supplemental Figure~\ref{fig:lobsup1}C}). Since PCR amplification is a standard step in library preparation for whole genome sequencing, an STR profiler should explicitly model and attempt to remove this noise to enhance accuracy.
 
-Here, we present lobSTR, a rapid and accurate algorithm for STR profiling in whole genome sequencing datasets (\textbf{Figure \ref{fig:lobfig1}}). Briefly, the algorithm has three steps. The first step is sensing: lobSTR swiftly scans genomic libraries, flags informative reads that fully encompass STR loci, and characterizes their STR sequence. This ab initio procedure relies on a signal processing approach that uses rapid entropy measurements to find informative STR reads followed by a Fast Fourier Transform to characterize the repeat sequence. The second step is alignment: lobSTR uses a divide and conquer strategy that anchors the non-repetitive flanking regions of STR reads to the genome to reveal the STR position and length. We use a modified reference that takes advantage of the information extracted from the sensing step to increase the alignment specificity. This step avoids a cumbersome gapped alignment and, importantly, is virtually indifferent to the magnitude of STR variations. Finally, in the third step, the pipeline allelotypes the STRs using a statistical learning approach that models the stutter noise in order to enhance the signal of the true allelic configuration. See \textbf{Supplemental Text \ref{sec:lobsupptext}}, \textbf{Supplemental Figures \ref{fig:lobsup2}, \ref{fig:lobsup3}, \ref{fig:lobsup4}, \ref{fig:lobsup5}} and \textbf{Supplemental Table 1} for full details about the lobSTR algorithm.
+Here, we present lobSTR, a rapid and accurate algorithm for STR profiling in whole genome sequencing datasets (\textbf{Figure \ref{fig:lobfig1}}). Briefly, the algorithm has three steps. The first step is sensing: lobSTR swiftly scans genomic libraries, flags informative reads that fully encompass STR loci, and characterizes their STR sequence. This ab initio procedure relies on a signal processing approach that uses rapid entropy measurements to find informative STR reads followed by a Fast Fourier Transform to characterize the repeat sequence. The second step is alignment: lobSTR uses a divide and conquer strategy that anchors the non-repetitive flanking regions of STR reads to the genome to reveal the STR position and length. We use a modified reference that takes advantage of the information extracted from the sensing step to increase the alignment specificity. This step avoids a cumbersome gapped alignment and, importantly, is virtually indifferent to the magnitude of STR variations. Finally, in the third step, the pipeline allelotypes the STRs using a statistical learning approach that models the stutter noise in order to enhance the signal of the true allelic configuration. See \textbf{Supplemental Text \ref{sec:lobsupptext}}, \textbf{Supplemental Figures \ref{fig:lobsup2}, \ref{fig:lobsup3}, \ref{fig:lobsup4}, \ref{fig:lobsup5}} and \textbf{Supplemental Table \ref{tab:lobsuptab1}} for full details about the lobSTR algorithm.
 
 \begin{figure}[h!]
 \centering
@@ -49,7 +49,7 @@ We benchmarked lobSTR's alignment performance with reads from an Illumina whole 
 
 lobSTR excelled in all the parameters required for efficient STR alignment (\textbf{Table \ref{tab:lobtab1}}). First, lobSTR processed the reads 2.2 times faster than Bowtie, 22 times faster than BWA, 70 times faster than Novoalign, and almost 1000 times faster than BLAT (\textbf{Figure \ref{fig:lobfig2}A}). These results indicate that there is a minimal computational payment in running lobSTR in parallel to mainstream aligners in order to augment variation calling to include STR polymorphisms. Second, as required, lobSTR reported only informative reads that fully encompass STR loci. On the other hand, the mainstream aligners reported between 2,000 to 5,000 non-informative STR reads per million input sequences, which may confound downstream calling algorithms if not removed. Third, lobSTR detected the largest number of informative reads with STR variations compared to mainstream aligners (\textbf{Figure \ref{fig:lobfig2}B}). The other aligners showed a strong tendency to report STR reads with the reference allele vis-a-vis with their indel tolerance. Bowtie did not report any STR variation. After GATK local realignment, BWA and Novoalign, respectively, reported that 20\% and 25\% of the informative reads have STR variations. BLAT reported that 37\% of the informative reads have STR variations, compared to 50\% in lobSTR. Analyzing data collected from a large number of randomly ascertained STR loci \cite{PayseurJingHaasl2011} (Utah Marker Development Group) demonstrates that 33-66\% of STR sequence reads should exhibit a non-reference allele (see Methods). This suggests that lobSTR's results are more representative of the true rate of STR variations than mainstream alignment tools.
 
-\begin{table}
+\begin{table}[h!]
 \centering
 \label{tab:lobtab1}
 \begin{adjustbox}{width=1\textwidth}
@@ -98,7 +98,7 @@ We further analyzed the STR length differences in discordant calls. To avoid ana
 \subsection{Tracing Mendelian inheritance using lobSTR}
 To further explore lobSTR performance, we conducted a genome-wide STR profiling of a HapMap trio - a father (NA12877), mother (NA12878), and son (NA12882) -- from the CEU population that were sequenced using 100PE reads on a HiSeq2000 (\textbf{Table \ref{tab:lobtab2}}). The average autosomal coverage was 50x and average STR coverage was 14x. At $\geq$10x coverage threshold, 57\% of the STRs in the CEU trio had a non-reference allele. 
 
-\begin{table}
+\begin{table}[h!]
 \centering
 \label{tab:lobtab2}
 \begin{tabular}{l l l l l}
@@ -127,7 +127,7 @@ We sought to compare lobSTR calls to the results of DNA electrophoresis, which i
 
 We observed good concordance between lobSTR and the capillary results (\textbf{Table \ref{tab:lobtab3}}). lobSTR correctly called all but one of the 8 markers that were covered by at least 3 reads and most of the alleles in loci that were covered with 2 or less reads. Remarkably, some of these markers, such as D8S1179, displayed two heterozygous alleles that did not match the reference. Other alleles, such as in Penta D and Penta E, correctly returned 20bp and 25bp length differences from the reference allele, respectively. The capillary results of one tetranucleotide marker, THO1, exhibited a non-integer number of copies (9 repeats + 3bp). lobSTR reported exactly the same results, further demonstrating that STRs can be called within a single base pair resolution. lobSTR also correctly called a homozygous STR that was covered by a single read. In another 4 markers with coverage of ≤2x, lobSTR correctly called one allele and missed the other allele due to sequencing coverage. We observed only a single erroneous call due to stutter noise in the D5S818 locus. This homozygous locus was covered by three sequence reads: two correct and one with a single repeat expansion. With such a low sequencing coverage, the allelotyping algorithm was not able to identify the noisy read and assigned a heterozygous state to the locus. 
 
-\begin{table}
+\begin{table}[h!]
 \centering
 \label{tab:lobtab3}
 \begin{adjustbox}{width=1\textwidth}
@@ -154,7 +154,7 @@ D13S317 & 4/4 & 12/12 & 11/12 & 11 & [TATC]n & 1 & P\\
 \caption{\textbf{Capillary platform results versus lobSTR results for the CODIS set.} $^a$Y - both platforms agree. P - lobSTR reported only one allele out of two. E - lobSTR reported an allele that does not exist.}
 \end{table}
 
-Next, we evaluated lobSTR calls made in 12 low-pass sequenced genomes from the Human Genome Diversity Project (HGDP) \cite{GreenKrauseBriggsEtAl2010,ReichGreenKircherEtAl2010}. Five genomes had coverage of 1.4x-1.9x with 109bp reads, and the other seven had coverage of 4.8x-7.7x with 77bp reads (\textbf{Supplemental Table 3}). One hundred and ninety five STRs with equivalent entries in the lobSTR reference have been genotyped in these genomes using DNA electrophoresis as part of the CEPH-HGDP panel \cite{RamachandranDeshpandeRosemanEtAl2005,PembertonSandefurJakobssonEtAl2009}. Combining lobSTR results from all datasets gave 59 comparable markers with coverage of 3-5 reads with a median coverage of 3x (\textbf{Supplemental Table 4}). Despite the low coverage, lobSTR correctly returned 75\% of the genotypes and 85\% of the allele calls. Most of the alleles showed at least 5bp difference from the reference and some alleles showed a difference of 24bp and were correctly called. We did not observe a significant correlation between errors and the size of the variation. 
+Next, we evaluated lobSTR calls made in 12 low-pass sequenced genomes from the Human Genome Diversity Project (HGDP) \cite{GreenKrauseBriggsEtAl2010,ReichGreenKircherEtAl2010}. Five genomes had coverage of 1.4x-1.9x with 109bp reads, and the other seven had coverage of 4.8x-7.7x with 77bp reads (\textbf{Supplemental Table \ref{tab:lobsuptab3}}). One hundred and ninety five STRs with equivalent entries in the lobSTR reference have been genotyped in these genomes using DNA electrophoresis as part of the CEPH-HGDP panel \cite{RamachandranDeshpandeRosemanEtAl2005,PembertonSandefurJakobssonEtAl2009}. Combining lobSTR results from all datasets gave 59 comparable markers with coverage of 3-5 reads with a median coverage of 3x (\textbf{Supplemental Table \ref{tab:lobsuptab4}}). Despite the low coverage, lobSTR correctly returned 75\% of the genotypes and 85\% of the allele calls. Most of the alleles showed at least 5bp difference from the reference and some alleles showed a difference of 24bp and were correctly called. We did not observe a significant correlation between errors and the size of the variation. 
 
 \subsection{Genome-wide STR profiling confirms previously locus-centric observations}
 Encouraged by the accuracy and speed of lobSTR, we harnessed our pipeline to establish a reliable reference for future studies. Our input dataset was a male individual that, as of today, has been sequenced to highest coverage of 126-fold from a blood sample \cite{AjayParkerAbaanEtAl2011}. Fourteen billion sequencing reads were obtained from 100bp PE runs on Illumina GAIIx and HiSeq 2000. lobSTR ran for 26 hours using 25 CPUs. It aligned $\sim$6 million reads to approximately 180,000 STR loci out of the 249,000 in the Tandem Repeat Table reference with average coverage 20.82 for autosomal loci. The average reference allele length of undetected loci was 150bp, whereas the mean reference length of detected loci was 41bp. Therefore, in most cases, the undetected loci could not physically be spanned by a single read of the current sequencing length.
@@ -183,9 +183,9 @@ STR profiling techniques have changed very little in the past two decades, relyi
 
 lobSTR results from the trio genomes and the Ajay et al. genome consistently showed genome-wide polymorphism rates of 55\%-57\% for STRs with lengths 25bp and over. A recent study by McIver et al. \cite{McIverFondonSkinnerEtAl2011} evaluated the performance of STR calling using post-BWA alignment files with a set of quality rules. Using a mixture of Illumina 45-100bp reads and 454 reads from two trios in the 1000Genoems project, they reported that 1.1\% of the STRs with lengths of 20bp and over were polymorphic. We wondered if the polymorphism discrepancy between the studies could be explained by the shorter reading lengths in the McIver study that biased their calls to very short, less polymorphic STRs. However, when we ran lobSTR on the 1000Genomes CEU trio datasets (Methods), we found again that 57\% of the STRs were polymorphic (25,885 out of 45,461 STRs that were called with ≥5x coverage at the three genomes). These results suggest that STR profiling that is restricted by the default BWA indel tolerance -- 5bp for the Illumina datasets in the McIver et al. study -- can significantly reduce the sensitivity for observing STR variations. 
 
-We envision that lobSTR will be used in parallel to conventional analysis pipelines in order to augment variation calling to STR loci. The fast running time of our algorithm should not impose a significant computational burden on users. A low coverage genome of 5x takes about an hour on a standard server with 25 CPUs, a high coverage genome of 30x takes eight hours using the same settings, and a ultra-high covered genome of 126x takes 26 hours (\textbf{Supplemental Table 2}).
+We envision that lobSTR will be used in parallel to conventional analysis pipelines in order to augment variation calling to STR loci. The fast running time of our algorithm should not impose a significant computational burden on users. A low coverage genome of 5x takes about an hour on a standard server with 25 CPUs, a high coverage genome of 30x takes eight hours using the same settings, and a ultra-high covered genome of 126x takes 26 hours (\textbf{Supplemental Table \ref{tab:lobsuptab2}}).
 
-Currently, the major barrier for STR profiling is the sequencing read length, as the number of detectable STRs is limited to those that are entirely spanned by a single read. To test the effect of genomic coverage on STR profiling, we sampled reads from the 126x genome and calculated the amount of reported STRs (\textbf{Supplemental Figure \ref{fig:lobsup6}}). With genome-wide coverage of 40x, there are more than 100,000 STRs that will be pass an STR-coverage threshold of 10x. However, higher genomic coverage does not linearly improve the number of STRs that pass this threshold, marking a potential upper bound of sequencing read lengths of 100bp. We also explored the utility of the longer reads by Sanger, 454, and IonTorrent for STR profiling of personal genomes using lobSTR (\textbf{Supplemental Table 5} and \textbf{Supplemental Text \ref{sec:lobsupptext}}). Longer reads indeed increased the number of reported STR loci compared to the same autosomal coverage by Illumina. However, out of these, Sanger seemed to be the only method to produce reliable STR reads. We expect that as sequencing reads continue to increase in both length and quality, lobSTR's performance will further improve and allow inclusion of a larger number of STR variations. Ultimately, these will include large pathogenic expansion, such as those in Huntington's disease, which can span more than 100bp. 
+Currently, the major barrier for STR profiling is the sequencing read length, as the number of detectable STRs is limited to those that are entirely spanned by a single read. To test the effect of genomic coverage on STR profiling, we sampled reads from the 126x genome and calculated the amount of reported STRs (\textbf{Supplemental Figure \ref{fig:lobsup6}}). With genome-wide coverage of 40x, there are more than 100,000 STRs that will be pass an STR-coverage threshold of 10x. However, higher genomic coverage does not linearly improve the number of STRs that pass this threshold, marking a potential upper bound of sequencing read lengths of 100bp. We also explored the utility of the longer reads by Sanger, 454, and IonTorrent for STR profiling of personal genomes using lobSTR (\textbf{Supplemental Table \ref{tab:lobsuptab5}} and \textbf{Supplemental Text \ref{sec:lobsupptext}}). Longer reads indeed increased the number of reported STR loci compared to the same autosomal coverage by Illumina. However, out of these, Sanger seemed to be the only method to produce reliable STR reads. We expect that as sequencing reads continue to increase in both length and quality, lobSTR's performance will further improve and allow inclusion of a larger number of STR variations. Ultimately, these will include large pathogenic expansion, such as those in Huntington's disease, which can span more than 100bp. 
 
 As of today, sequence analysis algorithms can detect almost any type of genetic variations, from SNPs \cite{GoyaSunMorinEtAl2010} and indels \cite{KoboldtChenWylieEtAl2009,GoyaSunMorinEtAl2010} to CNVs and chromosomal translocations \cite{ChenWallisMcLellanEtAl2009}. lobSTR adds a new layer of information with tens of thousands of highly polymorphic genetic variations that have a multitude of applications, from personal genomics, to population studies, forensics analysis, and cancer genome profiling.
 
@@ -336,7 +336,7 @@ The size of the flanking regions determines the mappability of STR containing re
 We also determined the power of lobSTR to detect reads with very short STR regions due to strong repeat contraction. These reads have higher entropy and might not cross the threshold in the sensing step. To simulate this effect, we ran TRF on a set of 5 million input reads in a setting returning detected STRs as few as 12bp long. We then measured the performance of lobSTR to detect reads from these short STR loci and found that repetitive elements with 12nt were well captured (\textbf{Supplemental Figure \ref{fig:lobsup5}B}). Our overall results suggest that lobSTR can perform well in detecting STRs of 12-84bp. 
 
 \subsubsection{lobSTR performance on various sequenecing platforms}
-To test lobSTR performance on other sequencing platforms than Illumina, we ran the algorithm on publicly available genomes from three different platforms: Sanger (Craig Venter genome) \cite{LevySuttonNgEtAl2007}, 454 (Watson genome) \cite{WheelerSrinivasanEgholmEtAl2008}, and IonTorrent (Moore genome) \cite{RothbergHinzRearickEtAl2011}. In the absence of orthogonal information about STRs in these genomes, we estimated the performance of lobSTR by several parameters: (a) the ratio of aligned STR reads to the total input (b) the fraction of reads with a non-integer number of repeat units different from reference (c) the coverage of STR loci (\textbf{Supplemental Table 5}).
+To test lobSTR performance on other sequencing platforms than Illumina, we ran the algorithm on publicly available genomes from three different platforms: Sanger (Craig Venter genome) \cite{LevySuttonNgEtAl2007}, 454 (Watson genome) \cite{WheelerSrinivasanEgholmEtAl2008}, and IonTorrent (Moore genome) \cite{RothbergHinzRearickEtAl2011}. In the absence of orthogonal information about STRs in these genomes, we estimated the performance of lobSTR by several parameters: (a) the ratio of aligned STR reads to the total input (b) the fraction of reads with a non-integer number of repeat units different from reference (c) the coverage of STR loci (\textbf{Supplemental Table \ref{tab:lobsuptab5}}).
 
 As expected from its long read length and high accuracy, Sanger sequencing showed the best performance. It produced the best ratio of reads that aligned to STR loci and showed the lowest fraction (7.3\%) of STR reads with a non integer number of repeat units difference from reference. Importantly, the Sanger fraction of non-integer number of repeats was close to the Illumina fraction (8.0\%). 454 produced more STR aligned reads per amount of sequencing data than Illumina but 25\% of the STR reads showed a non-integer number of repeat units. IonTorrent showed the worst performance in both the ratio of STR reads and non-integer repeats.  The high number of STR reads with non-integer repeat units is presumably because 454 and Ion Torrent exhibit indel error when sequencing homopolymer runs that are abundant in many types of repeats (e.g. AAAAC).
 
@@ -353,11 +353,11 @@ Certain STR loci in the TRF table cannot be detected regardless of the coverage.
 We found a slight but statistically significant bias of 1:1.06 in the number of reads towards the shorter alleles in heterozygous loci (one sided Mann-Whitney test, p $<$ 0.05). For instance, there are on average $\sim$2 more reads that support the shorter allele when an STR is covered by 30 reads.  This observation can be explained by a PCR bias as reported by a previous study \cite{WattierEngelSaumitou-LapradeEtAl1998}. Since this small effect only becomes visible in ultra-high coverage STRs, lobSTR does not currently correct for it.
 
 \subsubsection{Hardware requirements}
-With the given TRF reference, lobSTR reaches a peak memory footprint of 0.3Gb regardless of input size and can process about 0.6 million reads per minute on a single processor. On 25 processors, lobSTR took 26 hours to process the genome sequenced to 126x coverage described in the main text, rendering the hardware requirements of lobSTR well within the range of routinely performed bioinformatics tasks such as SNP calling and short read alignment. The processing times for several genomes analyzed in this paper are given in \textbf{Supplemental Table 2}. 
+With the given TRF reference, lobSTR reaches a peak memory footprint of 0.3Gb regardless of input size and can process about 0.6 million reads per minute on a single processor. On 25 processors, lobSTR took 26 hours to process the genome sequenced to 126x coverage described in the main text, rendering the hardware requirements of lobSTR well within the range of routinely performed bioinformatics tasks such as SNP calling and short read alignment. The processing times for several genomes analyzed in this paper are given in \textbf{Supplemental Table \ref{tab:lobsuptab2}}. 
 
 \section{Supplemental Methods}
 \subsection{Building an STR reference}
-The STR reference was built according to the entries of the Simple Tandem Repeat Table for human reference genome build hg18, available from the UCSC genome browser (this reference was used for all other results as well) \cite{Kent2002}. The table was filtered to include STRs with repeat unit lengths of 2-6bp. Nearly half of the loci are dinucleotide repeats. The number of STR loci with each repeat unit length is given in \textbf{Supplemental Table 6}. The 10 most common repeat units are given in \textbf{Supplemental Table 7}. The median length of STR regions is near 40bp for each repeat unit length. The distribution of repeat region sizes increases slightly with the repeat period, and less than 6\% of STR loci span more than 100bp (\textbf{Supplemental Figure \ref{fig:lobsup7}}). The majority of reference STRs lie in intergenic regions. 1,221 reference loci overlap exonic regions.
+The STR reference was built according to the entries of the Simple Tandem Repeat Table for human reference genome build hg18, available from the UCSC genome browser (this reference was used for all other results as well) \cite{Kent2002}. The table was filtered to include STRs with repeat unit lengths of 2-6bp. Nearly half of the loci are dinucleotide repeats. The number of STR loci with each repeat unit length is given in \textbf{Supplemental Table \ref{tab:lobsuptab6}}. The 10 most common repeat units are given in \textbf{Supplemental Table \ref{tab:lobsuptab7}}. The median length of STR regions is near 40bp for each repeat unit length. The distribution of repeat region sizes increases slightly with the repeat period, and less than 6\% of STR loci span more than 100bp (\textbf{Supplemental Figure \ref{fig:lobsup7}}). The majority of reference STRs lie in intergenic regions. 1,221 reference loci overlap exonic regions.
 
 STRs display cyclic ambiguity. For example, consider the following STR: GACGACGACGACGAC. This STR can be described in three ways (GAC)5, (ACG)5, or (CGA)5, as well as by (GTC)5, (CGT)5, or (TCG)5 on the reverse strand. The sequence repeats in the TRF table are reported in a redundant format that does not distinguish between cyclic shifts. We converted all repeat sequences in the table to a canonical form in which the repeat sequence is the lexicographically highest among all possible cyclic representations of the sequence and their reverse complements. STRs whose repeat sequences contradicted the canonical repeat unit length, such as TTT listed as period 3 instead of 1, were removed from the reference. lobSTR reports the period of the STR according to the canonical form.
 
@@ -372,7 +372,7 @@ We analyzed Illumina reads from approximately 6,000 hemizygous loci on the sex c
 \subsection{lobSTR implementation details}
 lobSTR is written in C/C++ and calls on R for allelotyping step. We made an effort to use existing, highly optimized libraries for lobSTR implementation to increase the speed of the program. The spectral analysis in the detection step was implemented using FFTW \cite{FrigoJohnson1998} and the alignment step uses extensive parts of the BWA code \cite{LiDurbin2009a} for BWT-indexing and the BamTools library \cite{BarnettGarrisonQuinlanEtAl2011} for reading and writing BAM files. 
 
-From the user's perspective, lobSTR consists of running two simple programs: one command for sensing and alignment, followed by a command for allelotyping aligned reads from a BAM file. In the simplest setting, the user just needs to specify the input files, the prefix name of the output files, and the location of the reference, which is provided with the software. However, we also provide advanced options that include modification of the detection threshold, re-sizing the FFT windows, and increasing the tolerance to sequencing errors in the flanking regions (\textbf{Supplemental Table 1}). The user can also build a custom reference using a tool in the lobSTR package.
+From the user's perspective, lobSTR consists of running two simple programs: one command for sensing and alignment, followed by a command for allelotyping aligned reads from a BAM file. In the simplest setting, the user just needs to specify the input files, the prefix name of the output files, and the location of the reference, which is provided with the software. However, we also provide advanced options that include modification of the detection threshold, re-sizing the FFT windows, and increasing the tolerance to sequencing errors in the flanking regions (\textbf{Supplemental Table \ref{tab:lobsuptab1}}). The user can also build a custom reference using a tool in the lobSTR package.
 
 \subsection{lobSTR comparison across sequencing platforms}
 Raw reads for the Watson genome were downloaded from the NCBI short read archive with accession SRX000114. Reads for the Moore genome were downloaded from the Europe	an short read archive with accession ERS024569. Reads for the Venter genome were downloaded from TraceDB (Genbank accession ABBA00000000). For the Venter genome, we trimmed the first 50bp of every read due to the high error rate at the beginning of Sanger sequence reads and discarded reads whose length after trimming was less than 100bp.
@@ -445,5 +445,203 @@ Raw reads for the Watson genome were downloaded from the NCBI short read archive
 \includegraphics[width=0.7\textwidth]{Figures/Chapter2/SuppFig7.pdf}
 \end{figure}
 \textbf{Length distribution of STRs.} Most periods have a median STR repeat length (thick black line) of around 40bp. The repeat region total length and length variance increase slightly with increasing repeat period.
+
 \section{Supplemental Tables}
+
+\subsection{Supplemental Table 1}
+\label{tab:lobsuptab1}
+See the lobSTR website usage page \url{http://lobstr.teamerlich.org/usage.html} for the most up to date lobSTR usage parameters.
+
+\pagebreak
+
+\subsection{Supplemental Table 2}
+
+\begin{table}[h!]
+\centering
+\label{tab:lobsuptab2}
+\begin{tabular}{l l l }
+\hline
+Genome & Autosomal Coverage & Processing time \\
+\hline
+HGDP00778 &	5x &	1.3 hours\\
+Male individual	& 36x	& 8.5 hours\\
+Ajay, et al. &	126x	& 26 hours\\
+\hline
+\end{tabular}
+\caption{\textbf{Processing times of Illumina genomes at various coverage levels.} Processing times as a result of running lobSTR with 25 processors (-p 25).}
+\end{table}
+
+\pagebreak
+
+\subsection{Supplemental Table 3}
+\begin{table}[h!]
+\centering
+\label{tab:lobsuptab3}
+\begin{tabular}{l l l l l }
+\hline
+Sample	& Coverage& 	STR Aligned reads	& STRs $\geq$1x	& STRs $\geq$3x\\
+\hline
+HGDP00456 (Mbuti Pygmy)               & 1.4x & 70,424  & 50,505 & 3,339  \\
+HGDP00998 (Karitiana Native American) & 1.3x & 65,236  & 48,481 & 2,553  \\
+HGDP00665 (Sardinian)                 & 1.5x & 91,157  & 58,623 & 6,215  \\
+HGDP00491 (Bougainville Melanesian)   & 1.7x & 97,398  & 61,463 & 6,523  \\
+HGDP00711 (Cambodian)                 & 1.9x & 104,594 & 66,566 & 7,263  \\
+HGDP01224 (Mongolian)                 & 1.7x & 93,938  & 61,356 & 5,767  \\
+HGDP00551 (Papuan)                    & 1.6x & 94,540  & 61,486 & 6,036  \\
+HGDP00521 (French)                    & 5.9x & 184,437 & 91,813 & 17,855 \\
+HGDP01029 (San)                       & 7.7x & 192,798 & 93,376 & 18,928 \\
+HGDP00542 (Papuan)                    & 5.9x & 118,232 & 72,654 & 7,065  \\
+HGDP00927 (Yoruba)                    & 4.8x & 155,136 & 84,828 & 12,774 \\
+HGDP00778 (Han)                       & 5.0x & 141,522 & 80,631 & 10,815 \\
+\hline
+\end{tabular}
+\caption{\textbf{HGDP sample coverage and lobSTR results.}}
+\end{table}
+
+\pagebreak
+
+\subsection{Supplemental Table 4}
+\begin{table}[h!]
+\centering
+\label{tab:lobsuptab4}
+\begin{adjustbox}{width=1\textwidth,height=0.5\textwidth}
+\begin{tabular}{l l l l l l l l  }
+\hline
+Sample & Period & Marker & Refseq (hg18 diff) & Coverage & Converted lobSTR allele$^a$ & Converted HGDP allele$^a$ & Status$^b$ \\ 
+\hline
+HGDP01029 & 4 & D11S2371 & (TATC)11 & 5 & 0,0   & 0,0   & 2   \\
+HGDP01029 & 4 & D12S1300 & (TAGA)12 & 5 & 0,0   & 0,0   & 2   \\
+HGDP00521 & 4 & D6S1009  & (TATC)11 & 5 & 1,1   & 1,4   & 1   \\
+HGDP01029 & 4 & D2S405   & (TAGA)12 & 5 & -2,-2 & -2,0  & 1   \\
+HGDP00778 & 4 & D8S1108  & (TCTA)11 & 4 & 0,0   & 0,0   & 2   \\
+HGDP01029 & 4 & D15S818  & (TAGA)10 & 4 & 3,3   & 3,3   & 2   \\
+HGDP00551 & 4 & D1S1653  & (TCTA)12 & 4 & -1,0  & -1,0  & 2   \\
+HGDP00521 & 4 & D5S2500  & (ATAG)11 & 4 & 0,1   & 0,1   & 2   \\
+HGDP00927 & 4 & D10S1426 & (TATC)11 & 4 & 0,2   & 0,2   & 2   \\
+HGDP01029 & 4 & D17S1308 & (TGTA)11 (-1)& 4 & -1,-1 & -1,-1 & 2   \\
+HGDP00521 & 4 & D17S1308 & (TGTA)11 (-1)& 4 & -1,0  & -1,0  & 2   \\
+HGDP00542 & 4 & D17S1308 & (TGTA)11 (-1) & 4 & -1,-1 & -1,-1 & 2   \\
+HGDP00927 & 2 & D3S3644  & (AC)16   & 4 & -1,0  & 0,0   & 0.5 \\
+HGDP00521 & 2 & D9S1779  & (AC)14   & 4 & 0,0   & -2,-2 & 0   \\
+HGDP00521 & 2 & D8S503   & (AC)17   & 4 & 2,4   & 3,6   & 0   \\
+HGDP00521 & 2 & D1S2682  & (CA)10   & 3 & 0,10  & 0,10  & 2   \\
+HGDP00998 & 4 & D2S427   & (GATA)9  & 3 & 0,0   & 0,0   & 2   \\
+HGDP00542 & 4 & D8S1113  & (GGAA)12 & 3 & -6,-6 & -6,-6 & 2   \\
+HGDP01029 & 4 & D10S1425 & (GATA)11 & 3 & -5,0  & -5,0  & 2   \\
+HGDP01029 & 4 & D7S1824  & (TCTA)11 & 3 & -3,-2 & -3,-2 & 2   \\
+HGDP00778 & 4 & D1S3669  & (TATC)10 & 3 & 1,1   & 1,1   & 2   \\
+HGDP00711 & 4 & D3S2432  & (AGAT)15 (-3) & 3 & -3,0  & -3,0  & 2   \\
+HGDP00491 & 4 & D2S405   & (TAGA)12 & 3 & 0,0   & 0,0   & 2   \\
+HGDP00998 & 4 & D16S3253 & (TAGA)9  & 3 & 0,0   & 0,0   & 2   \\
+HGDP00998 & 4 & D9S301   & (GATA)15 & 3 & -7,-1 & -7,-1 & 2   \\
+HGDP00998 & 4 & D19S586  & (TAGA)12 (+2)& 3 & 1,2   & 1,2   & 2   \\
+HGDP00711 & 2 & D15S165  & (AC)21   & 3 & -6,-6 & -6,-6 & 2   \\
+HGDP00665 & 2 & D20S103  & (AC)16   & 3 & -1,-1 & -1,-1 & 2   \\
+HGDP00456 & 3 & D4S2394  & (ATT)11  & 3 & 0,0   & 0,0   & 2   \\
+HGDP00711 & 4 & D11S2371 & (TATC)11 & 3 & 1,1   & 1,1   & 2   \\
+HGDP00927 & 4 & D10S1239 & (ATCT)11 & 3 & 0,1   & 0,1   & 2   \\
+HGDP00521 & 4 & D14S1434 & (GATA)10 & 3 & 0,0   & 0,0   & 2   \\
+HGDP00491 & 4 & D19S591  & (TAGA)10 (-2)& 3 & -1,0  & -1,0  & 2   \\
+HGDP00521 & 4 & D19S591  & (TAGA)10 (-2)& 3 & -2,1  & -2,1  & 2   \\
+HGDP00542 & 4 & D19S591  & (TAGA)10 (-2) & 3 & -1,0  & -1,0  & 2   \\
+HGDP00551 & 4 & D19S591  & (TAGA)10 (-2) & 3 & -2,0  & -2,0  & 2   \\
+HGDP01224 & 4 & D19S591  & (TAGA)10 (-2)& 3 & -2,1  & -2,1  & 2   \\
+HGDP00927 & 4 & D17S2196 & (AGAT)9 (-2) & 3 & 0,2   & 0,2   & 2   \\
+HGDP01029 & 4 & D2S1391  & (ATCT)14 & 3 & -2,0  & -2,0  & 2   \\
+HGDP00456 & 3 & D4S2361  & (TTA)13  & 3 & -1,-1 & -1,-1 & 2   \\
+HGDP00665 & 4 & D1S1653  & (TCTA)12 & 3 & 0,0   & 0,0   & 2   \\
+HGDP01224 & 4 & D1S1653  & (TCTA)12 & 3 & -2,-1 & -2,-1 & 2   \\
+HGDP00542 & 4 & D5S2500  & (ATAG)11 & 3 & 0,0   & 0,0   & 2   \\
+HGDP00778 & 4 & D10S1426 & (TATC)11 & 3 & 1,1   & 1,1   & 2   \\
+HGDP01029 & 4 & D5S2500  & (ATAG)11 & 3 & -2,0  & -2,0  & 2   \\
+HGDP00456 & 4 & D17S1298 & (TGAA)8  & 3 & 0,0   & 0,0   & 2   \\
+HGDP00927 & 4 & D17S1298 & (TGAA)8  & 3 & 3,3   & 3,3   & 2   \\
+HGDP00542 & 4 & D19S254  & (AGAT)13 (-6) & 3 & -1,1  & -1,1  & 2   \\
+HGDP00711 & 2 & D1S2682  & (CA)10   & 3 & 0,0   & 0,10  & 1   \\
+HGDP00998 & 4 & D5S1457  & (ATAG)9  & 3 & 0,0   & 0,1   & 1   \\
+HGDP00521 & 2 & D20S103  & (AC)16   & 3 & 2,2   & -1,2  & 1   \\
+HGDP00998 & 4 & D20S482  & (TCTA)14 & 3 & 0,0   & 0,1   & 1   \\
+HGDP01224 & 3 & D9S910   & (ATA)14  & 3 & -7,-7 & -7,-7 & 1   \\
+HGDP01224 & 4 & D11S2363 & (TATC)14 & 3 & -1,-1 & -1,9  & 1   \\
+HGDP00711 & 4 & D19S591  & (TAGA)10 (-2) & 3 & -1,-1 & -1,0  & 1   \\
+HGDP00927 & 2 & D18S1390 & (TG)18   & 3 & -1,0  & -2,-1 & 0.5 \\
+HGDP00778 & 2 & D8S503   & (AC)17   & 3 & 2,3   & 3,3   & 0.5 \\
+HGDP00778 & 4 & D12S1300 & (TAGA)12 & 3 & 2,4   & 2,2   & 0.5 \\
+HGDP00491 & 2 & D9S1779  & (AC)14   & 3 & 0,9   & -1,6  & 0  \\
+\hline
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{Comparison of lobSTR allelotype calls to the CEPH-HGDP results.} Differences between the RefSeq sequence and hg18 are indicated in parentheses. $^a$Converted allelotypes given in number of repeat units different from the reference. $^b$Status: 2 = both alleles called correctly, 1 = one allele of a heterozygous locus called correctly, 0.5 = one allele called correctly and one incorrectly, 0 = no correct alleles called.}
+\end{table}
+
+\pagebreak
+
+\subsection{Supplemental Table 5}
+\begin{table}[h!]
+\centering
+\label{tab:lobsuptab5}
+\begin{adjustbox}{width=1\textwidth}
+\begin{tabular}{l l l l l l l l  }
+\hline
+Genome (platform) & Coverage& Input reads & Avg. Read length & STR Aligned reads / Mbp input& \% Non-unit Reads$^*$ &	STRs $\geq$1x	STRs $\geq$3x \\
+\hline
+Venter (Sanger)        & 7.5x  & 12.5M & 996 & 24.78 & 7.30\%  & 127,017 & 41,261  \\
+Watson (454)           & 7.4x  & 75M   & 183 & 10.41 & 25.00\% & 83,079  & 25,488  \\
+Moore (IonTorrent)     & 10.6x & 860M  & 261 & 0.79  & 43.50\% & 65,758  & 13,413  \\
+Ajay, et al (Illumina) & 126x  & 14B   & 100 & 4.36  & 8.00\%  & 180,309 & 167,175 \\
+\hline
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{lobSTR performance on four sequencing platforms.}  $^*$Reads differing by a non-integer number of copies of the STR motif from the reference. (M = million, B = billion). }
+\end{table}
+
+\pagebreak
+
+\subsection{Supplemental Table 6}
+\begin{table}[h!]
+\centering
+\label{tab:lobsuptab6}
+\begin{tabular}{l l l}
+\hline
+Repeat unit size & \# STR loci & Percentage \\
+\hline
+2 &	106,457 &	44\% \\
+3&	17,383	&7\% \\
+4	&70,847&	30\% \\
+5	&28,746	&12\% \\
+6	& 16,626	& 7\% \\
+Total &	240,059	& 100\% \\
+\hline
+\end{tabular}
+\caption{\textbf{STR reference repeat unit size distribution.}}
+\end{table}
+
+\pagebreak
+
+\subsection{Supplemental Table 7}
+% TODO
+\begin{table}[h!]
+\centering
+\label{tab:lobsuptab7}
+\begin{tabular}{l l}
+\hline
+Repeat unit & \# STR loci \\
+\hline
+AC	& 66,992\\
+AT	& 25,661\\
+AAAT &	20,319\\
+AG	& 13,778\\
+AAAG	& 12,553\\
+AAAAC &	10,015 \\
+AAGG	 & 9,862\\
+AAAC	& 8,842\\
+AGAT	& 7,127\\
+AAAAT	& 7,115\\
+
+\hline
+\end{tabular}
+\caption{\textbf{Most frequent reference STR repeat units.}}
+\end{table}
+
+
 %% TODO figures/tables and legends
