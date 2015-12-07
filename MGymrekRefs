@@ -71,6 +71,18 @@ An example application, the FFTW (the fastest Fourier transform in the west), is
   URL                      = {http://www.ncbi.nlm.nih.gov/pubmed/8401589}
 }
 
+@Article{ArdlieDelucaSegreEtAl2015,
+  Title                    = {{{H}uman genomics. {T}he {G}enotype-{T}issue {E}xpression ({G}{T}{E}x) pilot analysis: multitissue gene regulation in humans}},
+  Author                   = {Ardlie, K. G. and Deluca, D. S. and Segre, A. V. and Sullivan, T. J. and Young, T. R. and Gelfand, E. T. and Trowbridge, C. A. and Maller, J. B. and Tukiainen, T. and Lek, M. and Ward, L. D. and Kheradpour, P. and Iriarte, B. and Meng, Y. and Palmer, C. D. and Esko, T. and Winckler, W. and Hirschhorn, J. N. and Kellis, M. and MacArthur, D. G. and Getz, G. and Shabalin, A. A. and Li, G. and Zhou, Y. H. and Nobel, A. B. and Rusyn, I. and Wright, F. A. and Lappalainen, T. and Ferreira, P. G. and Ongen, H. and Rivas, M. A. and Battle, A. and Mostafavi, S. and Monlong, J. and Sammeth, M. and Mele, M. and Reverter, F. and Goldmann, J. M. and Koller, D. and Guigo, R. and McCarthy, M. I. and Dermitzakis, E. T. and Gamazon, E. R. and Im, H. K. and Konkashbaev, A. and Nicolae, D. L. and Cox, N. J. and Flutre, T. and Wen, X. and Stephens, M. and Pritchard, J. K. and Tu, Z. and Zhang, B. and Huang, T. and Long, Q. and Lin, L. and Yang, J. and Zhu, J. and Liu, J. and Brown, A. and Mestichelli, B. and Tidwell, D. and Lo, E. and Salvatore, M. and Shad, S. and Thomas, J. A. and Lonsdale, J. T. and Moser, M. T. and Gillard, B. M. and Karasik, E. and Ramsey, K. and Choi, C. and Foster, B. A. and Syron, J. and Fleming, J. and Magazine, H. and Hasz, R. and Walters, G. D. and Bridge, J. P. and Miklos, M. and Sullivan, S. and Barker, L. K. and Traino, H. M. and Mosavel, M. and Siminoff, L. A. and Valley, D. R. and Rohrer, D. C. and Jewell, S. D. and Branton, P. A. and Sobin, L. H. and Barcus, M. and Qi, L. and McLean, J. and Hariharan, P. and Um, K. S. and Wu, S. and Tabor, D. and Shive, C. and Smith, A. M. and Buia, S. A. and Undale, A. H. and Robinson, K. L. and Roche, N. and Valentino, K. M. and Britton, A. and Burges, R. and Bradbury, D. and Hambright, K. W. and Seleski, J. and Korzeniewski, G. E. and Erickson, K. and Marcus, Y. and Tejada, J. and Taherian, M. and Lu, C. and Basile, M. and Mash, D. C. and Volpi, S. and Struewing, J. P. and Temple, G. F. and Boyer, J. and Colantuoni, D. and Little, R. and Koester, S. and Carithers, L. J. and Moore, H. M. and Guan, P. and Compton, C. and Sawyer, S. J. and Demchok, J. P. and Vaught, J. B. and Rabiner, C. A. and Lockhart, N. C. and Ardlie, K. G. and Getz, G. and Wright, F. A. and Kellis, M. and Volpi, S. and Dermitzakis, E. T. },
+  Journal                  = {Science},
+  Year                     = {2015},
+  Month                    = {May},
+  Number                   = {6235},
+  Pages                    = {648--660},
+  Volume                   = {348},
+  __markedentry            = {[gymrek:]}
+}
+
 @Article{BaderAgarwal2007,
   Title                    = {FFTC: Fastest Fourier transform for the IBM Cell Broadband Engine},
   Author                   = {Bader, D. A. and Agarwal, V.},
@@ -177,6 +189,18 @@ An example application, the FFTW (the fastest Fourier transform in the west), is
   Number                   = {12},
   Pages                    = {1691--1692},
   Volume                   = {27}
+}
+
+@Article{BarrettHansoulNicolaeEtAl2008,
+  Title                    = {{{G}enome-wide association defines more than 30 distinct susceptibility loci for {C}rohn's disease}},
+  Author                   = {Barrett, J. C. and Hansoul, S. and Nicolae, D. L. and Cho, J. H. and Duerr, R. H. and Rioux, J. D. and Brant, S. R. and Silverberg, M. S. and Taylor, K. D. and Barmada, M. M. and Bitton, A. and Dassopoulos, T. and Datta, L. W. and Green, T. and Griffiths, A. M. and Kistner, E. O. and Murtha, M. T. and Regueiro, M. D. and Rotter, J. I. and Schumm, L. P. and Steinhart, A. H. and Targan, S. R. and Xavier, R. J. and Libioulle, C. and Sandor, C. and Lathrop, M. and Belaiche, J. and Dewit, O. and Gut, I. and Heath, S. and Laukens, D. and Mni, M. and Rutgeerts, P. and Van Gossum, A. and Zelenika, D. and Franchimont, D. and Hugot, J. P. and de Vos, M. and Vermeire, S. and Louis, E. and Cardon, L. R. and Anderson, C. A. and Drummond, H. and Nimmo, E. and Ahmad, T. and Prescott, N. J. and Onnie, C. M. and Fisher, S. A. and Marchini, J. and Ghori, J. and Bumpstead, S. and Gwilliam, R. and Tremelling, M. and Deloukas, P. and Mansfield, J. and Jewell, D. and Satsangi, J. and Mathew, C. G. and Parkes, M. and Georges, M. and Daly, M. J. },
+  Journal                  = {Nat. Genet.},
+  Year                     = {2008},
+  Month                    = {Aug},
+  Number                   = {8},
+  Pages                    = {955--962},
+  Volume                   = {40},
+  __markedentry            = {[gymrek:]}
 }
 
 @Misc{BassMillerNylinEtAl2002,
@@ -298,6 +322,18 @@ An example application, the FFTW (the fastest Fourier transform in the west), is
   Keywords                 = {Aged Atherosclerosis/*genetics *Biomedical Research Cardiovascular Diseases/*genetics Cohort Studies Female *Genome, Human *Genomics Humans Male Pedigree Phenotype *Pilot Projects Sequence Analysis, DNA/*methods},
   Type                     = {Journal Article},
   URL                      = {http://www.ncbi.nlm.nih.gov/pubmed/19602640}
+}
+
+@Article{BilginSonayCarvalhoRobinsonEtAl2015,
+  Title                    = {{{T}andem repeat variation in human and great ape populations and its impact on gene expression divergence}},
+  Author                   = {Bilgin Sonay, T. and Carvalho, T. and Robinson, M. D. and Greminger, M. P. and Krutzen, M. and Comas, D. and Highnam, G. and Mittelman, D. and Sharp, A. and Marques-Bonet, T. and Wagner, A. },
+  Journal                  = {Genome Res.},
+  Year                     = {2015},
+  Month                    = {Nov},
+  Number                   = {11},
+  Pages                    = {1591--1599},
+  Volume                   = {25},
+  __markedentry            = {[gymrek:6]}
 }
 
 @Article{BivonaHieronymusParkerEtAl2011,
@@ -799,8 +835,7 @@ Running time: Seconds to hours, depending on system size. (C) 2009 Elsevier B.V.
   Month                    = {Feb},
   Number                   = {6121},
   Pages                    = {819--823},
-  Volume                   = {339},
-  __markedentry            = {[gymrek:]}
+  Volume                   = {339}
 }
 
 @Article{ConradKeeblerDePristoEtAl2011,
@@ -1175,8 +1210,7 @@ In this paper, we present P-Ray, a software suite that characterizes hardware ch
   Month                    = {Mar},
   Number                   = {6},
   Pages                    = {865--866},
-  Volume                   = {27},
-  __markedentry            = {[gymrek:]}
+  Volume                   = {27}
 }
 
 @Article{EgelandSalas2008,
@@ -1838,8 +1872,7 @@ ejhg2011258 [pii]},
   Month                    = {Nov},
   Number                   = {22},
   Pages                    = {2936--2937},
-  Volume                   = {29},
-  __markedentry            = {[gymrek:]}
+  Volume                   = {29}
 }
 
 @Article{GoyaSunMorinEtAl2010,
@@ -2043,8 +2076,7 @@ In this paper, we propose a model-driven DFT performance predictor that can repl
   Month                    = {Jun},
   Number                   = {6},
   Pages                    = {1154--1162},
-  Volume                   = {22},
-  __markedentry            = {[gymrek:]}
+  Volume                   = {22}
 }
 
 @Article{HalperinStephan2009,
@@ -2194,8 +2226,7 @@ In this paper, we propose a model-driven DFT performance predictor that can repl
   Month                    = {Jan},
   Number                   = {1},
   Pages                    = {e32},
-  Volume                   = {41},
-  __markedentry            = {[gymrek:]}
+  Volume                   = {41}
 }
 
 @Article{HodgesMolaroDosSantosEtAl2011,
@@ -2252,8 +2283,7 @@ In this paper, we propose a model-driven DFT performance predictor that can repl
   Month                    = {Sep},
   Number                   = {9},
   Pages                    = {827--832},
-  Volume                   = {31},
-  __markedentry            = {[gymrek:6]}
+  Volume                   = {31}
 }
 
 @Misc{http://hapmap.ncbi.nlm.nih.gov/downloads/elsi/CEPH_Reconsent_Form.pdf,
@@ -2646,8 +2676,7 @@ Running time: Test cases will run in a few minutes. large calculations may run f
   Month                    = {Jun},
   Number                   = {6},
   Pages                    = {996--1006},
-  Volume                   = {12},
-  __markedentry            = {[gymrek:]}
+  Volume                   = {12}
 }
 
 @Article{Khan2010,
@@ -3276,8 +3305,7 @@ We build on a previous study that selects a "pure" sorting algorithm at the outs
   Month                    = {Aug},
   Number                   = {16},
   Pages                    = {2078--2079},
-  Volume                   = {25},
-  __markedentry            = {[gymrek:]}
+  Volume                   = {25}
 }
 
 @Article{LiHomer2010,
@@ -4020,8 +4048,7 @@ Another aspect of cell processor found in this research paper is its very fine m
   Month                    = {May},
   Number                   = {5},
   Pages                    = {749--761},
-  Volume                   = {23},
-  __markedentry            = {[gymrek:]}
+  Volume                   = {23}
 }
 
 @Article{MontgomeryLappalainenGutierrez-ArcelusEtAl2011,
@@ -4777,8 +4804,7 @@ Typical running time: Table below shows the typical run times for the four test 
   Month                    = {Jan},
   Number                   = {1},
   Pages                    = {24--26},
-  Volume                   = {29},
-  __markedentry            = {[gymrek:]}
+  Volume                   = {29}
 }
 
 @Article{RockmanWray2002,
@@ -5956,8 +5982,7 @@ http://biorxiv.org/content/biorxiv/early/2014/09/18/009258.full.pdf}
   Month                    = {Nov},
   Number                   = {21},
   Pages                    = {2865--2871},
-  Volume                   = {25},
-  __markedentry            = {[gymrek:]}
+  Volume                   = {25}
 }
 
 @Article{YogevRosengartenWatson-McKownEtAl1991,
