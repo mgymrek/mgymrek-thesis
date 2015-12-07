@@ -1,7 +1,6 @@
 *.zip
 *.aux
 *.out
-*.pdf
 *.log
 *.bbl
 *.toc
@@ -15,4 +14,9 @@ new_refs.bib
 *.lof
 *.lot
 *~
+~*
 *.xml
+MGymrek_HSTBIG_Thesis_main.pdf
+*.csv
+*.xlsx
+scratch.txt
