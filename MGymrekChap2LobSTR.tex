@@ -47,7 +47,28 @@ lobSTR implementation offers a complete solution that takes raw sequencing data 
 
 We benchmarked lobSTR's alignment performance with reads from an Illumina whole genome sequencing library with 101bp reads (\textbf{Methods \ref{sec:lobmethods}}). To demonstrate its added value for STR profiling over mainstream aligners, we also ran BWA, Novoalign, and Bowtie on the same input data with and without the GATK local indel realignment tool. In addition, we ran BLAT \cite{Kent2002} to characterize STR alignment by a tool that is centered on sensitivity rather than speed. BWA and Novoalign were tested with the default parameters that can detect up to 5bp and 7bp indels, respectively. Bowtie has no indel tolerance and was evaluated as a control condition with tolerance of up to two mismatches. BLAT was tested with the default parameters that can tolerate up to 10\% divergence from the reference, which corresponds to approximately 10bp indels. To focus on the pure algorithm speed-up, all tests were executed on a single CPU.
 
-lobSTR excelled in all the parameters required for efficient STR alignment (\textbf{Table 1}). First, lobSTR processed the reads 2.2 times faster than Bowtie, 22 times faster than BWA, 70 times faster than Novoalign, and almost 1000 times faster than BLAT (\textbf{Figure \ref{fig:lobfig2}A}). These results indicate that there is a minimal computational payment in running lobSTR in parallel to mainstream aligners in order to augment variation calling to include STR polymorphisms. Second, as required, lobSTR reported only informative reads that fully encompass STR loci. On the other hand, the mainstream aligners reported between 2,000 to 5,000 non-informative STR reads per million input sequences, which may confound downstream calling algorithms if not removed. Third, lobSTR detected the largest number of informative reads with STR variations compared to mainstream aligners (\textbf{Figure \ref{fig:lobfig2}B}). The other aligners showed a strong tendency to report STR reads with the reference allele vis-a-vis with their indel tolerance. Bowtie did not report any STR variation. After GATK local realignment, BWA and Novoalign, respectively, reported that 20\% and 25\% of the informative reads have STR variations. BLAT reported that 37\% of the informative reads have STR variations, compared to 50\% in lobSTR. Analyzing data collected from a large number of randomly ascertained STR loci \cite{PayseurJingHaasl2011} (Utah Marker Development Group) demonstrates that 33-66\% of STR sequence reads should exhibit a non-reference allele (see Methods). This suggests that lobSTR's results are more representative of the true rate of STR variations than mainstream alignment tools.
+lobSTR excelled in all the parameters required for efficient STR alignment (\textbf{Table \ref{tab:lobtab1}}). First, lobSTR processed the reads 2.2 times faster than Bowtie, 22 times faster than BWA, 70 times faster than Novoalign, and almost 1000 times faster than BLAT (\textbf{Figure \ref{fig:lobfig2}A}). These results indicate that there is a minimal computational payment in running lobSTR in parallel to mainstream aligners in order to augment variation calling to include STR polymorphisms. Second, as required, lobSTR reported only informative reads that fully encompass STR loci. On the other hand, the mainstream aligners reported between 2,000 to 5,000 non-informative STR reads per million input sequences, which may confound downstream calling algorithms if not removed. Third, lobSTR detected the largest number of informative reads with STR variations compared to mainstream aligners (\textbf{Figure \ref{fig:lobfig2}B}). The other aligners showed a strong tendency to report STR reads with the reference allele vis-a-vis with their indel tolerance. Bowtie did not report any STR variation. After GATK local realignment, BWA and Novoalign, respectively, reported that 20\% and 25\% of the informative reads have STR variations. BLAT reported that 37\% of the informative reads have STR variations, compared to 50\% in lobSTR. Analyzing data collected from a large number of randomly ascertained STR loci \cite{PayseurJingHaasl2011} (Utah Marker Development Group) demonstrates that 33-66\% of STR sequence reads should exhibit a non-reference allele (see Methods). This suggests that lobSTR's results are more representative of the true rate of STR variations than mainstream alignment tools.
+
+\begin{table}
+\centering
+\label{tab:lobtab1}
+\begin{adjustbox}{width=1\textwidth}
+\begin{tabular}{l l l l l l l l}
+\hline
+Algorithm & Indel tolerance (bp) & Time (sec)& \# Non-informative reads & \# Informative reads & \# Var. reads$^a$	& Ratio$^b$ & Peak memory (Gbyte) \\
+\hline
+lobSTR & - & 109 & 0 & 973 & 485 & 0.5 & 0.3\\
+Bowtie&0&258&2,193&523&0&0&2.2\\
+BWA&5&2,450&3,026&883&174&0.19&2.5\\
+BWA+GATK&5&2,943&2,691&869&172&0.20&2.5\\
+Novoalign&7&7,601&4,947&1,024&208&0.2&13.8\\
+Novoalign+GATK&7&8,123&4,906&1,047&259&0.25&13.8\\
+BLAT&10&108,862&19,919&1,611&602&0.37&3.7\\
+\hline
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{STR Alignment performance across different algorithms.} All results are per million 101bp Illumina reads. $^a$Number of informative reads that show a non-reference allele. $^b$Ratio of reads with the non-reference allele versus total informative STR reads.}
+\end{table}
 
 \begin{figure}[h!]
 \centering
@@ -75,7 +96,22 @@ Both types of error greatly diminished with sufficient coverage (\textbf{Figure 
 We further analyzed the STR length differences in discordant calls. To avoid analyzing errors that are simply due to allele drop-outs, we focused on discordant calls that were both heterozygous in blood and saliva. At a coverage of ≥5x, more than 90\% of the errors showed a single repeat unit difference and 99\% of the errors were within two repeat units (\textbf{Figure \ref{fig:lobfig3}D}). This indicates that incorrect alignment of STRs has a minimal effect on allelotyping results, and that stutter is likely the main source of noise. We also found that only 0.8\% of calls at heterozygous loci showed a difference due to an incomplete repeat unit. This highlights that lobSTR can determine STR alleles at a single base-pair resolution. 
 
 \subsection{Tracing Mendelian inheritance using lobSTR}
-To further explore lobSTR performance, we conducted a genome-wide STR profiling of a HapMap trio - a father (NA12877), mother (NA12878), and son (NA12882) -- from the CEU population that were sequenced using 100PE reads on a HiSeq2000 (\textbf{Table 2}). The average autosomal coverage was 50x and average STR coverage was 14x. At $\geq$10x coverage threshold, 57\% of the STRs in the CEU trio had a non-reference allele. 
+To further explore lobSTR performance, we conducted a genome-wide STR profiling of a HapMap trio - a father (NA12877), mother (NA12878), and son (NA12882) -- from the CEU population that were sequenced using 100PE reads on a HiSeq2000 (\textbf{Table \ref{tab:lobtab2}}). The average autosomal coverage was 50x and average STR coverage was 14x. At $\geq$10x coverage threshold, 57\% of the STRs in the CEU trio had a non-reference allele. 
+
+\begin{table}
+\centering
+\label{tab:lobtab2}
+\begin{tabular}{l l l l l}
+\hline
+Individual	& Relationship & Input reads	& STR Aligned reads	& Mean STR Coverage \\
+\hline
+NA12878 &	Mother	& 1,708,169,546 &	3,398,933 &	14.8 \\
+NA12877	& Father &	1,637,816,924	&3,212,073 &	14.1 \\
+NA12882	& Son	& 1,625,404,856 &	3,183,795 &	14.0 \\
+\hline
+\end{tabular}
+\caption{\textbf{Profiling STRs in Illumina reads from a HapMap trio.}}
+\end{table}
 
 In general, deviations of offspring's STR alleles from Mendelian inheritance (MI) indicate a potential calling error \cite{EwenBahloTreloarEtAl2000}. With 5x coverage across all trio members, the MI rate was 95\%; with 10x coverage, MI was 97\%; and with coverage threshold of 15 or more, MI was 99\%. (\textbf{Figure \ref{fig:lobfig4}A}). We also repeated the analysis only with discordant parental sites (for example, A/B call in one parent and A/C call in another parent). We noticed a drop to 93\% in the MI patterns with a low coverage threshold of 5x, which is mainly because of partial coverage of heterozygous sites in the parents. The MI rate was recovered to the same level with higher coverage threshold. At 17x coverage 99\% of sites showed a perfect Mendelian segregation pattern (\textbf{Figure \ref{fig:lobfig4}B}). 
 
@@ -89,7 +125,34 @@ In general, deviations of offspring's STR alleles from Mendelian inheritance (MI
 \subsection{Validating lobSTR accuracy with DNA electrophoresis}
 We sought to compare lobSTR calls to the results of DNA electrophoresis, which is considered the gold standard for STR allelotyping. First, we focused on a set of STR markers that are used for forensic DNA fingerprinting. As an input for lobSTR, we sequenced a male genome from our lab collection with three runs of Illumina GAIIx for 101PE cycles that yielded ~740 million reads. The autosomal sequencing coverage was 36x according to alignment with mainstream algorithms. lobSTR identified 1.6 million informative reads that mapped to $\sim$140,000 STR loci, with an average of 4.91x coverage of diploid STR loci. In parallel, we used a commercial forensic kit to genotype 14 autosomal STR markers on a capillary electrophoresis platform. Thirteen out of 14 markers were covered by at least a single sequence read and 8 markers were covered by at least 3 sequence reads. The marker that was not covered spanned more than 129bp, exceeding the limit for detecting informative reads with the 101bp sequence reads.
 
-We observed good concordance between lobSTR and the capillary results (\textbf{Table 3}). lobSTR correctly called all but one of the 8 markers that were covered by at least 3 reads and most of the alleles in loci that were covered with 2 or less reads. Remarkably, some of these markers, such as D8S1179, displayed two heterozygous alleles that did not match the reference. Other alleles, such as in Penta D and Penta E, correctly returned 20bp and 25bp length differences from the reference allele, respectively. The capillary results of one tetranucleotide marker, THO1, exhibited a non-integer number of copies (9 repeats + 3bp). lobSTR reported exactly the same results, further demonstrating that STRs can be called within a single base pair resolution. lobSTR also correctly called a homozygous STR that was covered by a single read. In another 4 markers with coverage of ≤2x, lobSTR correctly called one allele and missed the other allele due to sequencing coverage. We observed only a single erroneous call due to stutter noise in the D5S818 locus. This homozygous locus was covered by three sequence reads: two correct and one with a single repeat expansion. With such a low sequencing coverage, the allelotyping algorithm was not able to identify the noisy read and assigned a heterozygous state to the locus. 
+We observed good concordance between lobSTR and the capillary results (\textbf{Table \ref{tab:lobtab3}}). lobSTR correctly called all but one of the 8 markers that were covered by at least 3 reads and most of the alleles in loci that were covered with 2 or less reads. Remarkably, some of these markers, such as D8S1179, displayed two heterozygous alleles that did not match the reference. Other alleles, such as in Penta D and Penta E, correctly returned 20bp and 25bp length differences from the reference allele, respectively. The capillary results of one tetranucleotide marker, THO1, exhibited a non-integer number of copies (9 repeats + 3bp). lobSTR reported exactly the same results, further demonstrating that STRs can be called within a single base pair resolution. lobSTR also correctly called a homozygous STR that was covered by a single read. In another 4 markers with coverage of ≤2x, lobSTR correctly called one allele and missed the other allele due to sequencing coverage. We observed only a single erroneous call due to stutter noise in the D5S818 locus. This homozygous locus was covered by three sequence reads: two correct and one with a single repeat expansion. With such a low sequencing coverage, the allelotyping algorithm was not able to identify the noisy read and assigned a heterozygous state to the locus. 
+
+\begin{table}
+\centering
+\label{tab:lobtab3}
+\begin{adjustbox}{width=1\textwidth}
+\begin{tabular}{l l l l l l l l}
+\hline
+STR locus & lobSTR (bp) & Converted lobSTR & Capillary & Hg18 & Repeat & Coverage & Result$^a$\\
+\hline
+D8S1179 & -8/8 & 11/15 & 11/15 & 13 & [TCTA]n & 13 & Y\\
+CSF1PO & -12/-4 & 10/12 & 10/12 & 13 & [AGAT]n & 13 & Y\\
+TPOX & 0/12 & 8/11 & 8/11 & 8 & [AATG]n & 12 & Y \\
+THO1 & 11/11 & 9.3/9.3 & 9.3 & 7 & [AATG]n & 11 & Y\\
+D16S539 & 4/12 & 12/14 & 12/14 & 11 & [GATA]n & 5 & Y\\
+D7S820 & -20/-8 & 8/11 & 8/11 & 13 & [GATA]n & 3 & Y\\
+Penta D & -20/0 & 9/13 & 9/13 & 13 & [AAAGA]n & 3 & Y\\
+D5S818 & 0/4 & 11/12 & 11 & 11 & [AGAT]n & 3 & E \\
+D3S1358 & -4/-4 & 15/15 & 15/17 & 16 & [TCTN]n & 2 & P\\
+PentaE & 25/25 & 10/10 & 10/15 & 5 & [AAAGA]n & 1 & P \\
+FGA & -4/-4 & 21/21 & 21/24 & 22 & [TTTC]n & 1 & P\\
+D18S51 & -12/-12 & 15/15 & 15 & 18 & [AGAA]n & 1 & Y\\
+D13S317 & 4/4 & 12/12 & 11/12 & 11 & [TATC]n & 1 & P\\
+\hline
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{Capillary platform results versus lobSTR results for the CODIS set.} $^a$Y - both platforms agree. P - lobSTR reported only one allele out of two. E - lobSTR reported an allele that does not exist.}
+\end{table}
 
 Next, we evaluated lobSTR calls made in 12 low-pass sequenced genomes from the Human Genome Diversity Project (HGDP) \cite{GreenKrauseBriggsEtAl2010,ReichGreenKircherEtAl2010}. Five genomes had coverage of 1.4x-1.9x with 109bp reads, and the other seven had coverage of 4.8x-7.7x with 77bp reads (\textbf{Supplemental Table 3}). One hundred and ninety five STRs with equivalent entries in the lobSTR reference have been genotyped in these genomes using DNA electrophoresis as part of the CEPH-HGDP panel \cite{RamachandranDeshpandeRosemanEtAl2005,PembertonSandefurJakobssonEtAl2009}. Combining lobSTR results from all datasets gave 59 comparable markers with coverage of 3-5 reads with a median coverage of 3x (\textbf{Supplemental Table 4}). Despite the low coverage, lobSTR correctly returned 75\% of the genotypes and 85\% of the allele calls. Most of the alleles showed at least 5bp difference from the reference and some alleles showed a difference of 24bp and were correctly called. We did not observe a significant correlation between errors and the size of the variation. 
 
