@@ -1,6 +1,18 @@
 % Encoding: UTF-8
 
 
+@Article{AbecasisAltshulerAutonEtAl2010,
+  Title                    = {{{A} map of human genome variation from population-scale sequencing}},
+  Author                   = {Abecasis, G. R. and Altshuler, D. and Auton, A. and Brooks, L. D. and Durbin, R. M. and Gibbs, R. A. and Hurles, M. E. and McVean, G. A. and Altshuler, D. and Durbin, R. M. and Abecasis, G. R. and Bentley, D. R. and Chakravarti, A. and Clark, A. G. and Collins, F. S. and De La Vega, F. M. and Donnelly, P. and Egholm, M. and Flicek, P. and Gabriel, S. B. and Gibbs, R. A. and Knoppers, B. M. and Lander, E. S. and Lehrach, H. and Mardis, E. R. and McVean, G. A. and Nickerson, D. A. and Peltonen, L. and Schafer, A. J. and Sherry, S. T. and Wang, J. and Wilson, R. and Gibbs, R. A. and Deiros, D. and Metzker, M. and Muzny, D. and Reid, J. and Wheeler, D. and Wang, J. and Li, J. and Jian, M. and Li, G. and Li, R. and Liang, H. and Tian, G. and Wang, B. and Wang, J. and Wang, W. and Yang, H. and Zhang, X. and Zheng, H. and Lander, E. S. and Altshuler, D. L. and Ambrogio, L. and Bloom, T. and Cibulskis, K. and Fennell, T. J. and Gabriel, S. B. and Jaffe, D. B. and Shefler, E. and Sougnez, C. L. and Bentley, D. R. and Gormley, N. and Humphray, S. and Kingsbury, Z. and Kokko-Gonzales, P. and Stone, J. and McKernan, K. J. and Costa, G. L. and Ichikawa, J. K. and Lee, C. C. and Sudbrak, R. and Lehrach, H. and Borodina, T. A. and Dahl, A. and Davydov, A. N. and Marquardt, P. and Mertes, F. and Nietfeld, W. and Rosenstiel, P. and Schreiber, S. and Soldatov, A. V. and Timmermann, B. and Tolzmann, M. and Egholm, M. and Affourtit, J. and Ashworth, D. and Attiya, S. and Bachorski, M. and Buglione, E. and Burke, A. and Caprio, A. and Celone, C. and Clark, S. and Conners, D. and Desany, B. and Gu, L. and Guccione, L. and Kao, K. and Kebbler, J. and Knowlton, J. and Labrecque, M. and McDade, L. and Mealmaker, C. and Minderman, M. and Nawrocki, A. and Niazi, F. and Pareja, K. and Ramenani, R. and Riches, D. and Song, W. and Turcotte, C. and Wang, S. and Mardis, E. R. and Wilson, R. K. and Dooling, D. and Fulton, L. and Fulton, R. and Weinstock, G. and Durbin, R. M. and Burton, J. and Carter, D. M. and Churcher, C. and Coffey, A. and Cox, A. and Palotie, A. and Quail, M. and Skelly, T. and Stalker, J. and Swerdlow, H. P. and Turner, D. and De Witte, A. and Giles, S. and Gibbs, R. A. and Wheeler, D. and Bainbridge, M. and Challis, D. and Sabo, A. and Yu, F. and Yu, J. and Wang, J. and Fang, X. and Guo, X. and Li, R. and Li, Y. and Luo, R. and Tai, S. and Wu, H. and Zheng, H. and Zheng, X. and Zhou, Y. and Li, G. and Wang, J. and Yang, H. and Marth, G. T. and Garrison, E. P. and Huang, W. and Indap, A. and Kural, D. and Lee, W. P. and Leong, W. F. and Quinlan, A. R. and Stewart, C. and Stromberg, M. P. and Ward, A. N. and Wu, J. and Lee, C. and Mills, R. E. and Shi, X. and Daly, M. J. and DePristo, M. A. and Altshuler, D. L. and Ball, A. D. and Banks, E. and Bloom, T. and Browning, B. L. and Cibulskis, K. and Fennell, T. J. and Garimella, K. V. and Grossman, S. R. and Handsaker, R. E. and Hanna, M. and Hartl, C. and Jaffe, D. B. and Kernytsky, A. M. and Korn, J. M. and Li, H. and Maguire, J. R. and McCarroll, S. A. and McKenna, A. and Nemesh, J. C. and Philippakis, A. A. and Poplin, R. E. and Price, A. and Rivas, M. A. and Sabeti, P. C. and Schaffner, S. F. and Shefler, E. and Shlyakhter, I. A. and Cooper, D. N. and Ball, E. V. and Mort, M. and Phillips, A. D. and Stenson, P. D. and Sebat, J. and Makarov, V. and Ye, K. and Yoon, S. C. and Bustamante, C. D. and Clark, A. G. and Boyko, A. and Degenhardt, J. and Gravel, S. and Gutenkunst, R. N. and Kaganovich, M. and Keinan, A. and Lacroute, P. and Ma, X. and Reynolds, A. and Clarke, L. and Flicek, P. and Cunningham, F. and Herrero, J. and Keenen, S. and Kulesha, E. and Leinonen, R. and McLaren, W. M. and Radhakrishnan, R. and Smith, R. E. and Zalunin, V. and Zheng-Bradley, X. and Korbel, J. O. and Stutz, A. M. and Humphray, S. and Bauer, M. and Cheetham, R. K. and Cox, T. and Eberle, M. and James, T. and Kahn, S. and Murray, L. and Chakravarti, A. and Ye, K. and De La Vega, F. M. and Fu, Y. and Hyland, F. C. and Manning, J. M. and McLaughlin, S. F. and Peckham, H. E. and Sakarya, O. and Sun, Y. A. and Tsung, E. F. and Batzer, M. A. and Konkel, M. K. and Walker, J. A. and Sudbrak, R. and Albrecht, M. W. and Amstislavskiy, V. S. and Herwig, R. and Parkhomchuk, D. V. and Sherry, S. T. and Agarwala, R. and Khouri, H. M. and Morgulis, A. O. and Paschall, J. E. and Phan, L. D. and Rotmistrovsky, K. E. and Sanders, R. D. and Shumway, M. F. and Xiao, C. and McVean, G. A. and Auton, A. and Iqbal, Z. and Lunter, G. and Marchini, J. L. and Moutsianas, L. and Myers, S. and Tumian, A. and Desany, B. and Knight, J. and Winer, R. and Craig, D. W. and Beckstrom-Sternberg, S. M. and Christoforides, A. and Kurdoglu, A. A. and Pearson, J. V. and Sinari, S. A. and Tembe, W. D. and Haussler, D. and Hinrichs, A. S. and Katzman, S. J. and Kern, A. and Kuhn, R. M. and Przeworski, M. and Hernandez, R. D. and Howie, B. and Kelley, J. L. and Melton, S. C. and Abecasis, G. R. and Li, Y. and Anderson, P. and Blackwell, T. and Chen, W. and Cookson, W. O. and Ding, J. and Kang, H. M. and Lathrop, M. and Liang, L. and Moffatt, M. F. and Scheet, P. and Sidore, C. and Snyder, M. and Zhan, X. and Zollner, S. and Awadalla, P. and Casals, F. and Idaghdour, Y. and Keebler, J. and Stone, E. A. and Zilversmit, M. and Jorde, L. and Xing, J. and Eichler, E. E. and Aksay, G. and Alkan, C. and Hajirasouliha, I. and Hormozdiari, F. and Kidd, J. M. and Sahinalp, S. C. and Sudmant, P. H. and Mardis, E. R. and Chen, K. and Chinwalla, A. and Ding, L. and Koboldt, D. C. and McLellan, M. D. and Dooling, D. and Weinstock, G. and Wallis, J. W. and Wendl, M. C. and Zhang, Q. and Durbin, R. M. and Albers, C. A. and Ayub, Q. and Balasubramaniam, S. and Barrett, J. C. and Carter, D. M. and Chen, Y. and Conrad, D. F. and Danecek, P. and Dermitzakis, E. T. and Hu, M. and Huang, N. and Hurles, M. E. and Jin, H. and Jostins, L. and Keane, T. M. and Le, S. Q. and Lindsay, S. and Long, Q. and MacArthur, D. G. and Montgomery, S. B. and Parts, L. and Stalker, J. and Tyler-Smith, C. and Walter, K. and Zhang, Y. and Gerstein, M. B. and Snyder, M. and Abyzov, A. and Balasubramanian, S. and Bjornson, R. and Du, J. and Grubert, F. and Habegger, L. and Haraksingh, R. and Jee, J. and Khurana, E. and Lam, H. Y. and Leng, J. and Mu, X. J. and Urban, A. E. and Zhang, Z. and Li, Y. and Luo, R. and Marth, G. T. and Garrison, E. P. and Kural, D. and Quinlan, A. R. and Stewart, C. and Stromberg, M. P. and Ward, A. N. and Wu, J. and Lee, C. and Mills, R. E. and Shi, X. and McCarroll, S. A. and Banks, E. and DePristo, M. A. and Handsaker, R. E. and Hartl, C. and Korn, J. M. and Li, H. and Nemesh, J. C. and Sebat, J. and Makarov, V. and Ye, K. and Yoon, S. C. and Degenhardt, J. and Kaganovich, M. and Clarke, L. and Smith, R. E. and Zheng-Bradley, X. and Korbel, J. O. and Humphray, S. and Cheetham, R. K. and Eberle, M. and Kahn, S. and Murray, L. and Ye, K. and De La Vega, F. M. and Fu, Y. and Peckham, H. E. and Sun, Y. A. and Batzer, M. A. and Konkel, M. K. and Walker, J. A. and Xiao, C. and Iqbal, Z. and Desany, B. and Blackwell, T. and Snyder, M. and Xing, J. and Eichler, E. E. and Aksay, G. and Alkan, C. and Hajirasouliha, I. and Hormozdiari, F. and Kidd, J. M. and Chen, K. and Chinwalla, A. and Ding, L. and McLellan, M. D. and Wallis, J. W. and Hurles, M. E. and Conrad, D. F. and Walter, K. and Zhang, Y. and Gerstein, M. B. and Snyder, M. and Abyzov, A. and Du, J. and Grubert, F. and Haraksingh, R. and Jee, J. and Khurana, E. and Lam, H. Y. and Leng, J. and Mu, X. J. and Urban, A. E. and Zhang, Z. and Gibbs, R. A. and Bainbridge, M. and Challis, D. and Coafra, C. and Dinh, H. and Kovar, C. and Lee, S. and Muzny, D. and Nazareth, L. and Reid, J. and Sabo, A. and Yu, F. and Yu, J. and Marth, G. T. and Garrison, E. P. and Indap, A. and Leong, W. F. and Quinlan, A. R. and Stewart, C. and Ward, A. N. and Wu, J. and Cibulskis, K. and Fennell, T. J. and Gabriel, S. B. and Garimella, K. V. and Hartl, C. and Shefler, E. and Sougnez, C. L. and Wilkinson, J. and Clark, A. G. and Gravel, S. and Grubert, F. and Clarke, L. and Flicek, P. and Smith, R. E. and Zheng-Bradley, X. and Sherry, S. T. and Khouri, H. M. and Paschall, J. E. and Shumway, M. F. and Xiao, C. and McVean, G. A. and Katzman, S. J. and Abecasis, G. R. and Mardis, E. R. and Dooling, D. and Fulton, L. and Fulton, R. and Koboldt, D. C. and Durbin, R. M. and Balasubramaniam, S. and Coffey, A. and Keane, T. M. and MacArthur, D. G. and Palotie, A. and Scott, C. and Stalker, J. and Tyler-Smith, C. and Gerstein, M. B. and Balasubramanian, S. and Chakravarti, A. and Knoppers, B. M. and Abecasis, G. R. and Bustamante, C. D. and Gharani, N. and Gibbs, R. A. and Jorde, L. and Kaye, J. S. and Kent, A. and Li, T. and McGuire, A. L. and McVean, G. A. and Ossorio, P. N. and Rotimi, C. N. and Su, Y. and Toji, L. H. and Tyler-Smith, C. and Brooks, L. D. and Felsenfeld, A. L. and McEwen, J. E. and Abdallah, A. and Juenger, C. R. and Clemm, N. C. and Collins, F. S. and Duncanson, A. and Green, E. D. and Guyer, M. S. and Peterson, J. L. and Schafer, A. J. and Xue, Y. and Cartwright, R. A. },
+  Journal                  = {Nature},
+  Year                     = {2010},
+  Month                    = {Oct},
+  Number                   = {7319},
+  Pages                    = {1061--1073},
+  Volume                   = {467},
+  __markedentry            = {[gymrek:]}
+}
+
 @Article{AjayParkerAbaanEtAl2011,
   Title                    = {{{A}ccurate and comprehensive sequencing of personal genomes}},
   Author                   = {Ajay, S. S. and Parker, S. C. and Abaan, H. O. and Fajardo, K. V. and Margulies, E. H. },
@@ -79,8 +91,7 @@ An example application, the FFTW (the fastest Fourier transform in the west), is
   Month                    = {May},
   Number                   = {6235},
   Pages                    = {648--660},
-  Volume                   = {348},
-  __markedentry            = {[gymrek:]}
+  Volume                   = {348}
 }
 
 @Article{BaderAgarwal2007,
@@ -199,8 +210,7 @@ An example application, the FFTW (the fastest Fourier transform in the west), is
   Month                    = {Aug},
   Number                   = {8},
   Pages                    = {955--962},
-  Volume                   = {40},
-  __markedentry            = {[gymrek:]}
+  Volume                   = {40}
 }
 
 @Misc{BassMillerNylinEtAl2002,
@@ -332,8 +342,7 @@ An example application, the FFTW (the fastest Fourier transform in the west), is
   Month                    = {Nov},
   Number                   = {11},
   Pages                    = {1591--1599},
-  Volume                   = {25},
-  __markedentry            = {[gymrek:6]}
+  Volume                   = {25}
 }
 
 @Article{BivonaHieronymusParkerEtAl2011,
@@ -1109,6 +1118,18 @@ In this paper, we present the design of an annotation language, meant to be used
   Keywords                 = {optimizations},
   Type                     = {Journal Article},
   URL                      = {<Go to ISI>://000244508300010}
+}
+
+@Article{DoringGiegerMehtaEtAl2008,
+  Title                    = {{{S}{L}{C}2{A}9 influences uric acid concentrations with pronounced sex-specific effects}},
+  Author                   = {Doring, A. and Gieger, C. and Mehta, D. and Gohlke, H. and Prokisch, H. and Coassin, S. and Fischer, G. and Henke, K. and Klopp, N. and Kronenberg, F. and Paulweber, B. and Pfeufer, A. and Rosskopf, D. and Volzke, H. and Illig, T. and Meitinger, T. and Wichmann, H. E. and Meisinger, C. },
+  Journal                  = {Nat. Genet.},
+  Year                     = {2008},
+  Month                    = {Apr},
+  Number                   = {4},
+  Pages                    = {430--436},
+  Volume                   = {40},
+  __markedentry            = {[gymrek:6]}
 }
 
 @Article{DubinskiKimParkEtAl2004,
@@ -5113,6 +5134,18 @@ ng.2248 [pii]},
   URL                      = {http://www.ncbi.nlm.nih.gov/pubmed/10428474}
 }
 
+@Article{ShinFaumanPetersenEtAl2014,
+  Title                    = {{{A}n atlas of genetic influences on human blood metabolites}},
+  Author                   = {Shin, S. Y. and Fauman, E. B. and Petersen, A. K. and Krumsiek, J. and Santos, R. and Huang, J. and Arnold, M. and Erte, I. and Forgetta, V. and Yang, T. P. and Walter, K. and Menni, C. and Chen, L. and Vasquez, L. and Valdes, A. M. and Hyde, C. L. and Wang, V. and Ziemek, D. and Roberts, P. and Xi, L. and Grundberg, E. and Waldenberger, M. and Richards, J. B. and Mohney, R. P. and Milburn, M. V. and John, S. L. and Trimmer, J. and Theis, F. J. and Overington, J. P. and Suhre, K. and Brosnan, M. J. and Gieger, C. and Kastenmuller, G. and Spector, T. D. and Soranzo, N. },
+  Journal                  = {Nat. Genet.},
+  Year                     = {2014},
+  Month                    = {Jun},
+  Number                   = {6},
+  Pages                    = {543--550},
+  Volume                   = {46},
+  __markedentry            = {[gymrek:6]}
+}
+
 @Article{ShriverKittles2004,
   Title                    = {Genetic ancestry and the search for personalized genetic histories},
   Author                   = {Shriver, M. D. and Kittles, R. A.},
@@ -5593,6 +5626,18 @@ http://biorxiv.org/content/biorxiv/early/2014/09/18/009258.full.pdf}
   URL                      = {http://www.ncbi.nlm.nih.gov/pubmed/19478187}
 }
 
+@Article{VitartRudanHaywardEtAl2008,
+  Title                    = {{{S}{L}{C}2{A}9 is a newly identified urate transporter influencing serum urate concentration, urate excretion and gout}},
+  Author                   = {Vitart, V. and Rudan, I. and Hayward, C. and Gray, N. K. and Floyd, J. and Palmer, C. N. and Knott, S. A. and Kolcic, I. and Polasek, O. and Graessler, J. and Wilson, J. F. and Marinaki, A. and Riches, P. L. and Shu, X. and Janicijevic, B. and Smolej-Narancic, N. and Gorgoni, B. and Morgan, J. and Campbell, S. and Biloglav, Z. and Barac-Lauc, L. and Pericic, M. and Klaric, I. M. and Zgaga, L. and Skaric-Juric, T. and Wild, S. H. and Richardson, W. A. and Hohenstein, P. and Kimber, C. H. and Tenesa, A. and Donnelly, L. A. and Fairbanks, L. D. and Aringer, M. and McKeigue, P. M. and Ralston, S. H. and Morris, A. D. and Rudan, P. and Hastie, N. D. and Campbell, H. and Wright, A. F. },
+  Journal                  = {Nat. Genet.},
+  Year                     = {2008},
+  Month                    = {Apr},
+  Number                   = {4},
+  Pages                    = {437--442},
+  Volume                   = {40},
+  __markedentry            = {[gymrek:6]}
+}
+
 @Article{VuducDemmel2000,
   Title                    = {Code generators for automatic tuning of numerical kernels: Experiences with FFTW - Position paper},
   Author                   = {Vuduc, R. and Demmel, J. W.},
@@ -5605,6 +5650,18 @@ http://biorxiv.org/content/biorxiv/early/2014/09/18/009258.full.pdf}
   Keywords                 = {linear algebra subprograms discrete cosine transform algorithm lengths set},
   Type                     = {Journal Article},
   URL                      = {<Go to ISI>://000171919400014}
+}
+
+@Article{WallaceNewhouseBraundEtAl2008,
+  Title                    = {{{G}enome-wide association study identifies genes for biomarkers of cardiovascular disease: serum urate and dyslipidemia}},
+  Author                   = {Wallace, C. and Newhouse, S. J. and Braund, P. and Zhang, F. and Tobin, M. and Falchi, M. and Ahmadi, K. and Dobson, R. J. and Marcano, A. C. and Hajat, C. and Burton, P. and Deloukas, P. and Brown, M. and Connell, J. M. and Dominiczak, A. and Lathrop, G. M. and Webster, J. and Farrall, M. and Spector, T. and Samani, N. J. and Caulfield, M. J. and Munroe, P. B. },
+  Journal                  = {Am. J. Hum. Genet.},
+  Year                     = {2008},
+  Month                    = {Jan},
+  Number                   = {1},
+  Pages                    = {139--149},
+  Volume                   = {82},
+  __markedentry            = {[gymrek:6]}
 }
 
 @Article{Walsh2001,
