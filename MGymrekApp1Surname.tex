@@ -25,7 +25,7 @@ Our goal was to quantitatively approach the question of how readily surname infe
 
 As a primary resource for surname inference, we focused on Ysearch (\url{www.ysearch.org}) and SMGF (\url{www.smgf.org}), the two largest public genetic genealogy databases with free-of-charge, built-in search engines. The interfaces of these engines are quite similar and allow users to insert a combination of Y-STR alleles and search for matching records based on genetic similarity. The retrieved records contain surnames typically with information about the patrilineal line, such as geographical locations, potential spelling variants, and pedigrees. In total, these databases contain 39,000 unique surname entries from approximately 135,000 records. The distribution of records per surname is significantly correlated ($R^2=0.78$, $p<1.20\times 10^{-6}$) with surname frequencies in the US, suggesting an overall good representation of this population (\textbf{Fig. \ref{fig:surfig1}A}).
 
-To test the probability of surname inference, we challenged the two databases with an orthogonal cohort of Y-STR haplotypes consist of 34 markers (\textbf{Supplementary Table  \ref{tab:sursuptab2}}) from 911 individuals, primarily with Caucasian ancestry, whose surnames are known (\textbf{Supplementary Table  \ref{tab:sursuptab3}}). This cohort was compiled from YBase, a distinct genetic genealogy database and contains individuals with 521 surnames that segregate in the US population. In each haplotype query, our surname recovery algorithm began by retrieving the database record with the shortest Time to Most Recent Common Ancestor (TMRCA) of the input haplotype (\textbf{Supplementary Figure \ref{fig:sursup1}}, \textbf{Supplementary Table \ref{tab:sursuptab4}}). Then, it calculated a confidence score that the surname match of the retrieved record is significantly better than other matches. If the score passed a user-defined threshold, the algorithm assigned the record’s surname to the input haplotype; otherwise, it categorized it as ``unknown''. We tested the algorithm with a range of confidence thresholds to explore the trade-off between successful versus wrong recovery of surnames. Finally, we weighted the results using a stratified sampling approach to reflect the frequency of surnames in the US population (\textbf{Supplementary Material \ref{sec:sursm}}). 
+To test the probability of surname inference, we challenged the two databases with an orthogonal cohort of Y-STR haplotypes consist of 34 markers (\textbf{Supplementary Table  \ref{tab:sursuptab2}}) from 911 individuals, primarily with Caucasian ancestry, whose surnames are known (\textbf{Supplementary Table  \ref{tab:sursuptab3}}). This cohort was compiled from YBase, a distinct genetic genealogy database and contains individuals with 521 surnames that segregate in the US population. In each haplotype query, our surname recovery algorithm began by retrieving the database record with the shortest Time to Most Recent Common Ancestor (TMRCA) of the input haplotype (\textbf{Supplementary Figure \ref{fig:sursup1}}, \textbf{Supplementary Table \ref{tab:sursuptab4}}). Then, it calculated a confidence score that the surname match of the retrieved record is significantly better than other matches. If the score passed a user-defined threshold, the algorithm assigned the record's surname to the input haplotype; otherwise, it categorized it as ``unknown''. We tested the algorithm with a range of confidence thresholds to explore the trade-off between successful versus wrong recovery of surnames. Finally, we weighted the results using a stratified sampling approach to reflect the frequency of surnames in the US population (\textbf{Supplementary Material \ref{sec:sursm}}). 
 
 Our analysis projects a success rate of approximately 12\% (s.d. 2\%) in recovering surnames of US Caucasian males (\textbf{Fig. \ref{fig:surfig1}B}, \textbf{Supplementary Figure \ref{fig:sursup2}}). This rate can be accomplished with a conservative threshold that would return a wrong surname in 5\% of cases and label 83\% of cases as unknown. Higher success rates of up to 18\% can be achieved at the price of increased probability to recover an incorrect surname. Since our input cohort is based on individuals that were tested using genetic genealogy services, our results are presumably mostly relevant to socio-economic groups with high participation in these services, namely upper and middle class US Caucasians.
 
@@ -73,12 +73,15 @@ Existing policy tools, such as controlled access databases with data use agreeme
 \caption{\textbf{Comparison of CEU identification cases.}}
 \end{figure}
 
+\section{Acknowledgements}
+We thank FamilyTreeDNA and SMGF for technical assistance. The authors would like also to thank Dina Esposito, Alon Goren, Gerry Fink, David Page, Wendy Kramer, and Roy Ronen, for useful discussions. Y.E. is an Andria and Paul Heafy Family Fellow. This publication was supported by the National Defense Science and Engineering Graduate Fellowship (M.G.) and by the Edmond J. Safra Center for Bioinformatics at Tel-Aviv University (D.G. and E.H.). 
+
 \section{Supplementary Material}
 \label{sec:sursm}
 
 \subsection{Evaluating the general risk of surname recovery}
 \subsubsection{Downloading Ysearch data}
-The Ysearch website belongs to FamilyTreeDNA (FTDNA), a Texas-based genetic genealogy company. The website allows users, regardless of their testing service, to voluntarily post their Y-STR genotyping results along with their ancestral information and contact details. Based on the data posted on the website, approximately 85\% of Ysearch’s users were tested with FamilyTreeDNA and the other 15\% were tested with other genetic genealogy services. Users from other services are advised to post their results using FamilyTreeDNA nomenclature, and the website offers a conversion table between popular genetic genealogy services and FamilyTreeDNA nomenclature.
+The Ysearch website belongs to FamilyTreeDNA (FTDNA), a Texas-based genetic genealogy company. The website allows users, regardless of their testing service, to voluntarily post their Y-STR genotyping results along with their ancestral information and contact details. Based on the data posted on the website, approximately 85\% of Ysearch's users were tested with FamilyTreeDNA and the other 15\% were tested with other genetic genealogy services. Users from other services are advised to post their results using FamilyTreeDNA nomenclature, and the website offers a conversion table between popular genetic genealogy services and FamilyTreeDNA nomenclature.
 
 With permission from FamilyTreeDNA, we scraped the entire Ysearch database in May 2011. Some areas are protected by reCaptcha and were accessed manually. After parsing and merging the HTML files, we obtained 95,000 surname-haplotype entries, each of which contained: Ysearch userID, surname, ancestral location, and Y-STR results. 
 
@@ -91,9 +94,12 @@ The surname distribution in the general US population was estimated using the Ce
 We compared the surname distribution in Ysearch and SMGF to the distribution in the general US population in order to evaluate the completeness of the databases. We defined the census coverage probability, denoted by $c$, as the chance that the surname of an individual drawn at random from the US population has at least a single haplotype record in one of these databases, and found that $c$=68.5\%. The correlation between the US population and the genealogical records was evaluated by a permutation test with 10,000 repetitions. We obtained the following statistics: $E[SSE_{permutations}]=9.01 \times 10^6$, $\sigma(SSE_{permutations})=2437$. The hypothesis $SSE$ was $1.99 \times 10^6$. The p-value was calculated using one-sided Chebyshev bound.
 
 \subsubsection{A mathematical model for surname leakage risk}
+
+\emph{Search method}
+
 Our database search method relied on finding a record that shares the closest Time to Most Recent Common Ancestor (TMRCA) with the queried haplotype. The rationale behind this strategy is that close patrilineal relatives have a higher probability of sharing the same surname. For instance, one can imagine that monozygotic twins have a high probability of sharing the same surname, whereas a pair of Y chromosomes whose MRCA lived before the formation of the surname system would have a low probability of sharing the same surname. 
 
-Walsh \cite{Walsh2001} has proposed several Bayesian models for estimating the distribution of the TMRCA in non-recombining haplotypes. We used his ``infinite alleles model with differential mutation rates''. Consider two Y chromosome haplotypes with $n$ STR loci denoted by $\vec{v}=(v_1,v_2,\hdots,v_n)$ and $\vec{u}=(u_1,u_2,\hdots,u_n)$, with vector elements corresponding to the allele lengths. Let $\vec{x} = (x_1,x_2,\hdots,x_n)$ be a binary vector with $x_i=1$ for a match at the $i$-th locus of $\vec{v}$ and $\vec{u}$, and $x_i=0$ otherwise, and let $\vec{\mu}=(\mu_1,\mu_2,\hdots,\mu_n)$ be a vector whose elements denote the probability of a mutation per meiosis in each marker. According to Walsh’s model, the probability distribution function (PDF) of the TMRCA between the two haplotypes is:
+Walsh \cite{Walsh2001} has proposed several Bayesian models for estimating the distribution of the TMRCA in non-recombining haplotypes. We used his ``infinite alleles model with differential mutation rates''. Consider two Y chromosome haplotypes with $n$ STR loci denoted by $\vec{v}=(v_1,v_2,\hdots,v_n)$ and $\vec{u}=(u_1,u_2,\hdots,u_n)$, with vector elements corresponding to the allele lengths. Let $\vec{x} = (x_1,x_2,\hdots,x_n)$ be a binary vector with $x_i=1$ for a match at the $i$-th locus of $\vec{v}$ and $\vec{u}$, and $x_i=0$ otherwise, and let $\vec{\mu}=(\mu_1,\mu_2,\hdots,\mu_n)$ be a vector whose elements denote the probability of a mutation per meiosis in each marker. According to Walsh's model, the probability distribution function (PDF) of the TMRCA between the two haplotypes is:
 
 \begin{equation}
 \label{eq:sureq1}
@@ -108,7 +114,9 @@ The expected TMRCA is denoted by τ and is given by:
 \tau = \sum_{t=0}^{\infty}t_i P(t_i|\vec{x}, \vec{\mu}, N_e)
 \end{equation}
 
-The recovered surname was selected according to the record that has the minimal $\tau$ to the searched haplotype. Due to technical constraints with the web queries to SMGF and in order to reduce the amount of calculations, we did not determine $\tau$ for each of the hundreds of thousands of users in the databases. Instead, we employed the following procedure: (i) Ysearch - identify a set of candidate records that have the maximal number of matching markers to the queried haplotype (ii) SMGF – use the native SMGF search tool to identify the top 10 candidates according to the website’s proprietary algorithm (iii) Both – calculate $\tau$ for top candidates in Ysearch and SMGF using Eq. \ref{eq:sureq1}, and select the record with the minimal $\tau$ of the searched haplotype. 
+The recovered surname was selected according to the record that has the minimal $\tau$ to the searched haplotype. Due to technical constraints with the web queries to SMGF and in order to reduce the amount of calculations, we did not determine $\tau$ for each of the hundreds of thousands of users in the databases. Instead, we employed the following procedure: (i) Ysearch - identify a set of candidate records that have the maximal number of matching markers to the queried haplotype (ii) SMGF – use the native SMGF search tool to identify the top 10 candidates according to the website's proprietary algorithm (iii) Both – calculate $\tau$ for top candidates in Ysearch and SMGF using Eq. \ref{eq:sureq1}, and select the record with the minimal $\tau$ of the searched haplotype. 
+
+\emph{Retrieval confidence score}
 
 The retrieval confidence score determined the probability that the TMRCA of the retrieved record is indeed shorter than that of (i) a record with a distinct surname that has the second to shortest TMRCA and (ii) a random person from the population. Let $P_1$ and $P_2$ be the TMRCA PDFs of the best record and second best record according to Eq. \ref{eq:sureq1}, and let P3 be the PDF of coalescent in a Fisher-Wright population: $P_3 (t|N_e)=N_e^{-1} e^{-N_e t}$. In addition, let $F_i$ be the cumulative probability distribution function of $P_i$. The retrieval confidence score, $\delta$, is given by:
 
@@ -123,6 +131,8 @@ The retrieval confidence score determined the probability that the TMRCA of the 
 \end{equation}
 
 $T$ is the number of generations that is practical for the patrilineal surname system and was set to 20 generations, corresponding to $\sim$1400 AD. $P_2$ was obtained by scanning records in the list that was generated in step (iii); candidate records with less than 20 markers were excluded as well as records with surnames that matched the top hit.
+
+\emph{Surname inference}
 
 We set a threshold, $\delta_0$, which denotes the minimal accepted quality for valid surname recovery. If the retrieval passed the confidence threshold, the algorithm inferred that the record's surname is the surname of the input haplotype. Otherwise, the algorithm rejected the inference and returned ``Unknown''. 1.8\% of the searches returned records with an empty surname field or with strings that are not found in the surname list of the US census such as ``AshkenaziJewishModal''. The algorithm reported these cases as ``Unknown'' as well. Finally, TMRCA ties between two or more records with distinct surnames were also treated as ``Unknown''. 
 
@@ -184,6 +194,206 @@ P(x) =
 where $S$ is the set of surnames in the sample that are known to be present in the tested databases and $\overline{S}$ is the set of surnames in the sample that are known to be absent from the tested databases. $\hat{f}_s$ is the estimated frequency of the surname based on the Census data, $\hat{\beta}_x(s) = \sum_{h \in H(s)} \hat{\alpha}(h,s)I_x(h,s)$ and $\hat{\alpha}(h,s)$  is the frequency of the haplotype-surname combination in the sample, and $c$ is the census coverage probability that was determined above. Eq. \ref{eq:sureq4} models the outcome rates as a weighted sum of sampling individuals from two distinct strata: those whose surname is found in the databases and those who do not. The two weights mitigate potential ascertainment biases in the sample and increase the confidence that the results reflect the target population.
 
 \subsubsection{Estimating the risk of surname leakage by inter-database comparisons}
+Our input sample relied on a cohort of individuals from the YBase database. This database was maintained by DNA Heritage and was acquired by FamilyTreeDNA in April 2011. FamilyTreeDNA provided us with surname-haplotype records from the database, without other identifiers that can expose the identity of the database users. The YBase and SMGF entries are completely distinct because the SMGF database lists only SMGF users. We took the following steps to remove potential duplicate records between Ysearch and Ybase: first, we asked FamilyTreeDNA to exclude YBase entries whose email addresses appear in Ysearch as well as entries without email addresses. Second, we removed from the downloaded copy of Ysearch all $\sim$900 users that were tested with DNA Heritage. Third, we excluded any YBase user whose haplotype did not show a combination of markers that are typical to the DNA Heritage test panel. Thus, the input cohort was tested with a different company (DNA Heritage) than the database users. This reduces the chance of ascertainment biases due to oversampling of close relatives of the database participants.
+
+Genetic genealogy databases are subject to nomenclature heterogeneity that can confound the analysis. This is especially problematic for DNA Heritage test panels that were subject to five nomenclature changes between 2003 to 2009 (see: \url{http://web.archive.org/web/20100307032155/http://www.dnaheritage.com/helpfiles/DNA_Heritage_nomenclature_changes.pdf}). For each input haplotype, we inspected the allelic ranges for markers that underwent significant nomenclature changes, such as DYS452, to decipher the nomenclature stratum and to standardize the haplotype according to the NIST recommended nomenclature. In addition, we set a tolerable genotype range for each marker that is equal to the marker mean value in Ysearch$\pm$3std. Entries outside of this range have a high likelihood of nomenclature differences and typos of users. This step filtered approximately 5\% of YBase haplotypes. Finally, we selected only YBase haplotypes that have full genotyping results for a set of 34 STR markers (\textbf{Supplementary Table \ref{tab:sursuptab2}}) and whose surnames are in the US census. At the end of this process, we retained 911 YBase records.
+
+We used a series of Perl scripts to challenge Ysearch and SMGF with the YBase haplotypes and to compare the returned surnames to the true ones. SMGF searches were conducted with the NIST nomenclature and Ysearch searches were conducted with FamilyTreeDNA nomenclature. The standard deviation was calculated by 30 iterations of re-sampling with replacement participants from the input cohort and repeating the analysis process.
+
+The results of the 911 queries exhibited distinct patterns between the TMRCA of records that exactly match the true surname, records with a spelling variant, and records that returned the wrong surnames (\textbf{Supplementary Figure \ref{fig:sursup1}}). The mean TMRCA was 10.3 generations for exact matches, 15.6 generations for a spelling variant, and 24.3 generations for wrong surnames. The TMRCA distribution of exact matches appeared to follow a geometric distribution trend. The TRMCA of records with spelling variants was almost never more recent than 10 generations and was quite different from the distribution of wrong matches. This provides another support for our spelling variations detection algorithm. \textbf{Supplementary Figure \ref{fig:sursup2}} shows the final results after processing the results according to Eq. \ref{eq:sureq4}.
+
+\subsection{From Surnames To Individuals}
+\subsubsection{The frequency distribution of leaked surnames}
+We determined the frequency distribution of leaked surnames from the YBase simulations using the following equation:
+
+\begin{equation}
+\label{eq:sureq5}
+P(s \in S_i | x = success, \delta) = \frac
+{P(x=success | s \in S_i, \delta)P(s \in S_i)}
+{P(x=success | \delta)}
+\end{equation}
+
+Where $S_i$ is a subset of surnames whose frequencies fall in the $i$-th bin out of $j$ possible bins. Specifically, we used the following bins:
+
+\begin{table}[h!]
+\begin{tabular}{|l|l|l|}
+\hline
+Bin(i) & Frequency boudnaries & Example of surnames in bin \\
+\hline
+1& 	$>$1:400 &	Smith, Johnson \\
+2	&1:400 – 1:4,000	& Turner, Collins\\
+3	& 1:4,000 – 1:40,000 & 	Gates, Sloan\\
+4	& 1:40,000 – 1:400,000 &	Bjork, Reach \\
+5	& $<$1:400,000 &	Kellog, Venter \\
+\hline
+\end{tabular}
+\end{table}
+
+The term $P(s \in S_i)$ in Eq. \ref{eq:sureq5} is given by the census data. The other numerator term can be approximated using a slight modification to Eq. \ref{eq:sureq4}:
+
+\begin{equation}
+\label{eq:sureq6}
+P(x = success | s \in S_i, \delta) = 
+\frac{\sum_{s \in S} \hat{f}_s \hat{\beta}_x(s)}
+{\sum_{s \in S}\hat{f}_s}c_i + 
+\frac{\sum_{s \in \overline{S}} \hat{f}_s\hat{\beta}_x(s)}
+{\sum_{s \in \overline{S}} \hat{f}_s} (1-c_i)
+\end{equation}
+
+Where $c_i$ is a normalization factor that denotes the probability that a random person from the US population whose surname is in the $i$-th bin has at least a single entry in Ysearch and SMGF.  $c_i$ was determined by intersecting the census data with the list of Ysearch and SMGF. We used $\delta$=0.82.
+
+The leaked surnames are mostly found in the intermediate bin with a frequency of 1:4,000-1:40,000. Extremely rare surnames have the lowest relative risk for leakage due to the absence of records in Ysearch and SMGF. However, if these databases have even a single record for an extremely rare surname, then there is a 43\% chance that the surname will be exposed (\textbf{Supplementary Figure \ref{fig:sursup3}}). This phenomenon is potentially due to the small number of male lineages in extremely rare surnames.	
+
+\subsubsection{Combining surnames with demographic identifiers}
+The joint probabilities of sex, age, and state were obtained from the US Census Population Estimates Program (\url{www.census.gov/popest/states/asrh/files/SC-EST2009-AGESEX-RES.csv}). The data is based on Census 2000 and contains a projection of residents to 2009, which was used in the simulation. Similar to the HIPAA law, ages that are over 85 were grouped in a single category. 
+
+The simulation ran 100,000 times. In each round, a combination of state and age was selected according to their probability in the joint distribution. For instance, there are 287,000 males in California who are 25 years old and 3,500 males in Idaho who are 75 years old. Accordingly, the probability of selecting ``California, 25'' was 82 times higher than selecting ``Idaho, 75''. Next, a bin of a leaked surname was selected according to its probability in Eq. \ref{eq:sureq6} and a surname was selected according to its frequency in the bin. For instance, in the case of selecting the 1st bin ($\geq$1:400), Smith had 1.28 higher probability of being sampled than Johnson. Finally, the simulation randomly selected between the return of a spelling variant or exact match, where the former had a probability 11.11\%, based on our empirical findings in the Ybase simulations. In case of no spelling variant, the surname frequency was set to the census frequency; otherwise, the surname frequency was selected to be the sum of frequencies of all surnames that can be spelling variants of the original surname according to our spelling variant definition above. The last step portrays a scenario in which the adversary first looks for the target with the returned surname and if he cannot trace the target back, he tries all spelling variants. The number of expected individuals was found by multiplying the surname frequency by the number of males with the selected age and geographical location.
+
+We validated the results of the simulation by comparing them to real datasets of US residents from PeopleFinders (\url{www.peoplefinders.com}). These datasets are based on extensive mining of public records, such as voter and drivers license registries, and can be searched by a combination of surname, age, and state. We selected 30 random simulation rounds that passed two criteria: (a) the ages were restricted to 25-35 years to avoid potential confounding due to underrepresentation of minors in public records and conflicting records from deceased individuals (b) the expected number of individuals should be 10-100 to avoid overloading the website. In most cases the lists in PeopleFinders were smaller than expected from simulations. Although we cannot rule out incompleteness of the website, the results also suggest that any underestimation of the list size - if it exists at all - is not significant.
+
+\subsection{Profiling Y-STRs from sequencing data}
+\subsubsection{lobSTR usage}
+Unless otherwise specified, lobSTR v2.0.0 was used to profile Y-STRs from raw whole-genome sequencing data \cite{GymrekGolanRossetEtAl2012}. In brief, lobSTR acts in three steps: detecting reads with repetitive elements that are flanked with non-repetitive regions, aligning the flanking regions to a reference, and measuring the repeat length for each STR. 
+
+\emph{Improved Y-STR reference}
+
+We modified lobSTR's standard STR reference to include the genomic locations and nomenclatures of genealogical Y-STRs. These locations were found by conducting in silico PCR on the UCSC genome browser using published Y-STR primers \cite{KayserKittlerErlerEtAl2004,BoschLeeCalafellEtAl2002,ButlerDeckerValloneEtAl2006,HansonBerdosBallantyne2006,LimXueParkinEtAl2007,LeatEhrenreichBenjeddouEtAl2007,MalaspinaCiminelliViggianoEtAl1997,SchoskeValloneKlineEtAl2004,JoblingSamaraPandyaEtAl1996} and by searching the FamilyTreeDNA Y chromosome browser (\url{ymap.ftdna.com}). Several STR markers reside in duplicated regions of the Y chromosome. For instance, DYS385 has two distinct alleles in a single individual. Since lobSTR filters multi-mappers, we kept only one entry of these markers in the modified reference. Markers DYS448 and DYS449 consist of two STR regions separated by a non-repetitive region. For these, a separate reference entry was created for each region and the final genotype was determined by adding the alleles profiled at each of the two STR regions. 
+
+We did not include eight genealogical markers in the reference due to various technical reasons: markers GAAT1B07 and DYS724a/b (also known as CDYa/b) were excluded because their corresponding genomic coordinates could not be determined despite extensive literature searches.  DYS726 was excluded because the genetic genealogy nomenclature could not be determined. DYS425 is one of the four repetitive loci of DYF371 \cite{JoblingSamaraPandyaEtAl1996}, and using short reads we could not uniquely determine which locus a read originated from. DXYS156-Y was excluded because it is not specific to the Y-chromosome. Marker DYS19b was not included in because it is present in 0.2\% of the population. Marker DYS640 was incorrectly annotated in our original reference and discarded from further analysis. Marker DYS464a-d was excluded because in most cases we typed fewer than four alleles and could not accurately assign typed alleles to forms a-d.  In summary, our reference included 34 out of the 36 markers used by the SMGF panel and 79 out of the 87 markers in the most comprehensive test panel of FamilyTreeDNA. The genomic coordinates and conventions used for each Y-STR are given in \textbf{Supplementary Table \ref{tab:sursuptab3}}). All coordinates reported in this study follow the hg19 human reference build.
+
+\emph{Processing lobSTR calls}
+
+lobSTR returns base pair length differences from the UCSC genome reference. Genetic genealogy services use an STR nomenclature that follows the PCR product sizes according to arbitrary primers \cite{GusmaoButlerCarracedoEtAl2006}. Whenever available we used the NIST nomenclature to translate lobSTR results (\url{http://www.cstl.nist.gov/strbase/ystr_fact.htm}). For searches in the Ysearch database results were converted to FamilyTreeDNA nomenclature using a conversion table available from SMGF (\url{http://www.smgf.org/ychromosome/marker_standards.jspx}). 
+
+For Y-STRs with a single genomic location, the allele with the modal number of supporting reads was used. Y-STR alleles that showed a non-integer number of repeat copies were discarded. We manually inspected a small number of calls where the modal allele was supported by less than 60\% of reads aligned to the locus and enhanced the call by removing reads likely to be erroneous, such as reads that contain a high number of sequence mismatches, reads in which the STR resides towards the end of the read, or reads supporting alleles outside the normal range. Importantly, this procedure was executed completely blind to the true allele if it was known. For bi-mapper markers, such as DYS413a/b, the shortest repeat length was assigned to allele ``a'' and the next to allele ``b''. 
+
+\subsubsection{Comparing lobSTR to the CEPH Y-STR panel}
+
+\emph{General approach}
+
+Sequence data for the CEPH panel were downloaded from the NCBI Short Read Archive from experiment SRP009145, sample SRS269343, runs SRX103805-130812. The sample included 10 HGDP individuals: HGDP00456 (Mbuti Pygmy), HGDP00665 (Sardinian), HGDP01284 (Mandenka), HGDP00542 (Papuan), HGDP00521 (French), HGDP00778 (Han Chinese), HGDP01307 (Dai), HGDP00927 (Yoruba), HGDP01029 (San), HGDP00998 (Karitiana). Autosomal coverage was calculated using the samtools \cite{LiHandsakerWysokerEtAl2009} depth tool and gives the average depth of covered bases based on alignments using BWA \cite{LiDurbin2009a}. lobSTR 2.0.0 with the improved Y-STR panel was used for the analysis.
+
+Genotypes for 76 Y-STRs typed by capillary electrophoresis for the 10 HGDP samples were obtained from the CEPH website (\url{ftp://ftp.cephb.fr/hgdp_supp9/}). Forty-seven of these markers overlapped with the lobSTR reference and were used to evaluate lobSTR's ability to type Y-STRs.
+
+lobSTR reports alleles as the length difference from the UCSC, whereas the CEPH genotypes are reported as the number of repeat copies at each locus. To convert lobSTR output to the same format, we used for following equation: $r+l/p$, where $r$ is the number of base pairs of the STR of the lobSTR reference, $l$ is the reported lobSTR allele in base-pairs, and $p$ is the period of the Y-STR. For all individuals in which lobSTR recovered a genotype for DYS385a/b, only a single allele was returned. If the returned allele matched either the ``a'' or ``b'' form reported by CEPH, it was considered as correct. This follows our search strategy with the personal genomes, where these partial calls of multi-allelic markers were used to exclude matches not containing the lobSTR call for either allele. 
+
+We noticed that the lobSTR calls for all six individuals typed for DYS481 and all three individuals typed for DYS594 are exactly one repeat away from the results in the CEPH study. There is known nomenclature heterogeneity for these markers and some test kits report them with one shorter repeat than as reported by the NIST standard . Concordantly, we converted lobSTR calls to the shorter allele nomenclature to match that reported by CEPH.
+
+\emph{Number of markers profiled at different sequencing coverage levels}
+
+Based on our previous experience with lobSTR, we assumed that STR coverage is linearly related to autosomal coverage. For each genome, we used the Picard (\url{http://picard.sourceforge.net}) DownsampleSam tool to randomly down-sample reads from the lobSTR alignment file to simulate coverage levels corresponding to autosomal coverage ranging from 1x to 25x. For each coverage level, we repeated the lobSTR allelotyping step to call the Y-STRs. The best-fit saturation curve was found using nonlinear least squares to fit a hyperbolic curve and was extended to predict haplotype lengths for up to 50x coverage.
+
+\emph{Further investigation of wrong Y-STR calls}
+
+In our previous studies, we found that PCR stutter noise is a major source of error in calling STR alleles. This type of noise usually adds or subtracts a single repeat unit from the true allele. We noticed that the erroneous calls in DYS490 and DYS572 are several repeats away from the true allele, reducing the probability that these errors stem from stutter noise. Further analysis found that these two markers have X chromosome homologs, and that the calling errors can be attributed to misalignment of the X chromosome STRs. We also noticed that these markers were occasionally detected in the female genomes of the CEU panel, which provides further support for this hypothesis. Future algorithm improvements can use the homolog calls from the X chromosome to detect these errors.
+
+\subsection{Cases of Surname Leakage from Personal Genomes}
+\subsubsection{Querying genealogical databases}
+In all surname recovery experiments from personal genomes, database queries utilized the native search interfaces of the websites. 
+
+Ysearch was queried using the haplotype matching tool available at \url{http://www.ysearch.org/search_search.asp?uid=&freeentry=true}. Online searches were conducted with the default parameters and using the FamilyTreeDNA nomenclature. SMGF was queried using the tool at \url{http://www.smgf.org/ychromosome/search.jspx} with the options ``Search by Match\%) = 85\%'' using the NIST nomenclature.
+
+\subsubsection{Feasibility of record retrievals with Illumina}
+\emph{The US male sample from our lab collection}
+
+The sequencing experiment was approved by the MIT Committee on the Use of Humans as Experimental Subjects (COUHES).  To comply with the COUHES approval, we cannot share the specific Y-STR results, since this could lead to identification of the individual. As an alternative, we provide summary statistics of the length distribution of the detected Y-STR makers. 
+
+Four Catch-All buccal swabs (Epicentre, QEC89100) were used to collect the sample according to the manufacturer's protocol. Genomic DNA was obtained by QuickExtract (Epicentre), followed by phenol-chloroform purification and ethanol precipitation. Library preparation was performed according to the standard Illumina protocol. Three runs of 101bp paired-end reads were generated with a GAIIx platform, generating 740 million reads. Autosomal coverage of 13x (after removing PCR duplicates) was measured using a conventional alignment pipeline as previously described \cite{ErlichEdvardsonHodgesEtAl2011}.  \textbf{Supplementary Figure \ref{fig:sursup4}A} shows the overlap between the markers that were detected by Illumina versus the genealogical profile from Sorenson Genomics. textbf{Supplementary Figure \ref{fig:sursup4}B} shows the number of STRs that were detected using Illumina and Sorenson as a function of their lengths. 
+
+\emph{Database retrieval}
+
+For the 10 HGDP samples and the US male sample, we supplemented our downloaded copy of the Ysearch database with capillary electrophoresis results. Retrieval of records was conducted with the same scripts used for the Y-STR simulations described above. As an additional validation for our results, we created a Ysearch record for the US male using the Ysearch.org website that does not disclose the true surname of the sample and consists of the Y-STR makers that are shared between Sorenson Genomics and Ysearch. Again, a search with the default website interface returned our sample as the top match.
+
+\subsubsection{Analyzing Michael Snyder's genome}
+Raw reads for the blood-derived and saliva-derived DNA of Michael Snyder's genome were downloaded from the NCBI Sequence Read Archive with accessions SRX097307 and SRX097312, respectively. lobSTR 1.0.6 with the native lobSTR reference was used to process both datasets using 20 processors on a server with four 12-core AMD Opteron 6100 Series. Forty-eight Y-STR calls were generated. All Y-STR calls were concordant between the blood-derived and the saliva-derived samples. 
+
+Ysearch link to search this haplotype:
+
+\url{http://www.ysearch.org/search_results.asp?uid=&freeentry=true&L1=14&L2=0&L3=16&L4=0&L5=10&L6=0&L7=0&L8=11&L9=13&L10=0&L11=0&L12=12&L13=0&L14=15&L15=0&L16=0&L17=11&L18=11&L19=0&L20=0&L21=0&L22=0&L23=0&L24=0&L25=0&L26=0&L27=0&L28=0&L29=0&L30=0&L31=0&L32=0&L33=0&L34=14&L35=18&L36=16&L37=19&L38=0&L39=0&L40=12&L41=10&L54=11&L55=8&L56=0&L57=0&L58=8&L59=11&L60=10&L61=8&L62=10&L63=0&L42=0&L64=22&L65=0&L66=0&L67=11&L68=12&L69=12&L70=0&L71=0&L49=13&L72=26&L73=0&L51=0&L74=13&L75=11&L76=12&L77=0&L78=9&L79=12&L80=11&L43=0&L44=12&L45=12&L46=0&L47=0&L48=13&L50=10&L52=0&L53=0&L81=9&L82=11&L83=14&L84=9&L85=15&L86=12&L87=0&L88=0&L89=0&L90=11&L91=10&L92=11&L93=0&L94=10&L95=11&L96=0&L97=0&L98=0&L99=0&L100=0&min_markers=8&mismatch_type=absolute&mismatches_max=0&mismatches_sliding_starting_marker=8&recaptcha_challenge_field=03AHJ_VutYkPmq2enCrhZuu94gU9-tcPRX33GpxRzVYZGBmnUWrEecYh8jggsJ0SU37BuJhpK_nMfhB0r8QTNBIe-_lpzJtyC3IRZ6SXlIn1Tnwb9vfGNo5ZojEQ8_8OlQgtCuVj5rTLfLLEXi4vr0-uFyo7upKwcsOFnxGg9SkL81vHEnACEx9H8&recaptcha_response_field=Weighthe+resume&haplo=&region=}
+
+SMGF link to search this haplotype:
+
+\url{http://www.smgf.org/ychromosome/search_results.jspx?labStandard=NIST&searchType=genetic&matchPercent=match_85&showCountries=on&showMissingData=on&showAllSurnames=on&DYS385_a=None&DYS385_b=None&DYS426=11&DYS447=None&DYS461=None&DYS388=13&DYS437=None&DYS448=None&DYS462=12&DYS389I=None&DYS438=10&DYS449=None&DYS463=None&DYS389B=None&DYS439=None&DYS452=None&DYS464_a=None&DYS464_b=None&DYS390=None&DYS441=14&DYS454=11&DYS464_c=None&DYS464_d=None&DYS391=10&DYS442=17&DYS455=11&GGAAT1B07=None&DYS392=12&DYS444=13&DYS456=14&YCAII_a=None&YCAII_b=None&DYS393=14&DYS445=10&DYS458=15&YGATAA10=14&DYS394=16&DYS446=None&DYS459_a=None&DYS459_b=None&YGATAC4=None&DYS460=None&YGATAH4=None}
+
+\subsubsection{Analyzing John West's genome}
+
+Raw reads for John West's genome were downloaded from NCBI Sequence Read Archive with accession SRA018104. lobSTR 1.0.6 with the improved Y-STR index using the same hardware settings for Michael Snyder genome. 
+
+Ysearch link to search this haplotype:
+
+\url{http://www.ysearch.org/search_results.asp?uid=&freeentry=true&L1=13&L2=0&L3=14&L4=0&L5=11&L6=11&L7=14&L8=12&L9=12&L10=13&L11=0&L12=13&L13=0&L14=17&L15=0&L16=0&L17=11&L18=10&L19=0&L20=15&L21=0&L22=0&L23=0&L24=0&L25=0&L26=0&L27=0&L28=0&L29=0&L30=11&L31=10&L32=19&L33=23&L34=15&L35=19&L36=17&L37=17&L38=0&L39=0&L40=12&L41=12&L54=11&L55=9&L56=0&L57=0&L58=8&L59=10&L60=10&L61=8&L62=9&L63=10&L42=0&L64=0&L65=0&L66=16&L67=10&L68=12&L69=12&L70=15&L71=0&L49=12&L72=22&L73=0&L51=13&L74=0&L75=11&L76=14&L77=0&L78=0&L79=0&L80=0&L43=12&L44=11&L45=14&L46=0&L47=0&L48=13&L50=13&L52=0&L53=19&L81=9&L82=0&L83=16&L84=9&L85=16&L86=12&L87=11&L88=13&L89=13&L90=11&L91=10&L92=12&L93=0&L94=11&L95=10&L96=0&L97=0&L98=0&L99=0&L100=0&min_markers=8&mismatch_type=absolute&mismatches_max=0&mismatches_sliding_starting_marker=8&recaptcha_challenge_field=03AHJ_VusNldFpOWxRw2dib-HZoXRWEvEIRysd8fba2-AEWcvfROt3W2n0f6ARIuHaqcRgZ1JE92e0aXBEDDpPLRfhPpAYpKvyARJb0FqPs1fP_HPkMw8AiwilCMic_tD_ntx119pL-fmM96E18ekPuaxXIu-0Dw0hIg&recaptcha_response_field=Hcacco+and&haplo=&region=}
+
+SMGF link to search this haplotype:
+
+\url{http://www.smgf.org/ychromosome/search_results.jspx?labStandard=NIST&searchType=genetic&matchPercent=match_85&showCountries=on&showMissingData=on&showAllSurnames=on&DYS385_a=11&DYS385_b=14&DYS426=12&DYS447=None&DYS461=12&DYS388=12&DYS437=15&DYS448=None&DYS462=11&DYS389I=None&DYS438=12&DYS449=None&DYS463=19&DYS389B=None&DYS439=13&DYS452=None&DYS464_a=None&DYS464_b=None&DYS390=None&DYS441=14&DYS454=11&DYS464_c=None&DYS464_d=None&DYS391=11&DYS442=17&DYS455=11&GGAAT1B07=None&DYS392=13&DYS444=12&DYS456=15&YCAII_a=19&YCAII_b=23&DYS393=13&DYS445=13&DYS458=17&YGATAA10=16&DYS394=14&DYS446=13&DYS459_a=None&DYS459_b=None&YGATAC4=None&DYS460=11&YGATAH4=11} 
+
+\subsubsection{Surname recovery using the Craig Venter dataset}
+Sequence reads for the Venter genome were downloaded from TraceDB (Genbank accession ABBA00000000). We trimmed the first 50bp of every read due to the high error rate at the beginning of Sanger sequence reads and discarded reads whose length after trimming was less than 100bp. 
+
+At the default settings, lobSTR 2.0.0 with the improved Y-STR index returned 40 Y-STRs after 40 minutes of runtime using the same hardware settings as described above. Markers returning a non-integer number of repeat copies were discarded. 
+Ysearch link to search this haplotype:
+
+\url{http://www.ysearch.org/search_search.asp?fail=1&uid=&freeentry=true&L1=0&L2=0&L3=0&L4=0&L5=10&L6=0&L7=0&L8=12&L9=12&L10=12&L11=0&L12=13&L13=0&L14=17&L15=9&L16=0&L17=11&L18=11&L19=0&L20=0&L21=0&L22=0&L23=0&L24=0&L25=0&L26=0&L27=0&L28=0&L29=0&L30=0&L31=0&L32=19&L33=23&L34=0&L35=0&L36=0&L37=17&L38=0&L39=0&L40=12&L41=12&L54=12&L55=9&L56=15&L57=16&L58=9&L59=10&L60=10&L61=8&L62=0&L63=0&L42=0&L64=23&L65=0&L66=16&L67=10&L68=12&L69=0&L70=16&L71=8&L49=0&L72=22&L73=0&L51=0&L74=12&L75=11&L76=0&L77=0&L78=0&L79=13&L80=12&L43=12&L44=11&L45=0&L46=0&L47=0&L48=0&L50=0&L52=0&L53=0&L81=0&L82=0&L83=16&L84=9&L85=0&L86=0&L87=0&L88=0&L89=12&L90=11&L91=0&L92=0&L93=12&L94=11&L95=0&L96=25&L97=0&L98=0&L99=0&L100=0&min_markers=8&mismatch_type=absolute&mismatches_max=0&mismatches_sliding_starting_marker=8&recaptcha_challenge_field=03AHJ_VusyS2psJJIgHViP9Prgl35afzMpQdoc1uJYw3a1I3Lob-ycMFtplYmSlwFUE-GDzsh-4mdVv9uutxFV7-2qugmcKl8jVTG3EnVPwKXNihNKdv-TfVxulspdX1RO-5XhOBVpnPWoZhnxE5OVRCTnXF7fVgXO7TAa-0c-ycvvN9Zp-JDq_Io&recaptcha_response_field=tsshora+infinite&haplo=&region=}
+
+SMGF link to search this haplotype:
+
+\url{http://www.smgf.org/ychromosome/search_results.jspx?labStandard=NIST&searchType=genetic&matchPercent=match_85&showCountries=on&showMissingData=on&showAllSurnames=on&DYS385_a=None&DYS385_b=None&DYS426=12&DYS447=None&DYS461=12&DYS388=12&DYS437=None&DYS448=None&DYS462=11&DYS389I=None&DYS438=12&DYS449=None&DYS463=None&DYS389B=None&DYS439=12&DYS452=None&DYS464_a=None&DYS464_b=None&DYS390=None&DYS441=None&DYS454=11&DYS464_c=None&DYS464_d=None&DYS391=10&DYS442=17&DYS455=11&GGAAT1B07=None&DYS392=13&DYS444=None&DYS456=None&YCAII_a=19&YCAII_b=23&DYS393=None&DYS445=None&DYS458=17&YGATAA10=None&DYS394=None&DYS446=None&DYS459_a=9&DYS459_b=None&YGATAC4=None&DYS460=None&YGATAH4=None}
+
+Querying Ysearch as described above returned the entry VPBT4 with surname ``Venter'' as the top hit. The results, including the trace numbers of supporting reads, are summarized in \textbf{Supplementary Table \ref{tab:sursuptab4}} . Concordant with Craig Venter's paternal roots, the top match was the only Venter record in Ysearch with a UK ancestor. The algorithm did not return any of the other dozen Venter entries with ancestors mostly from Germany and South Africa (\textbf{Supplementary Figure \ref{fig:sursup5}} and \textbf{Supplementary Table \ref{tab:sursuptab5}}), emphasizing the specificity of the recovery.
+
+Demographic profiling was conducted using PeopleFinders and USSearch (\url{www.ussearch.com}). Female names and users that did not exactly match year of birth=1946 were discarded. 
+
+\subsubsection{CEU genomes}
+The CEU male datasets were accessed through the 1000Genomes publicly available Amazon S3 bucket and the European Nucleotide Archive. In cases of father-son pairs, we selected the father for further analysis. All datasets were first processed with lobSTR 2.0.0 with the native STR reference. We reran the 18 CEU genomes that returned the largest number of markers with the improved Y-STR panel. Overall, these genomes had longer read lengths of 76-100bp compared to 36-51bp and were therefore more amenable to STR calling. To validate calls in the low coverage genomes, Y-STRs typed using capillary electrophoresis for 16 Y-STR markers for 10 of the 17 individuals were obtained from He, et al. \cite{HeGitschierZerjalEtAl2009}. In 41/43 comparable markers the genotypes were concordant. The two incorrect cases were off by a single repeat unit and covered only by a single read. All searches were first performed using only the markers typed using lobSTR. Four genomes were supplemented with the markers from He, et al. since their searches returned a large number of poorly matching records due to low number of calls in popular markers. Autosomal coverages were measured as reported for the HGDP samples.
+
+\subsubsection{Determining the probability of false surname recovery}
+
+We determined the probability that at least one household would randomly match the surname and demographic characteristics of the CEU pedigrees. Let $n$ be the number of households that hold the recovered surname in the geographical region, p the probability that a household matches additional metadata available for the sample, and $f_1$ and $f_2$ the frequencies of the recovered surname of the paternal and maternal grandfathers. If only one surname was recovered, $f_2=1$. The probability of at least a single random match is:
+
+\begin{equation}
+\label{eq:sureq7}
+P(\geq 1 \texttt{ match}) = 1-(1-p)^n
+\end{equation}
+
+In our case, $n$ is the number of married households in Utah with the recovered surname. We approximate $n \approx \lceil n_{utah}f_1 \rceil$, where $n_{utah}$ is the total number of married households in Utah, which according to the 2002 census matches to 443,210. 
+
+For p, we accounted for the additional metadata regarding the number of children, male/female order of the children, and knowledge of the surname of the other set of grandparents. We set p to:
+
+\begin{equation}
+\label{eq:sureq8}
+p = f_2p_c \frac{1}{2^k}
+\end{equation}
+
+where $p_c$ is the probability that a household has the given number of children, $k$ is the number of children in the pedigree and $1/2^k$  is the probability that the male/female order of the children matches that in the pedigree. The upper bound of $p_c$ is 3.5\%, which corresponds to the percentage of households in Utah with 5 or more children as determined by the 2000 US Census using the search tool at \url{factfinder2.census.gov}. We used this number because data on larger households were not available. This gave the probability of finding at least one random match as:
+
+\begin{equation}
+\label{eq:sureq9}
+P(\geq 1 \texttt{ match}) = 1-(1-f_2p_c\frac{1}{2^k})^{n_{utah}f_1}
+\end{equation}
+
+We note that the order in which surnames are assigned to surnames 1 and 2 does not significantly change this probability as, $1-(1-p)^n$ converges to $np$ for small $p$, and therefore:
+
+\begin{equation}
+\label{eq:sureq10}
+P(\geq 1 \texttt{ match}) \approx np = n_{utah}f_Pf_Mp_c\frac{1}{2^k}
+\end{equation}
+
+which also gives the expected number of households that give random matches to the desired characteristics. 
+
+One limitation in our analysis is the $n \approx \lceil n_{utah} f_1 \rceil$ approximation that implies that the surname distribution in Utah is very close the surname distribution in the entire US. These two distributions are expected to be relatively close for highly prevalent surnames, but extremely rare surnames can be quite localized. This case was only of a concern for pedigree 3, where its surname is found in only a few hundred individuals in the US. To test the robustness of our analysis, we re-calculated the probability of a random match for this pedigree as if all individuals in the US with this surname live in Utah and each individual is a member of a distinct household. In this scenario, the probability of a random match was 0.3\%, which is still significantly low. Notice that this analysis is extremely conservative. The assumption that each of the hundreds of individuals reside in a distinct household is not realistic. In addition, we did not take into account additional metadata, such as the probability to find the exact number of children and the fact that all grandparents were alive during the last year of CEU sample collection, which should further drive down the probability of a random match.
+
+\subsection{Y-STR masking and imputation}
+One potential solution to surname leakage is to mask the Y-STR loci. However, genetic masking is sensitive to imputation strategies. A striking example of this limitation was the ability to recover Jim Watson's masked ApoE status from adjacent SNPs in linkage disequilibrium \cite{NyholtYuVisscher2009}, raising the possibility of also bypassing Y-STR masking.
+
+Theoretically, it seems possible to impute genealogical Y-STR haplotypes from Y-SNPs. The rate of SNPs is $3\times 10^{-8}$ mutations per bp per generation, which translates to a rate of 0.5 \emph{de novo} mutations in the euchromatic region of the Y chromosome per generation. On the other hand, Y-STR variations occur at a smaller rate of $\sim$0.1 mutations per haplotype of 30 markers per generation. This rate difference has been recently demonstrated by deep sequencing the Y chromosomes of two individuals that were separated by 13 meiosis events \cite{XueWangLongEtAl2009}. The two individuals had identical Y-STR haplotypes but differed at four Y-SNPs. The excess of \emph{de novo} SNPs over STRs implies that Y-STR haplotypes can be uniquely tagged by Y-SNP haplotypes.
+
+Y chromosome imputation has different properties imputation in autosomal regions. In the autosomes, recombination divides the chromosome into segments with distinct genealogies. The task of autosomal imputation algorithms is to detect segment transitions and match the corresponding ancestral haplotype block from the reference panel \cite{HalperinStephan2009,MarchiniHowie2010}. Y-STRs reside on one long chromosome block. The divide and conquer approach cannot work and the entire Y chromosome block must be imputed in a single step. On one hand, this drastically reduces the computation time needed for imputation. On the other hand, a necessary condition for accurate imputation is that the reference panel must include the Y-STR alleles as a single haplotype block. Accurate imputation will not work if the masked STR alleles are scattered across a collection of reference chromosomes. For instance, if the masked Y-STR haplotype is 14-15-20-11, and the reference has four chromosomes: 14-X-X-X, X-15-X-X, X-X-20-X, and X-X-X-11, where X indicates a mismatch to the masked haplotype, imputation will not return an accurate result. Given that condition, every imputed Y-STR haplotype (as opposed to alleles in the autosome) must be documented in the reference panel. 
+
+We evaluated the dependency between the reference panel size and the success rates. We focused on Ysearch since SMGF does not list the raw Y-STR haplotypes. Ysearch contains approximately 34,000 unique haplotypes of 30 popular STR markers. These haplotypes cover 34.5\% of the haplotypes that segregate in the population according to the Good-Turing frequency estimation procedure (29). The reference panels were constructed by re-sampling Ysearch haplotypes using a two-stage procedure: (a) with a probability of 100\%-34.5=65.5\%, a mock haplotype was sampled. This denotes a haplotype in the reference panel that is not in Ysearch. Otherwise, the procedure continued to the next stage (b) a Ysearch haplotype was sampled according to its frequency in the database. This two-stage procedure was run N times, where N was the size of the reference panel. Simulating Y-SNPs was not necessary because we assumed that given the size of the haplotype block, imputation always correctly recovers the Y-STR haplotype from the Y-SNP, as long as the former is in the panel. We then conducted surname recovery experiments with YBase using the Ysearch database and the simulated reference panel. If a YBase haplotype was not part of the reference panel, then surname recovery automatically failed and was categorized under the ‘unknown' state. 
+
+Our results show that with large reference panels of 50,000 male genomes from the US population, the surname recovery success rate is 5\% (\textbf{Supplementary Figure \ref{fig:sursup6}}). This suggests that imputation is not an immediate threat to masking, but can be problematic as a long term solution.
+
+In addition, we noticed that some community efforts, such as Y Chromosome Genome Comparison (\url{daver.info/ysub}), have started linking between Y-SNPs and surnames. These efforts might also enable the bypassing of Y-STR masking.
 
 \pagebreak
 \section{Supplemental Figures}
@@ -220,7 +430,7 @@ where $S$ is the set of surnames in the sample that are known to be present in t
 \label{fig:sursup4}
 \includegraphics[width=0.65\textwidth]{Figures/App1/SuppFig4.jpg}
 \end{figure}
-\textbf{Comparison between Illumina Y-STR profiling and the Sorenson Genomics genetic genealogy service.} \textbf{(A)} Illumina profiling returned the results of 38 Y-STR markers. The genetic genealogy service uses a panel of 49 markers, 39 of which are included in lobSTR’s Y-STR reference. The results of all 17 markers that were profiled by both strategies were identical. \textbf{(B)} The distribution of total STR region lengths is shown for the markers typed by Sorenson (blue) versus markers typed by lobSTR (red).
+\textbf{Comparison between Illumina Y-STR profiling and the Sorenson Genomics genetic genealogy service.} \textbf{(A)} Illumina profiling returned the results of 38 Y-STR markers. The genetic genealogy service uses a panel of 49 markers, 39 of which are included in lobSTR's Y-STR reference. The results of all 17 markers that were profiled by both strategies were identical. \textbf{(B)} The distribution of total STR region lengths is shown for the markers typed by Sorenson (blue) versus markers typed by lobSTR (red).
 
 \pagebreak
 \subsection{Supplemental Figure 5}
@@ -459,7 +669,7 @@ YCAIIb    & 23 & 23 \\
 \subsection{Supplemental Table 5}
 \begin{table}[h!]
 \centering
-\label{tab:sursuptab4}
+\label{tab:sursuptab5}
 \begin{adjustbox}{width=1\textwidth}
 \begin{tabular}{l l l}
 \hline
