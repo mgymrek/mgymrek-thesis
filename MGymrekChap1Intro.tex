@@ -1,3 +1,5 @@
+\iffalse \bibliography{MGymrekRefs.bib} \fi
+
 \chapter{Introduction}
 
 \section{Overview}
@@ -19,11 +21,70 @@ intro: define STRs, genome composition
 \subsection{Genome-wide composition of STRs}
 \subsection{Applications of STRs}
 forensics, genealogy, linkage analysis
+\subsection{Processes leading to STR variation}
+
+\section{Evidence from model organisms of a regulatory role for STRs}
+% TODO - specific examples
+% TODO - comparative
 
 \section{STRs in human disease and phenotypic variation}
-intro: 
+Dozens of STRs have been implicated in both disease and molecular phenotypes in humans. In nearly all of these cases, the resulting phenotype showed a quantitative relationship with the number of repeats, strongly suggesting STRs may play an important role in complex traits.
+
 \subsection{Dozens of disorders are caused by STR expansions}
+% intro, examples
+STR expansions are known to cause dozens of human single-gene, Mendelian disorders \cite{Mirkin2007}, affecting more than hundreds of thousands of patients in the U.S. \cite{CoffeeKeithAlbizuaEtAl2009}. The majority of these are due to expansions of trinucleotide repeats, and nearly all affect neurological function, most with a late onset disease course. For instance, an exonic CAG repeat expansion encoding polyglutamine results in Huntington's Disease, a devastating neurological disorder \cite{Mirkin2007}; CGG expansion disrupts a methylation site on the X chrmosome leading to Fragile X Syndrome, one of the leading cuases of mental retardation in males \cite{LyonLaverYuEtAl2010}; a CUG expansion in the 3' untranslated (UTR) region \emph{DPMK} results in myotonic dystrophy \cite{BrookMcCurrachHarleyEtAl1992}, a severe multisystemic form of muscular dystrophy. 
+Other classes of repeats have been implicated in STR expansion diseases. Recently, high throughput sequencing scans for causative SNPs fortuitously revealed that a hexanucleotide expansion in \emph{C9orf72} is responsible for 9p21-linked amyotrophic lateral sclerosis-frontotemporal dementia (ALS-FTD) \cite{RentonMajounieWaiteEtAl}. A summary of STR expansion diseases is shown in \textbf{Table \ref{tab:intro1}}.
+
+% TODO complete table
+\begin{table}
+\label{tab:intro1}
+\begin{tabular}{c c c c c c}
+\hline
+Disorder & Gene & Repeat & Normal range & Pathogenic range & References \\
+\hline
+\hline
+\end{tabular}
+\end{table}
+
+% mechanism?
+The mechanisms by which most of these expansions lead to disease are still poorly understood. In cases of exonic repeat expansions, particularly polyglutamine expansions such as Huntington's Disease, it is thought that the expanded amino acid tracts form toxic aggregates that accumulate over time, consistent with the late-onset nature of these diseases \cite{MichalikVanBroeckhoven2003}. Alternatively, it was recently shown that a key factor in Huntington's Disease may be repeat-length dependent aberrant splicing of \emph{HTT} \cite{SathasivamNeuederGipsonEtAl2013}. Other proposed pathogenic mechanisms include loss of protein expression, over-expression of the wildtype protein copy, and toxic gain of function of RNAs encoding expanded repeats \cite{Pearson2011}. Recent studies have found evidence that an alternative mechanism, ``Repeat-associated non-ATG translation'', termed ``RAN-translation'', may be responsible for rendering CAG repeats toxic. Under this phenomenon, expanded CAG repeats in RNA may be translated in the absence of an ATG start codon, and may produce transcripts under all seven possible reading frames \cite{Pearson2011}. These ``RAN'' transcripts have already been identified in patients with a variety of repeat disorders, including spinocerebellar ataxia type 8 (SCA8), myotonic dystrophy type 1 (DM1), Fragile-X tremor ataxia syndrome (FXTAS), and ALS-FTD \cite{ClearyRanum2014}.
+
+% anticipation, correlation with repeat number
+One hallmark of repeat disorders is the phenomenon of ``anticipation'' in which the severity of the condition tends to increase and the age of onset tends to decrease with each generation. This generally corresponds to an in increase in repeat number for the expanded allele in each generation. Many of these repeats, experience a bi-phasic mutation process: under a certain number of repeats the region is stable with relatively low mutation rate. However, once a threshold length has been passed, the repeat will have an extremely high mutation rate and tend toward massive expansions \cite{BourgeoisCoffeyRiveraEtAl2009}. In many cases, the number of repeats is directly related to phenotype. For instance, there is a negative linear relationship between CAG repeat number and age of onset of Huntington's Disease \cite{Rubinsztein2002}. Interestingly, this suggests that unlike point mutations, which can serve as an ``on/off'' switch for Mendelian and other disorders, repeats possess a more fine-tunable mechanism to affect phenotype by adjusting the number of repeats on a quantitative, rather than a binary, scale.
+
+% polymorphism in population 
+Many such pathogenic STR expansions have been characterized, clearly indicating a biological function for at least a subset of repetitive elements. However, the majority of repeats remain uncharacterized and little is known about the extent of polymorphism and allele ranges at these and other STRs in healthy individuals. As mentioned above, STRs are prone to replication slippage events that cause them to mutate rapdily. Whereas intermediate length STRs of $\sim<$200bp tend to mutate in a stepwise fashion. longer repeats such as those involved in expansion disorders may for unusual non-B DNA structures \cite{KozlowskiSobczakKrzyzosiak2010} that cause rapid expansions, leading to unusual behavior in pathogenic conditions. We hypothesize that whereas longer unstable repeats radically disrupt function of a given locus, leading to severe mono-genic disorders, STRs in the intermediate range length may be responsible for fine-tuning genomic regulation and for contributing to more incremental variation, which could make an important contribution to more complex traits in humans.
+
+\subsection{STRs in complex human traits}
+% TODO
+
 \subsection{Mechanisms for STR involvement in genome regulation}
+STRs are found in at least 5\% of human protein-coding genes \cite{ODushlaineEdwardsParkEtAl2005} and are abundant in intragenic regions and UTRs \cite{LiKorolFahimaEtAl2004}. These rapidly evolving elements provide an evolutionary substrate to incrementally affect gene activity without introducing major sequences changes. STRs have been demonstrated or hypothesized to affect gene regulation in several ways, summarized below and in \textbf{Table \ref{tab:intro2}}.
+
+\subsubsection{Transcribed STRs}
+% exonic
+As described above, many putative pathogenic STRs lie in coding regions and may lead to disease through mechanisms such as protein or RNA aggregation, RAN-translation, or aberrant splicing. Alternative mechanisms could allow exonic STRs to affect protin function. For instance, STR mutations in coding regions could function to silence genes by introducing frameshift mutations leading to premature stop codons \cite{GemayelVincesLegendreEtAl2010}, especially in the case of non tri- or hexa-nucleotide repeats. Additionally, expansions or contractions could alter spacing between protein domains, leading to a change in function.
+
+% intronic
+Intronic repeats may also affect gene regulation. Lengths of intronic STRs have been shown to affect gene expression \cite{GebhardtZankerBrandt1999}, in some cases through altering transcription factor binding sites. For example, a TATC repeat in \emph{TH} affects binding of the transcription factor ZNF191 \cite{AlbaneseBiguetKieferEtAl2001}. Several studies have also shown that intronic STRs may regulate splicing efficiency in a repeat-specific manner. For instance, the length of an intronic TG repeat in \emph{CFTR} is directly related with inclusion of the adjacent exon \cite{HefferonGromanYurkEtAl2004}, which is likely to be due to effects of the repeat on RNA secondary structure. An intronic CA repeat in \emph{eNOS} was shown to regulate splicing by affecting binding of the splicing factor HnRNP L \cite{HuiStanglLaneEtAl2003}, and it was later shown that intronic CA repeats may have a widespread effect on splicing \cite{HuiHungHeinerEtAl2005}.
+
+% UTRs
+Finally, STRs in UTRs may affect gene regulation. For example, a CTG/CAG repeat in the 3'UTR of \emph{DMPK} is implicated in the repeat expansion disorder myotonic dystrophy 1, and is thought to sequester splicing factors leading to aberrant splicing \cite{KoscianskaWitkosKozlowskaEtAl2015}. 3'UTR repeats may also harbor microRNA binding sites, affecting gene regulation.
+
+\subsubsection{STR lengths influence promoter and enhancer activity}
+In addition to transcribed regions, STRs can affect the function of genomic regulatory elements through several mechanisms. AC dinucleotides are over-represented in predicted \emph{cis}-regulatory elements \cite{RockmanWray2002}. Recently, it was shown that dinucleotide repeats are a hallmark of enhancer elements in \emph{Drosophila} and human cell lines \cite{Yanez-CunaArnoldStampfelEtAl2014}. This suggests they may provide an abundant source of transcriptional regulation in these elements. Heidari, \emph{et al.} \cite{HeidariNarimanSalehFamEsmaeilzadeh-GharehdaghiEtAl2012} demonstrated that a GA repeat in the promoter of \emph{SOX5} can affect nucleosome processing, affecting downstream gene expression. This finding is supported by a study in yeast that found variation in repeat length had a strong effect on nucleosome positioning and gene expression in 25 of 33 randomly chosen STR-containing promoters \cite{VincesLegendreCaldaraEtAl2009}. STRs may also bind transcription factors and create a number of binding sites dependent on the number of repeats. Guillon \emph{et al.} found that the oncogenic EWSR1-FLI1 fusion protein formed in Ewing Sarcoma preferentially binds GGAA repeats \cite{GuillonTirodeBoevaEtAl2009}. Interestingly, a recently study found that a reported genome-wide association study (GWAS) signal for Ewing Sarcoma actually points to a SNP for which the alternate allele joins two adjacent GGAA repeats into one long repeat tract, resulting in overexpression of the nearby gene \emph{EGR2} \cite{GrunewaldBernardGilardi-HebenstreitEtAl2015}. In another example, a pentanucleotide repeat in the promoter of \emph{PIG3} creates a varying number of \emph{p53} binding sites, affecting downstream expression \cite{ContenteDittmerKochEtAl2002}.
+
+% TODO complete table
+\begin{table}
+\label{tab:intro2}
+\begin{tabular}{c c c c c c}
+\hline
+\hline
+\hline
+\end{tabular}
+\end{table}
+
+Together, these examples show clear evidence that STRs may regulate quantitative traits, such as gene expression, transcription factor binding, and splicing efficiency, in a repeat-dependent manner and therefore are prime candidates for contributing to complex traits in humans.
 
 \section{Methods for genotyping STRs}
 intro:
@@ -37,7 +98,6 @@ intro:
 pac-bio, nanopore
 
 \section{Population-wide characteristics of STR variation}
-\subsection{Processes leading to STR variation}
 \subsection{Previous STR catalogs}
 \subsection{Catalogs of other complex variants}
 
