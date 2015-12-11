@@ -1,3 +1,68 @@
 \chapter{Introduction}
 
-% TODO write this!
+\section{Overview}
+
+% Goal of genomics
+A central goal in genomics is to understand the genetic variants that underlie phenotypic changes and lead to disease. Recent studies have identified thousands of genetic loci associated with human phenotypes. Since the advent of next generation sequencing, the majority of genomic studies have focused on single nucleotide polymorphisms (SNPs). These are both the simplest type of variation to genotype and one of the easiest to model. However, a wide range of other classes of variants is important for controlling phenotypes.
+
+% STRs as a model
+Short tandem repeats (STRs) consist of period DNA motifs of 1-6bp and comprise of more than 1\% of the human genome. Their repetitive structure induces DNA polymerase slippage events that add or delete repeat units, resulting in mutation rates that are orders of magnitude higher than those for most other variant types. STRs are implicated in more than 40 human diseases, mostly consisting of Mendelian disorders caused by large expansions of trinucleotide repeats. Additionally, several dozen single gene studies have shown that STRs can be involved in quantitative traits including gene expression. Because of their abundance, high polymorphism rates, and previous implication of functional roles, we focused on STRs as a model to investigate the role of complex variants in human phenotypes.
+
+% What I present as our contribution
+Here I present our contributions to enable the first large scale studies of STR variation and reveal that these loci play a significant role in complex traits in humans. In the first part of this thesis, we develop novel tools for high-throughput STR analysis from next generation sequencing data (\textbf{\autoref{chap:lobstr}, \autoref{chap:pbv}}). We then apply these methods to large sequencing cohorts consisting of thousands of samples with diverse origins to provide the first population-wide catalog of hundreds of thousands of previously uncharacterized STR loci (\textbf{\autoref{chap:catalog}, \autoref{chap:sgdp}}). An important aspect of this work has been a commitment to maximize utility of our results for the wider genomics community through providing open-source software packages and online visualization tools that are alredy being utilized by other researchers. In the second part of this thesis, we interrogate the role of STRs in complex traits, focusing on gene expression as an initial phenotype (\textbf{\autoref{chap:estr}}). This study reveals more than 2,000 STRs whose lengths are correlated with gene expression (termed ``expression STRs'', or eSTRs) and shows that STRs make a significant contribution to regulating expression of nearby genes. These loci are enriched in putative regulatory regions and are predicted to modulate regulatory activity. These results highlight the contribution of STRs to the genetic architecture of gene expression and complex traits in humans.
+
+% To frame this work
+To frame this work, I first review properties and applications of STRs and what we know about their contribution to disease and molecular phenotypes in humans. Next, I describe challenges in developing high throughput methods for STR analysis and state of the art experimental and bioinformatic methods for doing so. I summarize what we have learned to date about patterns of STR variation in humans using these methods. Then, I review what has been revealed about the genetic architecture of gene expression through SNP studies and the contribution of gene regulation to human conditons. I examine evidence that suggests variants such as STRs that are not well tagged by common SNPs may play an important role in these traits. Finally, I summarize the contributions of this thesis toward enabling large scale STR analysis and highlighting an important role fo STRs in human phenotypes.
+
+\section{STRs are abundant in the human genome}
+intro: define STRs, genome composition
+\subsection{Genome-wide composition of STRs}
+\subsection{Applications of STRs}
+forensics, genealogy, linkage analysis
+
+\section{STRs in human disease and phenotypic variation}
+intro: 
+\subsection{Dozens of disorders are caused by STR expansions}
+\subsection{Mechanisms for STR involvement in genome regulation}
+
+\section{Methods for genotyping STRs}
+intro:
+\subsection{Capillary electrophoresis}
+\subsection{Genotyping STRs from next-generation sequencing}
+\subsubsection{Challenges of genotyping STRs from short reads}
+\subsection{Processes leading to STR variation}
+\subsubsection{Existing tools for genotyping STRs from sequencing data}
+\subsubsection{Challenges in visualizing complex variatns}
+\subsection{Long-read technology can capture long repetitive regions}
+pac-bio, nanopore
+
+\section{Population-wide characteristics of STR variation}
+\subsection{Processes leading to STR variation}
+\subsection{Previous STR catalogs}
+\subsection{Catalogs of other complex variants}
+
+\section{Genetic architecture of gene expression and complex traits}
+\subsection{Expression quantitative trait loci}
+challenges in doing this
+GTEx, Pritchard, etc.
+\subsection{Additional types of eQTLs}
+\subsection{Heritability of gene expression}
+Wright, UK10K, Price
+\subsection{Power of SNP studies to capture STRs}
+Gaurav (here or below)
+
+\section{The role of gene regulation in complex traits}
+intro: goal is to understand complex traits
+\subsubsection{eQTLs likely mediate complex traits}
+overlap with GWAS
+\subsubsection{Connecting molecular to disease phenotypes}
+
+\section{Contributions of this thesis}
+intro: background suggests STRs play important role
+outset of work, very little knowledge about these variants
+in this thesis, I present...
+\subsection{Tools for STR analysis from short reads}
+\subsection{The first genome-wide catalogs of STR variation}
+\subsection{Abundant contribution of STRs to gene expression in humans}
+
+\section{Conclusion}
