@@ -23,6 +23,18 @@
   Volume                   = {21}
 }
 
+@Article{AlbaneseBiguetKieferEtAl2001,
+  Title                    = {{{Q}uantitative effects on gene silencing by allelic variation at a tetranucleotide microsatellite}},
+  Author                   = {Albanese, V. and Biguet, N. F. and Kiefer, H. and Bayard, E. and Mallet, J. and Meloni, R. },
+  Journal                  = {Hum. Mol. Genet.},
+  Year                     = {2001},
+  Month                    = {Aug},
+  Number                   = {17},
+  Pages                    = {1785--1792},
+  Volume                   = {10},
+  __markedentry            = {[gymrek:6]}
+}
+
 @Article{AlbertHodgesJensenEtAl2011,
   Title                    = {Targeted resequencing of a genomic region influencing tameness and aggression reveals multiple signals of positive selection},
   Author                   = {Albert, F. W. and Hodges, E. and Jensen, J. D. and Besnier, F. and Xuan, Z. and Rooks, M. and Bhattacharjee, A. and Brizuela, L. and Good, J. M. and Green, R. E. and Burbano, H. A. and Plyusnina, I. Z. and Trut, L. and Andersson, L. and Schoneberg, T. and Carlborg, O. and Hannon, G. J. and Paabo, S.},
@@ -437,6 +449,18 @@ An example application, the FFTW (the fastest Fourier transform in the west), is
   URL                      = {http://www.ncbi.nlm.nih.gov/pubmed/11852201}
 }
 
+@Article{BourgeoisCoffeyRiveraEtAl2009,
+  Title                    = {{{A} review of fragile {X} premutation disorders: expanding the psychiatric perspective}},
+  Author                   = {Bourgeois, J. A. and Coffey, S. M. and Rivera, S. M. and Hessl, D. and Gane, L. W. and Tassone, F. and Greco, C. and Finucane, B. and Nelson, L. and Berry-Kravis, E. and Grigsby, J. and Hagerman, P. J. and Hagerman, R. J. },
+  Journal                  = {J Clin Psychiatry},
+  Year                     = {2009},
+  Month                    = {Jun},
+  Number                   = {6},
+  Pages                    = {852--862},
+  Volume                   = {70},
+  __markedentry            = {[gymrek:6]}
+}
+
 @Article{BowersLippertDrorEtAl2010,
   Title                    = {Improved Twiddle Access for Fast Fourier Transforms},
   Author                   = {Bowers, K. J. and Lippert, R. A. and Dror, R. O. and Shaw, D. E.},
@@ -665,6 +689,18 @@ Conclusions: Airborne allergen is an important cause of exacerbations even in th
   URL                      = {http://www.ncbi.nlm.nih.gov/pubmed/11954565}
 }
 
+@Article{CaoTaskerWilladsenEtAl2014,
+  Title                    = {{{I}nferring short tandem repeat variation from paired-end short reads}},
+  Author                   = {Cao, M. D. and Tasker, E. and Willadsen, K. and Imelfort, M. and Vishwanathan, S. and Sureshkumar, S. and Balasubramanian, S. and Boden, M. },
+  Journal                  = {Nucleic Acids Res.},
+  Year                     = {2014},
+  Month                    = {Feb},
+  Number                   = {3},
+  Pages                    = {e16},
+  Volume                   = {42},
+  __markedentry            = {[gymrek:6]}
+}
+
 @Article{CapozzoliCurcioDEliaEtAl2009,
   Title                    = {Fast Phase-Only Synthesis of Faceted Reflectarrays},
   Author                   = {Capozzoli, A. and Curcio, C. and D'Elia, G. and Liseno, A. and Bresciani, D. and Legay, H.},
@@ -848,6 +884,29 @@ Running time: Seconds to hours, depending on system size. (C) 2009 Elsevier B.V.
   Number                   = {11},
   Pages                    = {e1000287},
   Volume                   = {4}
+}
+
+@Article{ClarkeWuJayasingheEtAl2009,
+  Title                    = {{{C}ontinuous base identification for single-molecule nanopore {D}{N}{A} sequencing}},
+  Author                   = {Clarke, J. and Wu, H. C. and Jayasinghe, L. and Patel, A. and Reid, S. and Bayley, H. },
+  Journal                  = {Nat Nanotechnol},
+  Year                     = {2009},
+  Month                    = {Apr},
+  Number                   = {4},
+  Pages                    = {265--270},
+  Volume                   = {4},
+  __markedentry            = {[gymrek:6]}
+}
+
+@Article{ClearyRanum2014,
+  Title                    = {{{R}epeat associated non-{A}{T}{G} ({R}{A}{N}) translation: new starts in microsatellite expansion disorders}},
+  Author                   = {Cleary, J. D. and Ranum, L. P. },
+  Journal                  = {Curr. Opin. Genet. Dev.},
+  Year                     = {2014},
+  Month                    = {Jun},
+  Pages                    = {6--15},
+  Volume                   = {26},
+  __markedentry            = {[gymrek:6]}
 }
 
 @Article{CockFieldsGotoEtAl2010,
@@ -1150,6 +1209,21 @@ nrg3067 [pii]},
   URL                      = {http://www.ncbi.nlm.nih.gov/pubmed/20062523}
 }
 
+@Article{DoiMonjoHoangEtAl2013,
+  Title                    = {Rapid detection of expanded short tandem repeats in personal genomics using hybrid sequencing},
+  Author                   = {K. Doi and T. Monjo and P. H. Hoang and J. Yoshimura and H. Yurino and J. Mitsui and H. Ishiura and Y. Takahashi and Y. Ichikawa and J. Goto and S. Tsuji and S. Morishita},
+  Journal                  = {Bioinformatics},
+  Year                     = {2013},
+  Month                    = {nov},
+  Number                   = {6},
+  Pages                    = {815--822},
+  Volume                   = {30},
+  __markedentry            = {[gymrek:6]},
+  DOI                      = {10.1093/bioinformatics/btt647},
+  Publisher                = {Oxford University Press ({OUP})},
+  URL                      = {http://dx.doi.org/10.1093/bioinformatics/btt647}
+}
+
 @Article{DonadioBrodmanRoederEtAl2006,
   Title                    = {A language for the compact representation of multiple program versions},
   Author                   = {Donadio, S. and Brodman, J. and Roeder, T. and Yotov, K. and Barthou, D. and Cohen, A. and Garzaran, M. J. and Padua, D. and Pingali, K.},
@@ -1319,6 +1393,21 @@ In this paper, we present P-Ray, a software suite that characterizes hardware ch
   URL                      = {http://www.ncbi.nlm.nih.gov/pubmed/19098988}
 }
 
+@Article{EidFehrGrayEtAl2009,
+  Title                    = {Real-Time {DNA} Sequencing from Single Polymerase Molecules},
+  Author                   = {J. Eid and A. Fehr and J. Gray and K. Luong and J. Lyle and G. Otto and P. Peluso and D. Rank and P. Baybayan and B. Bettman and A. Bibillo and K. Bjornson and B. Chaudhuri and F. Christians and R. Cicero and S. Clark and R. Dalal and A. deWinter and J. Dixon and M. Foquet and A. Gaertner and P. Hardenbol and C. Heiner and K. Hester and D. Holden and G. Kearns and X. Kong and R. Kuse and Y. Lacroix and S. Lin and P. Lundquist and C. Ma and P. Marks and M. Maxham and D. Murphy and I. Park and T. Pham and M. Phillips and J. Roy and R. Sebra and G. Shen and J. Sorenson and A. Tomaney and K. Travers and M. Trulson and J. Vieceli and J. Wegener and D. Wu and A. Yang and D. Zaccarin and P. Zhao and F. Zhong and J. Korlach and S. Turner},
+  Journal                  = {Science},
+  Year                     = {2009},
+  Month                    = {jan},
+  Number                   = {5910},
+  Pages                    = {133--138},
+  Volume                   = {323},
+  __markedentry            = {[gymrek:6]},
+  DOI                      = {10.1126/science.1162986},
+  Publisher                = {American Association for the Advancement of Science ({AAAS})},
+  URL                      = {http://dx.doi.org/10.1126/science.1162986}
+}
+
 @Article{EleftheriouFitchRayshubskiyEtAl2005,
   Title                    = {Scalable framework for 3D FFTs on the Blue Gene/L supercomputer: Implementation and early performance measurements},
   Author                   = {Eleftheriou, M. and Fitch, B. G. and Rayshubskiy, A. and Ward, T. J. C. and Germain, R. S.},
@@ -1400,6 +1489,21 @@ In this paper, the present an extremely fast linear bit-reversal adapted for mod
   ISSN                     = {0302-9743},
   Type                     = {Journal Article},
   URL                      = {<Go to ISI>://000244508300018}
+}
+
+@Article{ErikssonManicaScherer2011,
+  Title                    = {Detecting and Removing Ascertainment Bias in Microsatellites from the {HGDP}-{CEPH} Panel},
+  Author                   = {A. Eriksson and A. Manica and S. W. Scherer},
+  Journal                  = {G3{\&}{\#}58$\mathsemicolon$ Genes$\vert$Genomes$\vert$Genetics},
+  Year                     = {2011},
+  Month                    = {nov},
+  Number                   = {6},
+  Pages                    = {479--488},
+  Volume                   = {1},
+  __markedentry            = {[gymrek:6]},
+  DOI                      = {10.1534/g3.111.001016},
+  Publisher                = {Genetics Society of America},
+  URL                      = {http://dx.doi.org/10.1534/g3.111.001016}
 }
 
 @Article{ErlichChangGordonEtAl2009,
@@ -1768,6 +1872,18 @@ Methods from all three areas were combined with FFTW. SPIRAL, and ATLAS to optim
   Volume                   = {524}
 }
 
+@Article{FungtammasanAnandaHileEtAl2015,
+  Title                    = {{{A}ccurate typing of short tandem repeats from genome-wide sequencing data and its applications}},
+  Author                   = {Fungtammasan, A. and Ananda, G. and Hile, S. E. and Su, M. S. and Sun, C. and Harris, R. and Medvedev, P. and Eckert, K. and Makova, K. D. },
+  Journal                  = {Genome Res.},
+  Year                     = {2015},
+  Month                    = {May},
+  Number                   = {5},
+  Pages                    = {736--749},
+  Volume                   = {25},
+  __markedentry            = {[gymrek:6]}
+}
+
 @Article{GabrielHoarIbarraEtAl2004,
   Title                    = {The XMM-Newton SAS - Distributed development and maintenance of a large science analysis system: A critical analysis},
   Author                   = {Gabriel, C. and Hoar, J. and Ibarra, A. and Lammers, U. and Ojero, E. and Saxton, R. and Vacanti, G. and Denby, M. and Fyfe, D. and Osborne, J.},
@@ -2030,6 +2146,18 @@ ejhg2011258 [pii]},
   URL                      = {http://www.ncbi.nlm.nih.gov/pubmed/20448178}
 }
 
+@Article{GrubeGerchenAdamcioEtAl2011,
+  Title                    = {{{A} {C}{A}{G} repeat polymorphism of {K}{C}{N}{N}3 predicts {S}{K}3 channel function and cognitive performance in schizophrenia}},
+  Author                   = {Grube, S. and Gerchen, M. F. and Adamcio, B. and Pardo, L. A. and Martin, S. and Malzahn, D. and Papiol, S. and Begemann, M. and Ribbe, K. and Friedrichs, H. and Radyushkin, K. A. and Muller, M. and Benseler, F. and Riggert, J. and Falkai, P. and Bickeboller, H. and Nave, K. A. and Brose, N. and Stuhmer, W. and Ehrenreich, H. },
+  Journal                  = {EMBO Mol Med},
+  Year                     = {2011},
+  Month                    = {Jun},
+  Number                   = {6},
+  Pages                    = {309--319},
+  Volume                   = {3},
+  __markedentry            = {[gymrek:6]}
+}
+
 @Article{GrundbergSmallHedmanEtAl2012,
   Title                    = {{{M}apping cis- and trans-regulatory effects across multiple tissues in twins}},
   Author                   = {Grundberg, E. and Small, K. S. and Hedman, A. K. and Nica, A. C. and Buil, A. and Keildson, S. and Bell, J. T. and Yang, T. P. and Meduri, E. and Barrett, A. and Nisbett, J. and Sekowska, M. and Wilk, A. and Shin, S. Y. and Glass, D. and Travers, M. and Min, J. L. and Ring, S. and Ho, K. and Thorleifsson, G. and Kong, A. and Thorsteindottir, U. and Ainali, C. and Dimas, A. S. and Hassanali, N. and Ingle, C. and Knowles, D. and Krestyaninova, M. and Lowe, C. E. and Di Meglio, P. and Montgomery, S. B. and Parts, L. and Potter, S. and Surdulescu, G. and Tsaprouni, L. and Tsoka, S. and Bataille, V. and Durbin, R. and Nestle, F. O. and O'Rahilly, S. and Soranzo, N. and Lindgren, C. M. and Zondervan, K. T. and Ahmadi, K. R. and Schadt, E. E. and Stefansson, K. and Smith, G. D. and McCarthy, M. I. and Deloukas, P. and Dermitzakis, E. T. and Spector, T. D. },
@@ -2212,6 +2340,18 @@ In this paper, we propose a model-driven DFT performance predictor that can repl
   Volume                   = {339}
 }
 
+@Article{GymrekWillemsGuilmatreEtAl2015,
+  Title                    = {Abundant contribution of short tandem repeats to gene expression variation in humans},
+  Author                   = {Melissa Gymrek and Thomas Willems and Audrey Guilmatre and Haoyang Zeng and Barak Markus and Stoyan Georgiev and Mark J Daly and Alkes L Price and Jonathan K Pritchard and Andrew J Sharp and Yaniv Erlich},
+  Journal                  = {Nature Genetics},
+  Year                     = {2015},
+  Month                    = {dec},
+  __markedentry            = {[gymrek:6]},
+  DOI                      = {10.1038/ng.3461},
+  Publisher                = {Nature Publishing Group},
+  URL                      = {http://dx.doi.org/10.1038/ng.3461}
+}
+
 @Article{HalperinStephan2009,
   Title                    = {SNP imputation in association studies},
   Author                   = {Halperin, E. and Stephan, D. A.},
@@ -2385,6 +2525,18 @@ In this paper, we propose a model-driven DFT performance predictor that can repl
   ISSN                     = {1097-4164 (Electronic) 1097-2765 (Linking)},
   Type                     = {Journal Article},
   URL                      = {http://www.ncbi.nlm.nih.gov/pubmed/21924933}
+}
+
+@Article{HodgeTCuencoHuyckEtAl2009,
+  Title                    = {{{U}terine leiomyomata and decreased height: a common {H}{M}{G}{A}2 predisposition allele}},
+  Author                   = {Hodge, J. C. and T Cuenco, K. and Huyck, K. L. and Somasundaram, P. and Panhuysen, C. I. and Stewart, E. A. and Morton, C. C. },
+  Journal                  = {Hum. Genet.},
+  Year                     = {2009},
+  Month                    = {Apr},
+  Number                   = {3},
+  Pages                    = {257--263},
+  Volume                   = {125},
+  __markedentry            = {[gymrek:6]}
 }
 
 @Article{HomerSzelingerRedmanEtAl2008,
@@ -2969,8 +3121,7 @@ The experiments have been performed on Itanium-II(IA-64) and Pentium-IV processo
   Month                    = {Mar},
   Number                   = {3},
   Pages                    = {299--303},
-  Volume                   = {45},
-  __markedentry            = {[gymrek:]}
+  Volume                   = {45}
 }
 
 @Article{KiselyovTaha2005,
@@ -3119,6 +3270,18 @@ Nature of problem: Green's function molecular dynamics (GFMD) is a coarse-graini
   Number                   = {3},
   Pages                    = {241--247},
   Volume                   = {31}
+}
+
+@Article{KoscianskaWitkosKozlowskaEtAl2015,
+  Title                    = {{{C}ooperation meets competition in micro{R}{N}{A}-mediated {D}{M}{P}{K} transcript regulation}},
+  Author                   = {Koscianska, E. and Witkos, T. M. and Kozlowska, E. and Wojciechowska, M. and Krzyzosiak, W. J. },
+  Journal                  = {Nucleic Acids Res.},
+  Year                     = {2015},
+  Month                    = {Oct},
+  Number                   = {19},
+  Pages                    = {9500--9518},
+  Volume                   = {43},
+  __markedentry            = {[gymrek:6]}
 }
 
 @Article{KozlowskiSobczakKrzyzosiak2010,
@@ -3739,6 +3902,21 @@ In this paper, we first derive our mathematical model. We then validate its accu
   URL                      = {http://www.ncbi.nlm.nih.gov/pubmed/22522955}
 }
 
+@Article{LoomisEidPelusoEtAl2012,
+  Title                    = {Sequencing the unsequenceable: Expanded {CGG}-repeat alleles of the fragile X gene},
+  Author                   = {E. W. Loomis and J. S. Eid and P. Peluso and J. Yin and L. Hickey and D. Rank and S. McCalmon and R. J. Hagerman and F. Tassone and P. J. Hagerman},
+  Journal                  = {Genome Research},
+  Year                     = {2012},
+  Month                    = {oct},
+  Number                   = {1},
+  Pages                    = {121--128},
+  Volume                   = {23},
+  __markedentry            = {[gymrek:6]},
+  DOI                      = {10.1101/gr.141705.112},
+  Publisher                = {Cold Spring Harbor Laboratory Press},
+  URL                      = {http://dx.doi.org/10.1101/gr.141705.112}
+}
+
 @Article{LorenzKralFranchettiEtAl2005,
   Title                    = {Vectorization techniques for the blue Gene/L double FPU},
   Author                   = {Lorenz, J. and Kral, S. and Franchetti, F. and Ueberhuber, C. W.},
@@ -4126,6 +4304,18 @@ This is a remarkable speedup, specially on those simulations concerning visualiz
   Type                     = {Journal Article}
 }
 
+@Article{McKennaHannaBanksEtAl2010a,
+  Title                    = {{{T}he {G}enome {A}nalysis {T}oolkit: a {M}ap{R}educe framework for analyzing next-generation {D}{N}{A} sequencing data}},
+  Author                   = {McKenna, A. and Hanna, M. and Banks, E. and Sivachenko, A. and Cibulskis, K. and Kernytsky, A. and Garimella, K. and Altshuler, D. and Gabriel, S. and Daly, M. and DePristo, M. A. },
+  Journal                  = {Genome Res.},
+  Year                     = {2010},
+  Month                    = {Sep},
+  Number                   = {9},
+  Pages                    = {1297--1303},
+  Volume                   = {20},
+  __markedentry            = {[gymrek:6]}
+}
+
 @Article{McMurray2010,
   Title                    = {Mechanisms of trinucleotide repeat instability during human development},
   Author                   = {McMurray, C. T.},
@@ -4196,6 +4386,17 @@ This is a remarkable speedup, specially on those simulations concerning visualiz
   ISSN                     = {1362-4962 (Electronic) 0305-1048 (Linking)},
   Type                     = {Journal Article},
   URL                      = {http://www.ncbi.nlm.nih.gov/pubmed/23155063}
+}
+
+@Article{MichalikVanBroeckhoven2003,
+  Title                    = {{{P}athogenesis of polyglutamine disorders: aggregation revisited}},
+  Author                   = {Michalik, A. and Van Broeckhoven, C. },
+  Journal                  = {Hum. Mol. Genet.},
+  Year                     = {2003},
+  Month                    = {Oct},
+  Pages                    = {R173--186},
+  Volume                   = {12 Spec No 2},
+  __markedentry            = {[gymrek:6]}
 }
 
 @Article{Mirkin2007,
@@ -4436,6 +4637,21 @@ We apply our de-anonymization methodology to the Netflix Prize dataset, which co
   ISSN                     = {1081-6011},
   Type                     = {Journal Article},
   URL                      = {<Go to ISI>://000256560300008}
+}
+
+@Article{NarzisiORaweIossifovEtAl2014,
+  Title                    = {Accurate de novo and transmitted indel detection in exome-capture data using microassembly},
+  Author                   = {Giuseppe Narzisi and Jason A O'Rawe and Ivan Iossifov and Han Fang and Yoon-ha Lee and Zihua Wang and Yiyang Wu and Gholson J Lyon and Michael Wigler and Michael C Schatz},
+  Journal                  = {Nature Methods},
+  Year                     = {2014},
+  Month                    = {aug},
+  Number                   = {10},
+  Pages                    = {1033--1036},
+  Volume                   = {11},
+  __markedentry            = {[gymrek:6]},
+  DOI                      = {10.1038/nmeth.3069},
+  Publisher                = {Nature Publishing Group},
+  URL                      = {http://dx.doi.org/10.1038/nmeth.3069}
 }
 
 @Article{NealeKouLiuEtAl2012,
@@ -4804,6 +5020,22 @@ Typical running time: Table below shows the typical run times for the four test 
   URL                      = {http://www.ncbi.nlm.nih.gov/pubmed/18423524}
 }
 
+@Article{Pearson2011,
+  Title                    = {Repeat Associated Non-{ATG} Translation Initiation: One {DNA}, Two Transcripts, Seven Reading Frames, Potentially Nine Toxic Entities!},
+  Author                   = {Christopher E. Pearson},
+  Journal                  = {{PLoS} Genetics},
+  Year                     = {2011},
+  Month                    = {mar},
+  Number                   = {3},
+  Pages                    = {e1002018},
+  Volume                   = {7},
+  __markedentry            = {[gymrek:6]},
+  DOI                      = {10.1371/journal.pgen.1002018},
+  Editor                   = {Gregory P. Copenhaver},
+  Publisher                = {Public Library of Science ({PLoS})},
+  URL                      = {http://dx.doi.org/10.1371/journal.pgen.1002018}
+}
+
 @Article{PearsonNicholEdamuraCleary2005,
   Title                    = {Repeat instability: mechanisms of dynamic mutations},
   Author                   = {Pearson, C. E. and Nichol Edamura, K. and Cleary, J. D.},
@@ -5050,6 +5282,21 @@ Typical running time: Table below shows the typical run times for the four test 
   URL                      = {http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&dopt=Citation&list_uids=21944779}
 }
 
+@Article{RimmerPhanMathiesonEtAl2014,
+  Title                    = {Integrating mapping-, assembly- and haplotype-based approaches for calling variants in clinical sequencing applications},
+  Author                   = {Andy Rimmer and Hang Phan and Iain Mathieson and Zamin Iqbal and Stephen R F Twigg and Andrew O M Wilkie and Gil McVean and Gerton Lunter},
+  Journal                  = {Nature Genetics},
+  Year                     = {2014},
+  Month                    = {jul},
+  Number                   = {8},
+  Pages                    = {912--918},
+  Volume                   = {46},
+  __markedentry            = {[gymrek:6]},
+  DOI                      = {10.1038/ng.3036},
+  Publisher                = {Nature Publishing Group},
+  URL                      = {http://dx.doi.org/10.1038/ng.3036}
+}
+
 @Article{RoachGlusmanSmitEtAl2010,
   Title                    = {Analysis of genetic inheritance in a family quartet by whole-genome sequencing},
   Author                   = {Roach, J. C. and Glusman, G. and Smit, A. F. and Huff, C. D. and Hubley, R. and Shannon, P. T. and Rowen, L. and Pant, K. P. and Goodman, N. and Bamshad, M. and Shendure, J. and Drmanac, R. and Jorde, L. B. and Hood, L. and Galas, D. J.},
@@ -5204,6 +5451,18 @@ Typical running time: Table below shows the typical run times for the four test 
   Keywords                 = {Alleles Animals Base Sequence DNA/*genetics *Dinucleotide Repeats Gene Expression Regulation/genetics Genetic Variation Introns Molecular Sequence Data Phosphoproteins/*genetics *Polymorphism, Genetic *Promoter Regions, Genetic RNA-Binding Proteins/*genetics Rats Rats, Inbred Strains Sequence Homology, Nucleic Acid Simian virus 40/genetics Transcription, Genetic/genetics},
   Type                     = {Journal Article},
   URL                      = {http://www.ncbi.nlm.nih.gov/pubmed/11447254}
+}
+
+@Article{Rubinsztein2002,
+  Title                    = {{{L}essons from animal models of {H}untington's disease}},
+  Author                   = {Rubinsztein, D. C. },
+  Journal                  = {Trends Genet.},
+  Year                     = {2002},
+  Month                    = {Apr},
+  Number                   = {4},
+  Pages                    = {202--209},
+  Volume                   = {18},
+  __markedentry            = {[gymrek:6]}
 }
 
 @Article{RuitbergReederButler2001,
@@ -5469,7 +5728,7 @@ nrg1405 [pii]},
   Number                   = {1},
   Pages                    = {457--462},
   Volume                   = {139},
-  __markedentry            = {[gymrek:6]}
+  __markedentry            = {[gymrek:]}
 }
 
 @Article{SluijsEngelenHoefsloot2003,
@@ -6464,6 +6723,18 @@ In this paper we describe X-Ray(1), a system for implementing micro-benchmarks t
   Keywords                 = {Adolescent Adult Aged Alleles Carcinoma, Hepatocellular/*genetics *Exons Female *Genetic Predisposition to Disease Hepatitis B Surface Antigens/blood Heterozygote Homozygote Humans Liver Neoplasms/*genetics Middle Aged Odds Ratio Receptors, Androgen/*genetics Risk Factors Taiwan *Trinucleotide Repeats},
   Type                     = {Journal Article},
   URL                      = {http://www.ncbi.nlm.nih.gov/pubmed/12085360}
+}
+
+@Article{YuYangYangEtAl2002a,
+  Title                    = {{{A}ndrogen receptor exon 1 {C}{A}{G} repeat length and risk of hepatocellular carcinoma in women}},
+  Author                   = {Yu, M. W. and Yang, Y. C. and Yang, S. Y. and Chang, H. C. and Liaw, Y. F. and Lin, S. M. and Liu, C. J. and Lee, S. D. and Lin, C. L. and Chen, P. J. and Lin, S. C. and Chen, C. J. },
+  Journal                  = {Hepatology},
+  Year                     = {2002},
+  Month                    = {Jul},
+  Number                   = {1},
+  Pages                    = {156--163},
+  Volume                   = {36},
+  __markedentry            = {[gymrek:6]}
 }
 
 @Article{ZampariniDavisMaloneEtAl2011,
