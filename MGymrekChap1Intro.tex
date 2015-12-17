@@ -143,15 +143,20 @@ High throughput sequencing holds the promise of creating unbiased genome wide ca
 
 \section{Genetic architecture of gene expression and complex traits}
 \label{sec:introarch}
+
+A fundamental goal of human genomics is to understand how genetic variation leads to changes in phenotypes. Genome wide association studies (GWAS) have uncovered thousands of loci associated with human traits. The vast majority of these are in non-coding regions, suggesting regulation of gene expression as a major underlying molecular mechanism. Large scale efforts have mapped thousands of common variants predicted to regulate gene expression in \emph{cis} and shed light on the heritability of gene expression.
+
 \subsection{Expression quantitative trait loci}
-challenges in doing this
-GTEx, Pritchard, etc.
-\subsection{Additional types of eQTLs}
+Expression quantitative trait loci, or eQTLs, refer to variants that show a quantitative relationship with gene expression. In most cases, eQTLs refer to a bi-allelic variant, encoded as 0 (homozygous reference), 1 (heterozygous), or 2 (homozygous non-reference) that shows a linear relationship with expression. Importantly, just because a variant is a significant eQTL does not imply causality. In many cases an eQTL simply tags a nearby causal variant in linkage disequilibrium.
+
+Increasingly large efforts have been conducted to map eQTLs in humans across a range of cell types. Most large studies so far have focused on lymphoblastoid cell lines (LCLs) (e.g. \cite{GaffneyVeyrierasDegnerEtAl2012} and the gEUVADIS Project \cite{LappalainenSammethFriedlanderEtAl2013}). Recently, the GTEx Project analyzed eQTLs across a broad range of tissues in hundreds of individuals \cite{ArdlieDelucaSegreEtAl2015}, providing a valuable community resource. Each of these studies has revealed thousands of eQTLs, with many more to be discovered. For instance, the GTEx Project (Figure 2A in \cite{ArdlieDelucaSegreEtAl2015}) found that the number of significant eQTLs increases linearly with sample size within the range of samples analyzed, implying the presence of thousands more eQTLs that they were underpowered to detect. Together, these results suggest that nearly every gene in the genome is influenced by one or more eQTL.
+
 \subsection{Heritability of gene expression}
-Wright, UK10K, Price
-\subsection{The role of gene regulation in complex traits}
-\subsection{Power of SNP studies to capture STRs}
-Gaurav (here or below)
+Although eQTLs have been quite successful in uncovering regulatory variants, individual eQTLs explain very little ($< 10\%$) overall variation in gene expression \cite{GrundbergSmallHedmanEtAl2012}. Heritability analyses can be informative of the genetic basis of gene expression.
+
+Average heritability of gene expression varies across tissues but ranges from around 10-30\% as measured using identity by descent (IBD) analyses. For instance, average heritabilities of $\sim$0.2 for LCLs \cite{GrundbergSmallHedmanEtAl2012,DixonLiangMoffattEtAl2007}, $\sim$0.1 for blood \cite{PriceHelgasonThorleifssonEtAl2011,WrightSullivanBrooksEtAl2014}, $\sim$0.25 for adipose \cite{PriceHelgasonThorleifssonEtAl2011,GrundbergSmallHedmanEtAl2012}, and 0.16 for skin \cite{GrundbergSmallHedmanEtAl2012}. Notably, ``purer'' tissues such as adipose tend to have higher heritability than tissues that contain a mixture of cell types such as whole blood.
+
+In most tissues studied, variance component analyses have estimated that \emph{cis} variation accounts for around 30\% of all heritability for each gene \cite{GrundbergSmallHedmanEtAl2012,PriceHelgasonThorleifssonEtAl2011}. In contrast, common SNP eQTLs explain only around 75\% of the total \emph{cis} heritability, leaving 25\% unexplained.  Orthogonally, it has was recently reported that haplotypes of common SNPs can explain substantially greater heritability of complex traits than common SNP genotypes alone. These results suggest that other \emph{cis} variants not tagged by individual common SNPs, such as STRs, rare variants, retrotransposons, and others, could play an important role.  
 
 \section{Contributions of this thesis}
 Taken together, the studies described above provide strong evidence that STRs may play a widespread role in quantitative traits in humans. At the outset of this work, STRs were not amenable to large scale studies due to limitations in bioinformatic and sequencing technologies. Furthermore, repetitive regions were largely considered neutral, or ``junk DNA'' that were simply filtered out of most analyses.
@@ -183,3 +188,4 @@ We conducted a genome-wide analysis of STRs that affect expression of nearby gen
 Sequencing datasets are often shared without identifiers under the assumption that the identities of the samples will not be revealed. We showed that we can recover genealogical STRs from the Y chromosome by applying lobSTR to whole genome sequencing datasets. We used the resulting genotypes to query recreational genealogical databases to recover the surnames of anonymous sample donors. Combining the surname with additional metadata such as age and state can lead to a complete breach of anonymity \cite{GymrekMcGuireGolanEtAl2013} \autoref{chap:surname}.
 
 Due to the widespread use of STRs in forensics and genealogy, this work had important implications for genetic privacy of human research subjects. As a result I have become more aware of ethical concerns and have been an active participant in discussions of social aspects of genetic research in the wider genomics community. Importantly, it is now recognized that it is impossible to promise anonymity, and that this should be clarified to participants. As a result of our study many data usage agreements have been augmented to prevent researchers from attempting to identify participants. We believe this project paved the way toward greater transparency about data privacy issues and will ultimately help protect and inform participants in genetic research.
+
