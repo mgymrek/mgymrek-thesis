@@ -1,30 +1,72 @@
+\iffalse \bibliography{MGymrekRefs.bib} \fi
+
 \chapter{Conclusion and future directions}
 \label{chap:conc}
 
-% Synthesis, plus propose immediate future directions
+% Synthesis, plus propose immediate future directions TODO
 \section{Synthesis: STRs as a model for exploring the role of complex variants in human traits}
-% summary of work we've done
-% here give immediate future directions
+In this thesis, I have presented our work to use large scale sequencing datasets to interrogate the role of complex variants in human traits, using STRs as a model. In particular, we developed the first tools for genome-wide analysis of STRs, applied these tools to create initial population-wide catalogs of STR variation, and showed that STRs contribute on average 10-15\% of the heritablity of gene expression due to \emph{cis} variants.
+
+These initial studies demonstrate that to fully understand how genetic variation influences phenotype, it is crucial to analyze the entire spectrum of mutations, not just those that are simplest to analyze or genotypes. There is still a tremendous amount of work to be done to improve our knowledge of the genetic control of gene regulation across the range of human cell types and ultimately how this contributes to complex traits.
+
+The methods and results presented here pave the way to a better understanding of the role of complex variants. Below, I discuss current challenges, new questions, and future directions toward achieving this goal.
 
 \subsection{Methods for STR genotyping}
+A major contribution of this work has been the first tool for high throughput STR genotyping from next generation sequencing data. Below I discuss extensions of this work, limitations of our current method, and potential improvements to STR calling going forward.
+
 % improvements of lobstr since publication
+\subsubsection{lobSTR improvements}
+Since publication, we have continued to develop and improve the lobSTR method. We have expanded the reference to include more than one million STRs, including homopolymers. We have added support for paired-end reads, the ability to call STRs across multiple samples at once, and significant algorithmic speedups.
+
+Recently, the widely used Burrows Wheeler Aligner (BWA) \cite{LiDurbin2009a} has introduced a new tool, BWA-MEM, with significant speedups and improvements in indel sensitivity. To accomodate this bioinformatic improvement, we have added an option to lobSTR to call STRs from alignments produced by external tools. This has proven to be more sensitive and nearly as accurate as lobSTR's original sensing and alignment steps, with the added benefit of greatly reducing run times for processing large cohorts that have been previously aligned using BWA-MEM. Incorporating this capability is still a work in progress but will potentially greatly increase the quality of our calls.
+
 % limitations of our methods: 
-%  - alignment insensitive. use BWA, but still has issues
-%  - genotyping model: should consider alignment errors, locus-specific model, able to not be diploid
-%  - ref bias, would be good to have de novo
-%  - doesn't tackle important things like repeat expansions
-%  - does allow multi-sample, but important to scale. possible incorporate lobstr + vis capabilities with other tools
+\subsubsection{Limitations of our method}
+As a result of our continued development of lobSTR and the emergence of higher coverage, PCR-free genome sequences, lobSTR can now achieve extremely high concordance upwards of 90\% with the current gold standard for STR genotyping. However, our method has several limitations:
+
+\begin{itemize}
+\item Limited sensitivity: because lobSTR only analyzes reads passing its ``sensing'' step that meet a required sequence entropy threshold, it will always face a tradeoff between run time and alignment sensitivity. The new capability of lobSTR to analyze reads aligned by alternative methods will eliminate this issue. However, each aligner has its own biases, and STRs embedded in low-complexity regions continue to produce problematic alignments.
+\item Genotyping model limitations: lobSTR currently determines a maximum likelihood genotype at each locus using a pre-calculated model of PCR stutter noise. This model does not account for mapping or local alignment errors. Therefore, it is heavily influenced by ``outlier'' reads that have been improperly aligned. Additionally, it does not account for length-dependent biases in read coverage, sequence variations within STR alleles, or locus-specific stutter noise parameters. It will be fairly straightforward to modify the current noise model to solve some of these issues, and members of the Erlich lab are actively working on improved models.
+\item Reference bias: lobSTR does not attempt to discover STR loci \emph{de novo}, but rather uses a pre-determined set of STRs discovered in the human reference genome. As a result, an STR that is truly polymorphic in the population but had an allele that was too short to be recognized as an STR in the reference will not be analyzed. New tools such as the GATK HaplotypeCaller that analyze the entire genome and intregate calling of multiple types of variants have the potential to perform \emph{de novo} discvoery of STRs and other complex variants.
+\item Long STRs are inaccessible: the length of STRs that lobSTR can analyze is limited by the sequencing read length, since a read must entirely span an STR to be informative of the number of repeats present. With the current upper bound of read lengths around 150bp, STRs more than 100bp long are largely inaccessible. Therefore, large repeat expansions, such as those present in Huntington's Disease, Fragile X Syndrome, and dozens of other repeat expansion disorders, remain inaccessible. Although some efforts have been made \cite{DoiMonjoHoangEtAl2013}, no tool has been shown to reliably detect repeat expansions from short reads. This task is of great interest to the medical genetics community and is an active area of research in other groups.
+\item Joint calling: lobSTR currently has the ability to genotype multiple samples at once, but makes limited effort to utilize information across samples to improve calls. Theoretically, features such as population allele frequencies and recurrent alignment errors across samples could inform genotype calling, as has been demonstrated in large joint calling efforts like the Exome Aggregation Consortium \cite{EXAC}.
+\end{itemize}
+
 % other methods (fungtammasan, gatk, hipstr)
+\subsubsection{Recent tools for genotyping STRs from sequencing data}
+Over the last several years, additional tools have arisen:
+
+\begin{enumerate}
+\item \textbf{STRViper} \cite{CaoTaskerWilladsenEtAl2014}: Uses insert size between paired end sequencing reads to detect STR variations.
+\item \textbf{RepeatSeq} \cite{HighnamFranckMartinEtAl2013}: uses Bayesian model selection to genotype previously aligned STR-containing reads.
+\item \textbf{STR-FM} \cite{FungtammasanAnandaHileEtAl2015}: uses a method based on lobSTR's algorithm but with a modified detection step for increased sensitivity of short repeats and may be applied to non-diploid samples.
+\end{enumerate}
+
+The first two tools operate on previously existing alignments, and so are limited by the quality of the upstream aligner. The third may provide improvements to STR calling, especially at homopolymers which are extremely noisy in sequencing data. So far, these tools have not seen widepsread use in mainstream sequence analysis.
+
+In addition to STR-specific callers, a new class of variant callers, including GATK \cite{McKennaHannaBanksEtAl2010} HaplotypeCaller, Platypus \cite{RimmerPhanMathiesonEtAl2014}, and Scalpel \cite{NarzisiOextquotesingleRaweIossifovEtAl2014}. These methods perform local haplotype reassembly and can incorporate sophisticated noise models, and can theoretically genotype many variant types, including STRs, quite accurately. There has so far been no systematic evaluation of their performance at STRs, but these tools may be promising for STR analysis in the future.
+
 % long reads
+\subsubsection{Long-read technology can capture long repetitive regions}
+A major limitation of analyzing STRs from high throughput sequencing data is the short read length. Only reads entirely spanning an STR are informative of the repeat length, and sufficient flanking region on either side of the STR is required for accurate alignment. While the mainstream sequencing technology from Illumina is limited to sequencing at most several hundred base pairs in a single read, alternative sequencing platforms, such as PacBio's SMRT (single molecule real time) sequencing \cite{EidFehrGrayEtAl2009} and the new Nanopore technology \cite{ClarkeWuJayasingheEtAl2009}, can now produce much longer read lengths of up to several thousand base pairs.
+
+These technologies may be used to sequence long repeats observed in expansion disorders such as Fragile X \cite{LoomisEidPelusoEtAl2012} or ataxias \cite{DoiMonjoHoangEtAl2013}, and other complex regions of the genome. Chaisson \emph{et al} \cite{ChaissonHuddlestonDennisEtAl2015} recently applied SMRT to sequence a haploid genome to 40x coverage with an average read length of 5kb. With these long reads, they were able to close 50 gaps in the human genome reference assembly, which were highly enriched for short tandem repeats and other repeats embedded in larger, more complex tandem arrays of degenerate repeats. With longer and longer read lengths, we may soon be able to analyze STRs, as well as other repetitive elements such as variable number tandem repeats (VNTRs) and retrotransposons that were previously inaccessible using sequencing studies.
 
 \subsection{Contribution of STRs to gene expression}
+We have demonstrated here that STRs make a significant contribution to variation in gene expression in lymphoblastoid cell lines. Going forward, higher powered datasets across a range of human cell types will help provide a clearer picture of individual STRs important for gene regulation and the biological mechanisms by which they act.
+
 % limitations:
+\subsubsection{Limitations of our eSTR analysis}
 %  - underpowered!
 %  - only consider linear model
 %  - no causality shown, limited biological insight
 %  - could tag other variant types
+
 % future: bigger+better sample sizes, gtex for more tissues
-% future: direclty predict impact of individual variation (see below)
+\subsubsection{Higher powered datasets will provide deeper insight into the role of eSTRs}
+
+% future: biology. including direclty predict impact of individual variation (see below)
+\subsubsection{Toward biological understanding}
 
 \subsection{Conclusion of current work}
 % big point: need to consider complex variants. still in infancy for how to do this. will improve with better prediction methods and more data
@@ -58,23 +100,7 @@
 % mention improvements, now uses bwa-mem
 % mention hipstr, gatk, imputation
 
-\subsubsection{Existing tools for genotyping STRs from sequencing data}
-When we began this work, no dedicated tool for genotyping STRs from sequencing data existed. McIver \emph{et al.} \cite{McIverFondonSkinnerEtAl2011} evaluated STR variation in the 1000 Genomes Project \cite{AbecasisAltshulerAutonEtAl2010} samples. However their results were limited to the short variations that could be captured by aligners with poor indel sensitivity, and therefore vastly underestimated polymorphism levels. A major contribution of our work was develop the first efficient algorithm for generating accurate STR genotypes, called lobSTR \cite{GymrekGolanRossetEtAl2012} and described in \autoref{chap:lobstr}. Over the last several years, additional tools have arisen:
 
-\begin{enumerate}
-\item \textbf{STRViper} \cite{CaoTaskerWilladsenEtAl2014}: Uses insert size between paired end sequencing reads to detect STR variations.
-\item \textbf{RepeatSeq} \cite{HighnamFranckMartinEtAl2013}: uses Bayesian model selection to genotype previously aligned STR-containing reads.
-\item \textbf{STR-FM} \cite{FungtammasanAnandaHileEtAl2015}: uses a method based on lobSTR's algorithm but with a modified detection step for increased sensitivity of short repeats and may be applied to non-diploid samples.
-\end{enumerate}
-
-The first two tools operate on previously existing alignments, and so are limited by the quality of the upstream aligner. The third may provide improvements to STR calling, especially at homopolymers which are extremely noisy in sequencing data. So far, these tools have not seen widepsread use in mainstream sequence analysis.
-
-In addition to STR-specific callers, a new class of variant callers, including GATK \cite{McKennaHannaBanksEtAl2010} HaplotypeCaller, Platypus \cite{RimmerPhanMathiesonEtAl2014}, and Scalpel \cite{NarzisiOextquotesingleRaweIossifovEtAl2014}, perform local reassembly of diploid haplotypes. These methods can theoretically genotype STRs quite accurately, albeit with greatly increased computational costs. There has so far been no systematic evaluation of their performance at STRs, but these tools may be promising for STR analysis in the future.
-
-\subsection{Long-read technology can capture long repetitive regions}
-A major limitation of analyzing STRs from high throughput sequencing data is the short read length. Only reads entirely spanning an STR are informative of the repeat length, and sufficient flanking region on either side of the STR is required for accurate alignment. While the mainstream sequencing technology from Illumina is limited to sequencing at most several hundred base pairs in a single read, alternative sequencing platforms, such as PacBio's SMRT (single molecule real time) sequencing \cite{EidFehrGrayEtAl2009} and the new Nanopore technology \cite{ClarkeWuJayasingheEtAl2009}, can now produce much longer read lengths of up to several thousand base pairs.
-
-These technologies may be used to sequence long repeats observed in expansion disorders such as Fragile X \cite{LoomisEidPelusoEtAl2012} or ataxias \cite{DoiMonjoHoangEtAl2013}, and other complex regions of the genome. Chaisson \emph{et al} \cite{ChaissonHuddlestonDennisEtAl2015} recently applied SMRT to sequence a haploid genome to 40x coverage with an average read length of 5kb. With these long reads, they were able to close 50 gaps in the human genome reference assembly, which were highly enriched for short tandem repeats and other repeats embedded in larger, more complex tandem arrays of degenerate repeats. With longer and longer read lengths, we may soon be able to analyze STRs, as well as other repetitive elements such as variable number tandem repeats (VNTRs) and retrotransposons that were previously inaccessible using sequencing studies.
 
 
 
