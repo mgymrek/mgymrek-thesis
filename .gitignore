@@ -20,3 +20,5 @@ MGymrek_HSTBIG_Thesis_main.pdf
 *.csv
 *.xlsx
 scratch.txt
+scratch/
+*.DS_Store

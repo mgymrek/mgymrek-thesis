@@ -1,6 +1,58 @@
 \chapter{Conclusion and future directions}
 \label{chap:conc}
-% TODO write this!
+
+% Synthesis, plus propose immediate future directions
+\section{Synthesis: STRs as a model for exploring the role of complex variants in human traits}
+% summary of work we've done
+% here give immediate future directions
+
+\subsection{Methods for STR genotyping}
+% improvements of lobstr since publication
+% limitations of our methods: 
+%  - alignment insensitive. use BWA, but still has issues
+%  - genotyping model: should consider alignment errors, locus-specific model, able to not be diploid
+%  - ref bias, would be good to have de novo
+%  - doesn't tackle important things like repeat expansions
+%  - does allow multi-sample, but important to scale. possible incorporate lobstr + vis capabilities with other tools
+% other methods (fungtammasan, gatk, hipstr)
+% long reads
+
+\subsection{Contribution of STRs to gene expression}
+% limitations:
+%  - underpowered!
+%  - only consider linear model
+%  - no causality shown, limited biological insight
+%  - could tag other variant types
+% future: bigger+better sample sizes, gtex for more tissues
+% future: direclty predict impact of individual variation (see below)
+
+\subsection{Conclusion of current work}
+% big point: need to consider complex variants. still in infancy for how to do this. will improve with better prediction methods and more data
+
+\section{Incorporating complex variants into genome-wide studies}
+% want to move toward integrated view of the world, not snp- or str- or cnv-focused
+
+\subsection{Imputing complex variants into GWAS}
+% this is the goal
+% already know examples where gwas picks out an STR
+% challenges in getting it done
+
+\subsection{Other methods for incorporating complex variants}
+
+\section{Inferring regulatory function of simple and complex variants}
+% we tried to do this, still lot of work to do
+% should be possible, won't need qtls
+% mention machine learning methods
+% goal is to incorporate this with association data to determine the variants and mechanisms driving complex traits in humans
+
+\section{Conclusion}
+% what we did: 1 sentence
+% what we will do: 1 sentence
+
+
+
+
+% TODO below are things to incorporate above
 
 % lobSTR
 % mention improvements, now uses bwa-mem
