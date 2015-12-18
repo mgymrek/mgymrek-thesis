@@ -57,16 +57,25 @@ We have demonstrated here that STRs make a significant contribution to variation
 
 % limitations:
 \subsubsection{Limitations of our eSTR analysis}
-%  - underpowered!
-%  - only consider linear model
-%  - no causality shown, limited biological insight
-%  - could tag other variant types
+Our eSTR analysis faced several limitations. First, due to the low sequencing coverage and resulting low quality individual genotypes, we were underpowered to detect specific STR by gene associations with even moderate to large effect sizes. Furthermore, we showed that our analysis greatly underestimated the effects and heritability due to eSTRs. Therefore, we believe that there are many more eSTRs to discover, and that our heritability results underestimate their true contribution. 
+
+Second, we only considered a simple linear model relating average repeat length and gene expression. Results from model organisms such as yeast \cite{GemayelVincesLegendreEtAl2010} suggest that many eSTR associations may indeed take a quadratic or other shape. Additionally, we considered only repeat length, ignoring the effects of sequence variations within STRs, which may be important for function. For instance, a recent study in Ewing Sarcoma showed that the alternate allele of a GWAS SNP combines two adjacent repeat tracts into one larger one \cite{GrunewaldBernardGilardi-HebenstreitEtAl2015}, showing the importance of STR sequence interruptions. 
+
+Third, although we have shown strong evidence of a regulatory role for eSTRs by demonstrating enrichment near transcription start sites and enhancers and predicted ability to modulate histone modifications, the biological mechanisms by which they act remain unclear.
+
+Finally, we found initial results that eSTRs may be important for complex traits by showing that genes implicated in autoimmune disorders by GWAS are enriched for genes regulated by an eSTR in LCLs, and that a handful of eSTRs are also associated with metabolic and other traits in an orthogonal sample. However, these analyses were again underpowered and considered eSTRs from only a single cell type (LCLs), which may not be relevant for many conditions considered. Furthermore,  we will need to replicate these results in independent cohorts and show evidence of a causal link to definitively show a role for eSTRs in complex traits.
+
+Future studies are required to discover high confidence individual eSTRs, fully assess the contribution of eSTRs to expression heritability across a range of cell types, dissect the mechanisms by which eSTRs act, and assess the contribution of eSTRs, as well as other types of QTLs, to complex traits.
 
 % future: bigger+better sample sizes, gtex for more tissues
 \subsubsection{Higher powered datasets will provide deeper insight into the role of eSTRs}
+As discusssed above, a major challenge in eQTL analysis is the small sample size of currently available datasets. As larger cohorts and deeper sequencing datasets become available, the power to detect individual eSTRs and other eQTLs will be greatly improved. For instance, the GTEx project \cite{ArdlieDelucaSegreEtAl2015} has recently generated whole genome sequencing and RNA-seq from a wide variety of tissue types across hundreds of samples. This provides an unprecedented dataset to study the effects of complex variants on gene expression and other transcription phenotypes such as splicing. 
 
 % future: biology. including direclty predict impact of individual variation (see below)
 \subsubsection{Toward biological understanding}
+
+% future: overlap with complex traits
+\subsubsection{The role of expression regulation in complex traits}
 
 \subsection{Conclusion of current work}
 % big point: need to consider complex variants. still in infancy for how to do this. will improve with better prediction methods and more data
@@ -90,19 +99,3 @@ We have demonstrated here that STRs make a significant contribution to variation
 \section{Conclusion}
 % what we did: 1 sentence
 % what we will do: 1 sentence
-
-
-
-
-% TODO below are things to incorporate above
-
-% lobSTR
-% mention improvements, now uses bwa-mem
-% mention hipstr, gatk, imputation
-
-
-
-
-
-
-tagging/GWAS
