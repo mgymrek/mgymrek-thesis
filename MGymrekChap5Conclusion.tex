@@ -3,7 +3,7 @@
 \chapter{Conclusion and future directions}
 \label{chap:conc}
 
-% Synthesis, plus propose immediate future directions TODO
+% Synthesis, plus propose immediate future directions
 \section{Synthesis: STRs as a model for exploring the role of complex variants in human traits}
 In this thesis, I have presented our work to use large scale sequencing datasets to interrogate the role of complex variants in human traits, using STRs as a model. In particular, we developed the first tools for genome-wide analysis of STRs, applied these tools to create initial population-wide catalogs of STR variation, and showed that STRs contribute on average 10-15\% of the heritablity of gene expression due to \emph{cis} variants.
 
@@ -71,31 +71,33 @@ Future studies are required to discover high confidence individual eSTRs, fully 
 \subsubsection{Higher powered datasets will provide deeper insight into the role of eSTRs}
 As discusssed above, a major challenge in eQTL analysis is the small sample size of currently available datasets. As larger cohorts and deeper sequencing datasets become available, the power to detect individual eSTRs and other eQTLs will be greatly improved. For instance, the GTEx project \cite{ArdlieDelucaSegreEtAl2015} has recently generated whole genome sequencing and RNA-seq from a wide variety of tissue types across hundreds of samples. This provides an unprecedented dataset to study the effects of complex variants on gene expression and other transcription phenotypes such as splicing. 
 
-% future: biology. including direclty predict impact of individual variation (see below)
+% future: biology. including direclty predict impact of individual variation
 \subsubsection{Toward biological understanding}
+So far, our knowledge of biological mechanisms by which eSTRs and other eQTLs modulate transcription are largely unknown. For STRs, several hypotheses have been presented. These include altering transcription factor binding sites, changing spacing between regulatory elements, and inducing non B-DNA ``Z'' secondary structures. Additionally, intronic STRs may act by modulating alternative splicing, potentially through affecting RNA secondary structure stabilities \cite{HefferonGromanYurkEtAl2004}. We have performed preliminary analyses revealing nearly 100 intronic STRs whose repeat lengths are associated with nearby exons, suggesting this indeed may be a widespread mechanism for splicing regulation.
+
+A key to understanding the function of non-coding variants will be the ability to pinpoint causal variants and predict their regulatory function. In our eSTR analyses, we used a novel machine learning technique, GERV \cite{ZengHashimotoKangEtAl2015a}, to demonstrate that many eSTRs are predicted to modulate certain epigenetic marks known to be associated with gene regulation. GERV is one of a handful of recently developed methods for predicting regulatory activity of non-coding regions \cite{Kelley028399,Zhou:2015aa,Alipanahi:2015aa,Lee:2015aa}. All of these methods train a machine learning model to predict an annotation of interest, such as a ChIP-sequencing dataset, based on local sequence features. These models seem to mostly capture features related to sequence specificities of transcription factors, but they can also take into account things like broader sequence context, and co-binding of different factors. These methods have the potential to directly predict the impact of a mutation by providing a model several versions of sequences containing different alleles and quantifying the change. Moreover, since accurate models can be built using a single dataset from a cell type of interest, these methods preclude the need to measure these molecular phenotypes across hundreds of samples as is required for QTL analyses. The ability to predict the impact of individual non-coding variants will likely have transformative effects on a wide range of genetics applications, including GWAS, rare variant studies, and cancer genomics.
 
 % future: overlap with complex traits
-\subsubsection{The role of expression regulation in complex traits}
-
-\subsection{Conclusion of current work}
-% big point: need to consider complex variants. still in infancy for how to do this. will improve with better prediction methods and more data
-
-\section{Incorporating complex variants into genome-wide studies}
-% want to move toward integrated view of the world, not snp- or str- or cnv-focused
-
-\subsection{Imputing complex variants into GWAS}
 % this is the goal
-% already know examples where gwas picks out an STR
-% challenges in getting it done
+% already know examples from GWAS
+% challenges
+%    imputation - need large panels
+%    interpretation
+%    tying variants with molec mechanism driving disease
+% ultimately: targets
+\subsubsection{The role of expression regulation in complex traits} 
+This work makes progress toward the goal of understanding the role of STRs in human traits. Several challenges remain in integrating complex non-coding regulatory variants in large scale human genetics studies:
 
-\subsection{Other methods for incorporating complex variants}
+\begin{itemize}
+\item \textbf{Genotyping complex variants on a large scale}: Currently, the majority of genome-wide association studies have relied on SNP genotype arrays, rather than on whole genome sequencing. These datasets provide information on more than a million common SNP as well as CNV genotypes, and have proven useful in identifying thousands of genetic loci associated with human traits. While in most cases the true ``causal'' variants driving each signal are not directly genotyped, most common variants are in strong linkage disequilibrium with genotyped SNPs. Therefore, given a reference panel of haplotypes, the majority of common SNPs can be imputed from SNP chip data and used in association tests. STRs exhibit mutation rates often orders of magnitude higher than those of SNPs, and also experience recurrent mutations that often result in the same STR allele arising independently on multiple SNP haplotype backgrounds. As a result, STRs are less amenable than SNPs as well as less mutable complex variants to impuation. 
+Despite these challenges, STRs can still appear in tight linkage disequilibrium with individual SNPs or haplotypes defined by common SNPs, and so may be imputable with at least modest accuracy. The ability to impute STRs and other variants to large previously genotyped cohorts could allow for novel association discovery in those datasets. STR imputation is an active area of ongoing research in the Erlich lab.
 
-\section{Inferring regulatory function of simple and complex variants}
-% we tried to do this, still lot of work to do
-% should be possible, won't need qtls
-% mention machine learning methods
-% goal is to incorporate this with association data to determine the variants and mechanisms driving complex traits in humans
+\item \textbf{Interpretation}: GWAS has successfully identified thousands of genetic loci associated with human traits. However, each of these associations may tag tends or hundreds of variants that are equally likely to be causally associated with the trait. A major hypothesis is that the underlying causal variants drive changes in gene expression, leading to cellular changes that result in disease. Therefore, GWAS loci should be enriched for eQTLs. While it has been shown that overall GWAS regions are enriched for eQTLs \cite{NicolaeGamazonZhangEtAl2010}, little overlap has been found between individual GWAS SNPs and eQTL loci \cite{HuangFangJostinsEtAl2015}, which may reflect the need to profile eQTLs in more specific relevant cell types. Going forward, a major challenge will be to integrate eQTLs from both SNPs and other variant types to identify the causal loci, genes, and mechanisms driving association signals in complex traits.
 
-\section{Conclusion}
+\end{itemize}
+
+\section{Conclusion} % TODO
+% big point: need to consider complex variants. still in infancy for how to do this. will improve with better prediction methods and more data
 % what we did: 1 sentence
 % what we will do: 1 sentence
+% ultimately, targers

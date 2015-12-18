@@ -2,12 +2,80 @@
 %% http://bibdesk.sourceforge.net/
 
 
-%% Created for Melissa Gymrek at 2015-12-17 16:55:47 -0500 
+%% Created for Melissa Gymrek at 2015-12-18 13:20:55 -0500 
 
 
 %% Saved with string encoding Unicode (UTF-8) 
 
 
+
+@article{Kelley028399,
+	Abstract = {The complex language of eukaryotic gene expression remains incompletely understood. Thus, most of the many noncoding variants statistically associated with human disease have unknown mechanism. Here, we address this challenge using an approach based on a recent machine learning advance{\textemdash}deep convolutional neural networks (CNNs). We introduce an open source package Basset (https://github.com/davek44/Basset) to apply deep CNNs to learn the functional activity of DNA sequences from genomics data. We trained Basset on a compendium of accessible genomic sites mapped in 164 cell types by DNaseI-seq. Basset predictions for the change in accessibility between two variant alleles were far greater for GWAS SNPs that are likely to be causal relative to nearby SNPs in linkage disequilibrium with them. With Basset, a researcher can perform a single sequencing assay in their cell type of interest and simultaneously learn that cell???s chromatin accessibility code and annotate every mutation in the genome with its influence on present accessibility and latent potential for accessibility. Thus, Basset offers a powerful computational approach to annotate and interpret the noncoding genome.},
+	Author = {Kelley, David R and Snoek, Jasper and Rinn, John},
+	Date-Added = {2015-12-18 18:17:19 +0000},
+	Date-Modified = {2015-12-18 18:17:19 +0000},
+	Doi = {10.1101/028399},
+	Journal = {bioRxiv},
+	Publisher = {Cold Spring Harbor Labs Journals},
+	Title = {Basset: Learning the regulatory code of the accessible genome with deep convolutional neural networks.},
+	Year = {2015},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1101/028399}}
+
+@article{Zhou:2015aa,
+	Abstract = {Identifying functional effects of noncoding variants is a major challenge in human genetics. To predict the noncoding-variant effects de novo from sequence, we developed a deep learning-based algorithmic framework, DeepSEA (http://deepsea.princeton.edu/), that directly learns a regulatory sequence code from large-scale chromatin-profiling data, enabling prediction of chromatin effects of sequence alterations with single-nucleotide sensitivity. We further used this capability to improve prioritization of functional variants including expression quantitative trait loci (eQTLs) and disease-associated variants.},
+	Author = {Zhou, Jian and Troyanskaya, Olga G},
+	Date-Added = {2015-12-18 18:16:43 +0000},
+	Date-Modified = {2015-12-18 18:16:43 +0000},
+	Doi = {10.1038/nmeth.3547},
+	Journal = {Nat Methods},
+	Journal-Full = {Nature methods},
+	Month = {Oct},
+	Number = {10},
+	Pages = {931-4},
+	Pmid = {26301843},
+	Pst = {ppublish},
+	Title = {Predicting effects of noncoding variants with deep learning-based sequence model},
+	Volume = {12},
+	Year = {2015},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1038/nmeth.3547}}
+
+@article{Alipanahi:2015aa,
+	Abstract = {Knowing the sequence specificities of DNA- and RNA-binding proteins is essential for developing models of the regulatory processes in biological systems and for identifying causal disease variants. Here we show that sequence specificities can be ascertained from experimental data with 'deep learning' techniques, which offer a scalable, flexible and unified computational approach for pattern discovery. Using a diverse array of experimental data and evaluation metrics, we find that deep learning outperforms other state-of-the-art methods, even when training on in vitro data and testing on in vivo data. We call this approach DeepBind and have built a stand-alone software tool that is fully automatic and handles millions of sequences per experiment. Specificities determined by DeepBind are readily visualized as a weighted ensemble of position weight matrices or as a 'mutation map' that indicates how variations affect binding within a specific sequence.},
+	Author = {Alipanahi, Babak and Delong, Andrew and Weirauch, Matthew T and Frey, Brendan J},
+	Date-Added = {2015-12-18 18:14:35 +0000},
+	Date-Modified = {2015-12-18 18:14:35 +0000},
+	Doi = {10.1038/nbt.3300},
+	Journal = {Nat Biotechnol},
+	Journal-Full = {Nature biotechnology},
+	Month = {Aug},
+	Number = {8},
+	Pages = {831-8},
+	Pmid = {26213851},
+	Pst = {ppublish},
+	Title = {Predicting the sequence specificities of DNA- and RNA-binding proteins by deep learning},
+	Volume = {33},
+	Year = {2015},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1038/nbt.3300}}
+
+@article{Lee:2015aa,
+	Abstract = {Most variants implicated in common human disease by genome-wide association studies (GWAS) lie in noncoding sequence intervals. Despite the suggestion that regulatory element disruption represents a common theme, identifying causal risk variants within implicated genomic regions remains a major challenge. Here we present a new sequence-based computational method to predict the effect of regulatory variation, using a classifier (gkm-SVM) that encodes cell type-specific regulatory sequence vocabularies. The induced change in the gkm-SVM score, deltaSVM, quantifies the effect of variants. We show that deltaSVM accurately predicts the impact of SNPs on DNase I sensitivity in their native genomic contexts and accurately predicts the results of dense mutagenesis of several enhancers in reporter assays. Previously validated GWAS SNPs yield large deltaSVM scores, and we predict new risk-conferring SNPs for several autoimmune diseases. Thus, deltaSVM provides a powerful computational approach to systematically identify functional regulatory variants.},
+	Author = {Lee, Dongwon and Gorkin, David U and Baker, Maggie and Strober, Benjamin J and Asoni, Alessandro L and McCallion, Andrew S and Beer, Michael A},
+	Date-Added = {2015-12-18 18:13:57 +0000},
+	Date-Modified = {2015-12-18 18:13:57 +0000},
+	Doi = {10.1038/ng.3331},
+	Journal = {Nat Genet},
+	Journal-Full = {Nature genetics},
+	Mesh = {Animals; Autoimmune Diseases; Base Sequence; Cell Line, Tumor; Computational Biology; Deoxyribonuclease I; Enhancer Elements, Genetic; Genetic Predisposition to Disease; Genome, Human; Genome-Wide Association Study; Hep G2 Cells; Humans; Mice; Mutation; Polymorphism, Single Nucleotide; Quantitative Trait Loci; Regulatory Sequences, Nucleic Acid; Reproducibility of Results; Risk Factors; Support Vector Machine},
+	Month = {Aug},
+	Number = {8},
+	Pages = {955-61},
+	Pmc = {PMC4520745},
+	Pmid = {26075791},
+	Pst = {ppublish},
+	Title = {A method to predict the impact of regulatory variants from DNA sequence},
+	Volume = {47},
+	Year = {2015},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1038/ng.3331}}
 
 @article{EXAC,
 	Abstract = {Large-scale reference data sets of human genetic variation are critical for the medical and functional interpretation of DNA sequence changes. Here we describe the aggregation and analysis of high-quality exome (protein-coding region) sequence data for 60,706 individuals of diverse ethnicities. The resulting catalogue of human genetic diversity has unprecedented resolution, with an average of one variant every eight bases of coding sequence and the presence of widespread mutational recurrence. The deep catalogue of variation provided by the Exome Aggregation Consortium (ExAC) can be used to calculate objective metrics of pathogenicity for sequence variants, and to identify genes subject to strong selection against various classes of mutation; we identify 3,230 genes with near-complete depletion of truncating variants, 79\% of which have no currently established human disease phenotype. Finally, we show that these data can be used for the efficient filtering of candidate disease-causing variants, and for the discovery of human knockout variants in protein-coding genes.},
@@ -2011,7 +2079,8 @@ We use architecture-cognizance, a method for exploiting the interaction between 
 	Volume = {3},
 	Year = {2012},
 	Bdsk-Url-1 = {http://www.ncbi.nlm.nih.gov/pubmed/24704980},
-	Bdsk-Url-2 = {http://dx.doi.org/10.3390/genes3030461}}
+	Bdsk-Url-2 = {http://dx.doi.org/10.3390/genes3030461},
+	Bdsk-File-1 = {YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAFgAdccmVsYXRpdmVQYXRoWWFsaWFzRGF0YV8QZy4uLy4uL0Rvd25sb2Fkcy9hc3NvY2lhdGlvbi1tYXBwaW5nLW9mLWluZmxhbW1hdG9yeS1ib3dlbC1kaXNlYXNlLWxvY2ktdG8tc2luZ2xlLXZhcmlhbnQtcmVzb2x1dGlvbi5iaWLSFwsYGVdOUy5kYXRhTxECYgAAAAACYgACAAAJd20wZTItY2VlAAAAAAAAAAAAAAAAAAAAAAAA0FmZPkgrAAAAB/MUH2Fzc29jaWF0aW9uLW1hcHBpbmctI0RDRTdCOS5iaWIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADc57nSmbhlAAAAAAAAAAAAAgACAAAJIAAAAAAAAAAAAAAAAAAAAAlEb3dubG9hZHMAABAACAAA0FnRfgAAABEACAAA0pn+tQAAAAEADAAH8xQAB/MRAAJnCgACAEN3bTBlMi1jZWU6VXNlcnM6AGd5bXJlazoARG93bmxvYWRzOgBhc3NvY2lhdGlvbi1tYXBwaW5nLSNEQ0U3QjkuYmliAAAOALAAVwBhAHMAcwBvAGMAaQBhAHQAaQBvAG4ALQBtAGEAcABwAGkAbgBnAC0AbwBmAC0AaQBuAGYAbABhAG0AbQBhAHQAbwByAHkALQBiAG8AdwBlAGwALQBkAGkAcwBlAGEAcwBlAC0AbABvAGMAaQAtAHQAbwAtAHMAaQBuAGcAbABlAC0AdgBhAHIAaQBhAG4AdAAtAHIAZQBzAG8AbAB1AHQAaQBvAG4ALgBiAGkAYgAPABQACQB3AG0AMABlADIALQBjAGUAZQASAG5Vc2Vycy9neW1yZWsvRG93bmxvYWRzL2Fzc29jaWF0aW9uLW1hcHBpbmctb2YtaW5mbGFtbWF0b3J5LWJvd2VsLWRpc2Vhc2UtbG9jaS10by1zaW5nbGUtdmFyaWFudC1yZXNvbHV0aW9uLmJpYgATAAEvAAAVAAIADf//AACABtIbHB0eWiRjbGFzc25hbWVYJGNsYXNzZXNdTlNNdXRhYmxlRGF0YaMdHyBWTlNEYXRhWE5TT2JqZWN00hscIiNcTlNEaWN0aW9uYXJ5oiIgXxAPTlNLZXllZEFyY2hpdmVy0SYnVHJvb3SAAQAIABEAGgAjAC0AMgA3AEAARgBNAFUAYABnAGoAbABuAHEAcwB1AHcAhACOAPgA/QEFA2sDbQNyA30DhgOUA5gDnwOoA60DugO9A88D0gPXAAAAAAAAAgEAAAAAAAAAKAAAAAAAAAAAAAAAAAAAA9k=}}
 
 @article{GemayelVincesLegendreEtAl2010,
 	Abstract = {Genotype-to-phenotype mapping commonly focuses on two major classes of mutations: single nucleotide polymorphisms (SNPs) and copy number variation (CNV). Here, we discuss an underestimated third class of genotypic variation: changes in microsatellite and minisatellite repeats. Such tandem repeats (TRs) are ubiquitous, unstable genomic elements that have historically been designated as nonfunctional "junk DNA" and are therefore mostly ignored in comparative genomics. However, as many as 10% to 20% of eukaryotic genes and promoters contain an unstable repeat tract. Mutations in these repeats often have fascinating phenotypic consequences. For example, changes in unstable repeats located in or near human genes can lead to neurodegenerative diseases such as Huntington disease. Apart from their role in disease, variable repeats also confer useful phenotypic variability, including cell surface variability, plasticity in skeletal morphology, and tuning of the circadian rhythm. As such, TRs combine characteristics of genetic and epigenetic changes that may facilitate organismal evolvability.},
