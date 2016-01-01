@@ -114,7 +114,7 @@ The expected TMRCA is denoted by τ and is given by:
 \tau = \sum_{t=0}^{\infty}t_i P(t_i|\vec{x}, \vec{\mu}, N_e)
 \end{equation}
 
-The recovered surname was selected according to the record that has the minimal $\tau$ to the searched haplotype. Due to technical constraints with the web queries to SMGF and in order to reduce the amount of calculations, we did not determine $\tau$ for each of the hundreds of thousands of users in the databases. Instead, we employed the following procedure: (i) Ysearch - identify a set of candidate records that have the maximal number of matching markers to the queried haplotype (ii) SMGF – use the native SMGF search tool to identify the top 10 candidates according to the website's proprietary algorithm (iii) Both – calculate $\tau$ for top candidates in Ysearch and SMGF using Eq. \ref{eq:sureq1}, and select the record with the minimal $\tau$ of the searched haplotype. 
+The recovered surname was selected according to the record that has the minimal $\tau$ to the searched haplotype. Due to technical constraints with the web queries to SMGF and in order to reduce the amount of calculations, we did not determine $\tau$ for each of the hundreds of thousands of users in the databases. Instead, we employed the following procedure: (i) Ysearch - identify a set of candidate records that have the maximal number of matching markers to the queried haplotype (ii) SMGF - use the native SMGF search tool to identify the top 10 candidates according to the website's proprietary algorithm (iii) Both - calculate $\tau$ for top candidates in Ysearch and SMGF using Eq. \ref{eq:sureq1}, and select the record with the minimal $\tau$ of the searched haplotype. 
 
 \emph{Retrieval confidence score}
 
@@ -136,7 +136,7 @@ $T$ is the number of generations that is practical for the patrilineal surname s
 
 We set a threshold, $\delta_0$, which denotes the minimal accepted quality for valid surname recovery. If the retrieval passed the confidence threshold, the algorithm inferred that the record's surname is the surname of the input haplotype. Otherwise, the algorithm rejected the inference and returned ``Unknown''. 1.8\% of the searches returned records with an empty surname field or with strings that are not found in the surname list of the US census such as ``AshkenaziJewishModal''. The algorithm reported these cases as ``Unknown'' as well. Finally, TMRCA ties between two or more records with distinct surnames were also treated as ``Unknown''. 
 
-A surname inference resulted in one of the following outcomes: success – the recovered surname is concordant with the true surname, wrong – the recovered surname does not match the true surname, unknown – below confidence threshold, non-valid surnames, and ties.  
+A surname inference resulted in one of the following outcomes: success - the recovered surname is concordant with the true surname, wrong - the recovered surname does not match the true surname, unknown - below confidence threshold, non-valid surnames, and ties.  
 
 Following previous record linkage studies \cite{GrannisOverhageMcDonald2004,Winkler1995}, successful recoveries included a small number of cases where the returned surname displayed a minute spelling variant from the true one, such as Abernathy and Abernethy. These cases can still direct the adversary in tracing back the target at the price of searching for a larger number of individuals. We adopted a stringent approach to detect spelling variants that required that the first letter of both surnames be identical and that the Jaro-Winkler string distance \cite{Winkler1995} of the surnames be at least 0.9. This relies on the observation that the suffix of a surname is more prone to mutate than the prefix \cite{Winkler1995}. Two percent of the queries showed spelling variants using this approach and they are summarized in the following table:
 
@@ -221,9 +221,9 @@ Where $S_i$ is a subset of surnames whose frequencies fall in the $i$-th bin out
 Bin(i) & Frequency boudnaries & Example of surnames in bin \\
 \hline
 1& 	$>$1:400 &	Smith, Johnson \\
-2	&1:400 – 1:4,000	& Turner, Collins\\
-3	& 1:4,000 – 1:40,000 & 	Gates, Sloan\\
-4	& 1:40,000 – 1:400,000 &	Bjork, Reach \\
+2	&1:400 - 1:4,000	& Turner, Collins\\
+3	& 1:4,000 - 1:40,000 & 	Gates, Sloan\\
+4	& 1:40,000 - 1:400,000 &	Bjork, Reach \\
 5	& $<$1:400,000 &	Kellog, Venter \\
 \hline
 \end{tabular}
@@ -524,90 +524,89 @@ YCAIIb    & 0.002    & 22.136  & 1.2624 \\
 \label{tab:sursuptab3}
 \begin{tabularx}{\linewidth}{l l l l l l }
 \hline
-Marker & Start & End & Alt location & Ref allele & Motif structure \\
+Marker & Start & End & Alt location & Ref allele \\
 \hline
-DYS394/19   & 9521989  & 9522052  &                        & 15 & {[}TAGA{]}3TAGG{[}TAGA{]}n                                                                                                           \\
-DYS385a/b   & 20842518 & 20842573 & chrY:19260956-19261212 & 14 & {[}GAAA{]}n                                                                                                                          \\
-DYS388      & 14747535 & 14747570 &                        & 12 & {[}ATT{]}n                                                                                                                           \\
-DYS389I     & 14612191 & 14612238 &                        & 12 & {[}TCTG{]}m{[}TCTA{]}n                                                                                                               \\
-DYS389B     & 14612338 & 14612405 &                        & 29 & {[}TCTG{]}m{[}TCTA{]}n                                                                                                               \\
-DYS390      & 17274947 & 17275042 &                        & 24 & {[}TCTG{]}n{[}TCTA{]}m{[}TCTG{]}p{[}TCTA{]}q                                                                                         \\
-DYS391      & 14102795 & 14102838 &                        & 11 & {[}TCTA{]}n                                                                                                                          \\
-DYS392      & 22633873 & 22633911 &                        & 13 & {[}TAT{]}n                                                                                                                           \\
-DYS393      & 3131152  & 3131199  &                        & 12 & {[}AGAT{]}n                                                                                                                          \\
-DYS406S1    & 23843595 & 23843634 &                        & 10 & {[}TATC{]}n                                                                                                                          \\
-DYS413a/b   & 16099088 & 16099133 & chrY:14676647-14676820 & 23 & {[}TG{]}n                                                                                                                            \\
-DYS426      & 19134850 & 19134885 &                        & 12 & {[}GTT{]}n                                                                                                                           \\
-DYS434      & 14466533 & 14466568 &                        & 9  & TAAT{[}CTAT{]}n                                                                                                                      \\
-DYS435      & 14496298 & 14496333 &                        & 9  & {[}TGGA{]}n                                                                                                                          \\
-DYS436      & 15203862 & 15203897 &                        & 12 & {[}GTT{]}n                                                                                                                           \\
-DYS437      & 14466994 & 14467057 &                        & 16 & {[}TCTA{]}n{[}TCTG{]}2{[}TCTA{]}4                                                                                                    \\
-DYS438      & 14937824 & 14937873 &                        & 10 & {[}TTTTC{]}n                                                                                                                         \\
-DYS439      & 14515312 & 14515363 &                        & 13 & {[}GATA{]}n                                                                                                                          \\
-DYS441      & 14981831 & 14981908 &                        & 16 & {[}TTCC{]}n                                                                                                                          \\
-DYS442      & 14761103 & 14761168 &                        & 17 & {[}TATC{]}2{[}TGTC{]}3{[}TATC{]}n                                                                                                    \\
-DYS444      & 19226192 & 19226247 &                        & 14 & {[}TAGA{]}n                                                                                                                          \\
-DYS445      & 22092602 & 22092649 &                        & 12 & {[}TTTA{]}n                                                                                                                          \\
-DYS446      & 3131458  & 3131527  &                        & 14 & {[}TCTCT{]}n                                                                                                                         \\
-DYS447      & 15278740 & 15278854 &                        & 23 & {[}TAATA{]}n{[}TAAAA{]}1{[}TAATA{]}m{[}TAAAA{]}1{[}TAATA{]}p                                                                         \\
-DYS448\_1   & 24365070 & 24365136 &                        & 11 & {[}AGAGAT{]}n                                                                                                                        \\
-DYS448\_2   & 24365178 & 24365225 &                        & 8  & {[}AGAGAT{]}n                                                                                                                        \\
-DYS449\_1   & 8218014  & 8218074  &                        & 13 & {[}TTTC{]}n                                                                                                                          \\
-DYS449\_2   & 8218124  & 8218179  &                        & 14 & {[}TTTC{]}n                                                                                                                          \\
-DYS450      & 8126300  & 8126344  &                        & 8  & {[}ATTTT{]}n                                                                                                                         \\
-DYS452      & 21620478 & 21620632 &                        & 31 & {[}TATAC{]}m{[}TGTAC{]}n{[}TATAC{]}p{[}CATAC{]}{[}TATAC{]}{[}CATAC{]}{[}TATAC{]}q{[}CATAC{]}r{[}TATAC{]}s{[}CATAC{]}{[}TATAC{]}t     \\
-DYS454      & 8224156  & 8224199  &                        & 11 & {[}AAAT{]}n                                                                                                                          \\
-DYS455      & 6911569  & 6911612  &                        & 11 & {[}AAAT{]}n                                                                                                                          \\
-DYS456      & 4270960  & 4271019  &                        & 15 & {[}AGAT{]}n                                                                                                                          \\
-DYS458      & 7867880  & 7867943  &                        & 16 & {[}GAAA{]}n                                                                                                                          \\
-DYS459a/b   & 26078851 & 26078890 & chrY:26292857-26293004 & 10 & {[}TAAA{]}n                                                                                                                          \\
-DYS460      & 21050842 & 21050881 &                        & 10 & {[}ATAG{]}n                                                                                                                          \\
-DYS461      & 21050690 & 21050737 &                        & 12 & {[}TAGA{]}n{[}CAGA{]}                                                                                                                \\
-DYS462      & 21317047 & 21317090 &                        & 11 & {[}TATG{]}n                                                                                                                          \\
-DYS463      & 7643509  & 7643628  &                        & 24 & {[}AAAGG{]}m {[}AAGGG{]}n {[}AAGGA{]}p                                                                                               \\
-DYS472      & 16508484 & 16508507 &                        & 8  & {[}AAT{]}n                                                                                                                           \\
-DYS481      & 8426378  & 8426443  &                        & 22 & {[}CTT{]}n                                                                                                                           \\
-DYS485      & 22099634 & 22099681 &                        & 16 & {[}TTA{]}n                                                                                                                           \\
-DYS487      & 8914174  & 8914212  &                        & 13 & {[}TTA{]}n                                                                                                                           \\
-DYS490      & 3443765  & 3443800  &                        & 12 & {[}TTA{]}n                                                                                                                           \\
-DYS492      & 17414337 & 17414369 &                        & 12 & {[}ATT{]}n                                                                                                                           \\
-DYS494      & 21386168 & 21386197 &                        & 10 & {[}TTA{]}n                                                                                                                           \\
-DYS495      & 15011300 & 15011346 &                        & 15 & {[}AAT{]}n                                                                                                                           \\
-DYS505      & 3640831  & 3640878  &                        & 12 & {[}TCCT{]}n                                                                                                                          \\
-DYS511      & 17304923 & 17304958 &                        & 10 & {[}GATA{]}n                                                                                                                          \\
-DYS520      & 7730432  & 7730511  &                        & 20 & {[}ATAG{]}n{[}ATAC{]}n                                                                                                               \\
-DYS522      & 7415625  & 7415664  &                        & 10 & {[}GATA{]}n                                                                                                                          \\
-DYS531      & 8466195  & 8466238  &                        & 11 & {[}AAAT{]}n                                                                                                                          \\
-DYS533      & 18393226 & 18393273 &                        & 12 & {[}ATCT{]}n                                                                                                                          \\
-DYS634      & 18392976 & 18393035 &                        & 15 & {[}CTTT{]}n                                                                                                                          \\
-DYS537      & 19358850 & 19358889 &                        & 10 & {[}TCTA{]}n                                                                                                                          \\
-DYS549      & 21520224 & 21520275 &                        & 13 & {[}GATA{]}n                                                                                                                          \\
-DYS556      & 22601453 & 22601496 &                        & 11 & {[}AATA{]}n                                                                                                                          \\
-DYS557      & 23234712 & 23234775 &                        & 16 & {[}TTTC{]}n                                                                                                                          \\
-DYS565      & 16526732 & 16526775 &                        & 12 & {[}ATAA{]}n                                                                                                                          \\
-DYS568      & 8822555  & 8822594  &                        & 11 & {[}AAAT{]}n                                                                                                                          \\
-DYS570      & 6861231  & 6861298  &                        & 17 & {[}TTTC{]}n                                                                                                                          \\
-DYS572      & 3679660  & 3679699  &                        & 10 & {[}AAAT{]}n                                                                                                                          \\
-DYS575      & 7436257  & 7436296  &                        & 10 & {[}AAAT{]}n                                                                                                                          \\
-DYS576      & 7053359  & 7053426  &                        & 16 & {[}AAAG{]}n                                                                                                                          \\
-DYS578      & 22562564 & 22562599 &                        & 9  & {[}AAAT{]}n                                                                                                                          \\
-DYS589      & 24485693 & 24485757 &                        & 12 & {[}TTTTA{]}n                                                                                                                         \\
-DYS590      & 8555980  & 8556019  &                        & 8  & {[}TTTTG{]}n                                                                                                                         \\
-DYS594      & 21656837 & 21656886 &                        & 10 & {[}AAATA{]}n                                                                                                                         \\
-DYS607      & 18414382 & 18414457 &                        & 19 & {[}GAAG{]}n{[}GAAA{]}{[}GAAG{]}{[}GAAA{]}{[}GAAG{]}                                                                                  \\
-DYS617      & 19081518 & 19081553 &                        & 12 & {[}TTAn{]}                                                                                                                           \\
-DYS635      & 14379564 & 14379655 &                        & 23 & {[}TCTA{]}4{[}TGTA{]}2{[}TCTA{]}2{[}TGTA{]}2{[}TCTA{]}2{[}TGTA{]}m{[}TCTA{]}n                                                        \\
-DYS636      & 22634857 & 22634900 &                        & 12 & {[}ATTT{]}n                                                                                                                          \\
-DYS638      & 17645491 & 17645534 &                        & 11 & {[}TTTA{]}n                                                                                                                          \\
-DYS641      & 16134296 & 16134335 &                        & 10 & {[}TAAA{]}n                                                                                                                          \\
-DYS643      & 17426012 & 17426066 &                        & 11 & {[}CTTTT{]}n                                                                                                                         \\
-DYS714      & 22147731 & 22147865 &                        & 27 & {[}TTTCT{]}m{[}CTTCT{]}n{[}TTTCT{]}p{[}CTTCT{]}q{[}TTTCT{]}r                                                                         \\
-DYS717      & 17313245 & 17313324 &                        & 16 & {[}GTACT{]}m {[}GTATT{]}n                                                                                                            \\
-GATA-A10    & 18718879 & 18718938 &                        & 15 & {[}TCCA{]}2 {[}TATC{]}n                                                                                                              \\
-GATA-H4     & 18743553 & 18743600 &                        & 12 & {[}TAGA{]}n                                                                                                                          \\
-YCAIIa/b    & 19622111 & 19622156 & chrY:19016986-19017135 & 23 & {[}CA{]}n                                                                                                                            \\
-DYS395S1a/b & 19739341 & 19739381 & chrY:18899736-18899977 & 15 & {[}AAC{]}n                                                                                                                           \\
-DYS716      & 13140129 & 13140274 &                        & 28 & {[}ACTCGC{]}{[}ACTCC{]}m{[}ATTCC{]}n{[}TATTCTATTGA{]}{[}ACTCC{]}{[}ATTCC{]}{[}ACTCC{]}2{[}ATTCA{]}{[}ATTCC{]}2{[}ACTTC{]}{[}ATTCC{]} \\
+DYS394/19   & 9521989  & 9522052  &                        & 15 \\
+DYS385a/b   & 20842518 & 20842573 & chrY:19260956-19261212 & 14 \\
+DYS388      & 14747535 & 14747570 &                        & 12 \\
+DYS389I     & 14612191 & 14612238 &                        & 12 \\
+DYS389B     & 14612338 & 14612405 &                        & 29 \\
+DYS390      & 17274947 & 17275042 &                        & 24 \\
+DYS391      & 14102795 & 14102838 &                        & 11 \\
+DYS392      & 22633873 & 22633911 &                        & 13 \\
+DYS393      & 3131152  & 3131199  &                        & 12 \\
+DYS406S1    & 23843595 & 23843634 &                        & 10 \\
+DYS413a/b   & 16099088 & 16099133 & chrY:14676647-14676820 & 23 \\
+DYS426      & 19134850 & 19134885 &                        & 12 \\
+DYS434      & 14466533 & 14466568 &                        & 9  \\
+DYS435      & 14496298 & 14496333 &                        & 9  \\
+DYS436      & 15203862 & 15203897 &                        & 12 \\
+DYS437      & 14466994 & 14467057 &                        & 16 \\
+DYS438      & 14937824 & 14937873 &                        & 10 \\
+DYS439      & 14515312 & 14515363 &                        & 13 \\
+DYS441      & 14981831 & 14981908 &                        & 16 \\
+DYS442      & 14761103 & 14761168 &                        & 17 \\
+DYS444      & 19226192 & 19226247 &                        & 14 \\
+DYS445      & 22092602 & 22092649 &                        & 12 \\
+DYS446      & 3131458  & 3131527  &                        & 14 \\
+DYS447      & 15278740 & 15278854 &                        & 23 \\
+DYS448\_1   & 24365070 & 24365136 &                        & 11 \\
+DYS448\_2   & 24365178 & 24365225 &                        & 8  \\
+DYS449\_1   & 8218014  & 8218074  &                        & 13 \\
+DYS449\_2   & 8218124  & 8218179  &                        & 14 \\
+DYS450      & 8126300  & 8126344  &                        & 8  \\
+DYS452      & 21620478 & 21620632 &                        & 31 \\
+DYS454      & 8224156  & 8224199  &                        & 11 \\
+DYS455      & 6911569  & 6911612  &                        & 11 \\
+DYS456      & 4270960  & 4271019  &                        & 15 \\
+DYS458      & 7867880  & 7867943  &                        & 16 \\
+DYS459a/b   & 26078851 & 26078890 & chrY:26292857-26293004 & 10 \\
+DYS460      & 21050842 & 21050881 &                        & 10 \\
+DYS461      & 21050690 & 21050737 &                        & 12 \\
+DYS462      & 21317047 & 21317090 &                        & 11 \\
+DYS463      & 7643509  & 7643628  &                        & 24 \\
+DYS472      & 16508484 & 16508507 &                        & 8  \\
+DYS481      & 8426378  & 8426443  &                        & 22 \\
+DYS485      & 22099634 & 22099681 &                        & 16 \\
+DYS487      & 8914174  & 8914212  &                        & 13 \\
+DYS490      & 3443765  & 3443800  &                        & 12 \\
+DYS492      & 17414337 & 17414369 &                        & 12 \\
+DYS494      & 21386168 & 21386197 &                        & 10 \\
+DYS495      & 15011300 & 15011346 &                        & 15 \\
+DYS505      & 3640831  & 3640878  &                        & 12 \\
+DYS511      & 17304923 & 17304958 &                        & 10 \\
+DYS520      & 7730432  & 7730511  &                        & 20 \\
+DYS531      & 8466195  & 8466238  &                        & 11 \\
+DYS533      & 18393226 & 18393273 &                        & 12 \\
+DYS634      & 18392976 & 18393035 &                        & 15 \\
+DYS537      & 19358850 & 19358889 &                        & 10 \\
+DYS549      & 21520224 & 21520275 &                        & 13 \\
+DYS556      & 22601453 & 22601496 &                        & 11 \\
+DYS557      & 23234712 & 23234775 &                        & 16 \\
+DYS565      & 16526732 & 16526775 &                        & 12 \\
+DYS568      & 8822555  & 8822594  &                        & 11 \\
+DYS570      & 6861231  & 6861298  &                        & 17 \\
+DYS572      & 3679660  & 3679699  &                        & 10 \\
+DYS575      & 7436257  & 7436296  &                        & 10 \\
+DYS576      & 7053359  & 7053426  &                        & 16 \\
+DYS578      & 22562564 & 22562599 &                        & 9  \\
+DYS589      & 24485693 & 24485757 &                        & 12 \\
+DYS590      & 8555980  & 8556019  &                        & 8  \\
+DYS594      & 21656837 & 21656886 &                        & 10 \\
+DYS607      & 18414382 & 18414457 &                        & 19 \\
+DYS617      & 19081518 & 19081553 &                        & 12 \\
+DYS635      & 14379564 & 14379655 &                        & 23 \\
+DYS636      & 22634857 & 22634900 &                        & 12 \\
+DYS638      & 17645491 & 17645534 &                        & 11 \\
+DYS641      & 16134296 & 16134335 &                        & 10 \\
+DYS643      & 17426012 & 17426066 &                        & 11 \\
+DYS714      & 22147731 & 22147865 &                        & 27 \\
+DYS717      & 17313245 & 17313324 &                        & 16 \\
+GATA-A10    & 18718879 & 18718938 &                        & 15 \\
+GATA-H4     & 18743553 & 18743600 &                        & 12 \\
+YCAIIa/b    & 19622111 & 19622156 & chrY:19016986-19017135 & 23 \\
+DYS395S1a/b & 19739341 & 19739381 & chrY:18899736-18899977 & 15 \\
+DYS716      & 13140129 & 13140274 &                        & 28 \\
 \hline
 \end{tabularx}
 \textbf{Y-STR genomic locations and conventions.} All coordinates are given for human genome build hg19. Conventions follow NIST guidelines whenever available. $^*$ The values for DYS448 and DYS449 were determined by adding the alleles typed at DYS448\_1/DYS448\_2 and DYS449\_1/DYS449\_2. The complete repeat structures for DYS448 and DYS449 are  [AGAGAT]mN42[AGAGAT]n and [TTTC]m [N]50 [TTTC]n, respectively.
