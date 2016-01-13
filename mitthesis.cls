@@ -329,27 +329,26 @@
     \pulldownheader				% Bring header down from edge
 }						
 
-% MGymrek edited to get rid of blank pages between chapters
 % Redefine '/chapter' to always start on an odd page.
 % Should make no difference in singleside mode.
 %
-%\if@leftblank
+\if@leftblank
 % Prints "THIS PAGE INTENTIONALLY LEFT BLANK" on blank pages.
-%\def\chapter{\clearpage\ifodd\c@page\else
-%   \hbox{}\par\vfill\centerline%
-%   {THIS PAGE INTENTIONALLY LEFT BLANK}%
-%   \vfill\newpage\fi
-%   \thispagestyle{plain}	% Page style of chapter page is 'plain'
-%   \global\@topnum\z@		% Prevents figures from going at top of page.
-%   \@afterindentfalse		% Suppresses indent in first paragraph.  Change
-%   \secdef\@chapter\@schapter}	% to \@afterindenttrue to have indent.
-%\else
-%\def\chapter{\cleardoublepage	% Starts new page.
-%   \thispagestyle{plain}	% Page style of chapter page is 'plain'
-%   \global\@topnum\z@		% Prevents figures from going at top of page.
-%   \@afterindentfalse		% Suppresses indent in first paragraph.  Change
-%   \secdef\@chapter\@schapter}	% to \@afterindenttrue to have indent.
-%\fi
+\def\chapter{\clearpage\ifodd\c@page\else
+   \hbox{}\par\vfill\centerline%
+   {THIS PAGE INTENTIONALLY LEFT BLANK}%
+   \vfill\newpage\fi
+   \thispagestyle{plain}	% Page style of chapter page is 'plain'
+   \global\@topnum\z@		% Prevents figures from going at top of page.
+   \@afterindentfalse		% Suppresses indent in first paragraph.  Change
+   \secdef\@chapter\@schapter}	% to \@afterindenttrue to have indent.
+\else
+\def\chapter{\cleardoublepage	% Starts new page.
+   \thispagestyle{plain}	% Page style of chapter page is 'plain'
+   \global\@topnum\z@		% Prevents figures from going at top of page.
+   \@afterindentfalse		% Suppresses indent in first paragraph.  Change
+   \secdef\@chapter\@schapter}	% to \@afterindenttrue to have indent.
+\fi
 % If using the report style, use - instead of . in the figure number.
 \@ifundefined{thechapter}{}{\def\thefigure{\thechapter-\arabic{figure}}}
 
